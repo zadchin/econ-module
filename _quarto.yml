@@ -1,0 +1,43 @@
+project:
+  type: book
+  output-dir: docs
+
+execute:
+  freeze: auto
+  
+book:
+  title: "Predicting Loan Defaults"
+  favicon: assets/img/cs50duck.jpeg
+  output-file: "users-guide"
+  reader-mode: true
+  public-url: https://zadchin.github.io/CS50Section/
+  repo-url: https://github.com/zadchin/CS50Section
+  repo-actions: [issue]
+  chapters:
+    - index.qmd
+    - 01_Section_1.qmd
+    - 02_Section_2.qmd
+    - 03_Section_3.qmd
+    - 04_Section_4.qmd
+    - 05_Section_5.qmd
+
+
+include-after-body:
+  text: <script type="text/javascript" src="page-nav-foot.js"></script>
+
+bibliography: references.bib
+
+format:
+  html:
+    code-block-border-left: true
+    theme:
+      light: cosmo
+      dark: [cosmo, theme-dark.scss]
+    css: style.css
+    
+    include-before-body:
+      - _dollars.tex
+      - _bold_html.tex
+      - _macros.tex
+      - _dollars.tex
+        

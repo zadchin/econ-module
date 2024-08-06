@@ -1,0 +1,29 @@
+
+As a credit officer, one of the most critical decisions you face is determining whether to approve a customer's loan application and at what interest rate. This decision hinges on the customer's likelihood of defaulting, or failing to repay the loan. Understanding the probability of default is crucial, not only to protect the bank's financial interests but also to offer fair and balanced terms to customers.
+
+## Problem Statement {.unnumbered}
+
+Imagine a scenario where a customer approaches your bank for a loan. How do you decide if this loan should be granted? More importantly, how do you set the interest rate that accurately reflects the risk involved?
+
+This decision-making process is where the concept of classification in data science comes into play, especially in the banking sector. By leveraging historical data, including information on past borrowers' profiles and their loan repayment histories, you can build predictive models. These models assess the probability of default for new loan applicants, guiding banks to make informed and equitable lending decisions.
+
+## Discussion (1) {.unnumbered}
+
+Why is it important to predict whether customers will default? 
+
+**Please Wait for the Slido to load**
+
+```{=html}
+<iframe src="https://app.sli.do/event/s2T3QonWGYrspayVrstKAm" width="800" height="700"></iframe>
+```
+
+## Discussion (2) {.unnumbered}
+
+What can we use to predict predict whether customers will default?
+
+```{=html}
+<iframe src="https://app.sli.do/event/s2T3QonWGYrspayVrstKAm" width="800" height="700"></iframe>
+```
+
+
+$\,$

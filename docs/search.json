@@ -1,0 +1,312 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Predicting Loan Defaults",
+    "section": "",
+    "text": "Problem Statement\nImagine a scenario where a customer approaches your bank for a loan. How do you decide if this loan should be granted? More importantly, how do you set the interest rate that accurately reflects the risk involved?\nThis decision-making process is where the concept of classification in data science comes into play, especially in the banking sector. By leveraging historical data, including information on past borrowers’ profiles and their loan repayment histories, you can build predictive models. These models assess the probability of default for new loan applicants, guiding banks to make informed and equitable lending decisions.",
+    "crumbs": [
+      "Problem Statement"
+    ]
+  },
+  {
+    "objectID": "index.html#background",
+    "href": "index.html#background",
+    "title": "AI for Pancreas Cancer",
+    "section": "",
+    "text": "Healthy controls\nPatients with non-cancerous pancreatic conditions, like chronic pancreatitis\nPatients with pancreatic ductal adenocarcinoma",
+    "crumbs": [
+      "Background"
+    ]
+  },
+  {
+    "objectID": "index.html#the-4-urinary-biomarkers",
+    "href": "index.html#the-4-urinary-biomarkers",
+    "title": "AI for Pancreas Cancer",
+    "section": "The 4 Urinary Biomarkers",
+    "text": "The 4 Urinary Biomarkers\nThe 4 Urinary Biomarkers collected and its description is as follow:\n\nCreatinine is a protein that is often used as an indicator of kidney function.\nYVLE1 is lymphatic vessel endothelial hyaluronan receptor 1, a protein that may play a role in tumor metastasis\nREG1B is a protein that may be associated with pancreas regeneration\nTFF1 is trefoil factor 1, which may be related to regeneration and repair of the urinary tract",
+    "crumbs": [
+      "Background"
+    ]
+  },
+  {
+    "objectID": "index.html#task",
+    "href": "index.html#task",
+    "title": "AI for Pancreas Cancer",
+    "section": "Task",
+    "text": "Task\nOur goal is to build an AI algorithm that can predict patients that has pancreas cancers and those who don’t, as accurately as possible.\nLet’s start by exploring the dataset to understand the task better!\n\\(\\,\\)",
+    "crumbs": [
+      "Background"
+    ]
+  },
+  {
+    "objectID": "01_Section_1.html",
+    "href": "01_Section_1.html",
+    "title": "1  Understanding the Data",
+    "section": "",
+    "text": "1.1 Overview\nThis dataset is provided as part of a hackathon. It includes a variety of variables collected at the time of the loan application, intended to facilitate the development and testing of predictive models focusing on loan defaults.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Understanding the Data</span>"
+    ]
+  },
+  {
+    "objectID": "01_Section_1.html#a-look-at-the-dataset",
+    "href": "01_Section_1.html#a-look-at-the-dataset",
+    "title": "1  Understanding the Data",
+    "section": "1.2 A look at the Dataset",
+    "text": "1.2 A look at the Dataset\nThe dataset contains 252000 rows and 13 columns. Here are the 100 example rows:\n\n\n\n\n\n\n\n\n\n\n\n\nWe defined features and target variable as follow:\n\nFeatures: These are the input variables or predictors in a dataset that are used to make predictions or understand patterns.\nTarget Variable: This is the output variable or the outcome you want to predict or explain, based on the features.\n\n\n\n\n\n1.2.1 Columns\nThe dataset comprises several attributes related to the applicants’ personal and professional backgrounds, captured at the point of their loan application. Below is a detailed description of each column in the dataset:\n\nincome: The income of the user (Type: int)\nage: The age of the user (Type: int)\nexperience: The professional experience of the user in years (Type: int)\nprofession: The profession of the user (Type: string)\nmarried: Indicates whether the user is married or single (Type: string)\nhouse_ownership: Specifies whether the house is owned, rented, or neither (Type: string)\ncar_ownership: Indicates whether the user owns a car (Type: string)\nrisk_flag: Shows whether the user has defaulted on a loan in the past (Type: string)\ncurrent_job_years: The number of years the user has been in their current job (Type: int)\ncurrent_house_years: The number of years the user has been living in their current residence (Type: int)\ncity: The city of residence of the user (Type: string)\nstate: The state of residence of the user (Type: string)\nrisk_flag: A categorical variable indicating whether the applicant has previously defaulted on a loa\n\n\\(\\,\\)",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Understanding the Data</span>"
+    ]
+  },
+  {
+    "objectID": "02_Section_2.html",
+    "href": "02_Section_2.html",
+    "title": "2  Visualizing the Data",
+    "section": "",
+    "text": "2.1 Exploratory Data Analysis\nExploratory Data Analysis (EDA) is the process of analyzing data sets to summarize their main characteristics, often using visual methods.\nIt’s a critical step in the data analysis workflow, providing insights into the structure, patterns, and relationships within the data.\nIn short, EDA is important for the following reason:",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Visualizing the Data</span>"
+    ]
+  },
+  {
+    "objectID": "02_Section_2.html#exploratory-data-analysis",
+    "href": "02_Section_2.html#exploratory-data-analysis",
+    "title": "2  Visualizing the Data",
+    "section": "",
+    "text": "EDA helps you to understand the nuances in your data\nEDA helps ensure the quality and reliability of your data\nEDA is the foundation for complex analyses as it helps with features selection, hypothesis generation, and determining the research direction.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Visualizing the Data</span>"
+    ]
+  },
+  {
+    "objectID": "02_Section_2.html#categorial-features",
+    "href": "02_Section_2.html#categorial-features",
+    "title": "2  Visualizing the Data",
+    "section": "2.2 Categorial Features",
+    "text": "2.2 Categorial Features\nFeatures that can only take in a specific set of values, often counted in whole number. For example,\n\nCoin flips: 0 or 1\nDays of the Week: Monday, Tuesday, Wednesday etc\nClass Grades: Students can receive specific grades like A, B, C, D, or F.\n\nTo visualize categorical variables, we normally use bar plot.\n\n2.2.1 Bar Plot\nA bar plot is a chart that uses bars to represent the frequency or count of different categories of a discrete variable.\nBar plots are ideal for discrete variables because they clearly show the count or frequency of each category, making it easy to compare them.\n\n\n\n\n\n\nSelect a categorical column to visualize:\n\ndata = FileAttachment(\"loandata.csv\").csv({ typed: true })\ncat_columns = ['Married/Single', 'House_Ownership', 'Car_Ownership','Risk_Flag','CURRENT_JOB_YRS', 'CURRENT_HOUSE_YRS']\nviewof selected_column_cat = Inputs.radio(cat_columns, {value: cat_columns[0]})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ngrouped_data = d3.groups(data, d =&gt; d[selected_column_cat]).map(([key, values]) =&gt; ({key, count: values.length}));\n\nPlot.plot({\n  marks: [\n    Plot.barY(grouped_data, {x: \"key\", y: \"count\", fill: \"steelblue\"}),\n    Plot.text(grouped_data, {x: \"key\", y: \"count\", text: d =&gt; d.count, dy: -10})\n  ],\n  x: {\n    label: selected_column_cat\n  },\n  y: {\n    label: \"Count\"\n  },\n  color: {\n    legend: false\n  }\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2.2.2 What did you observe?",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Visualizing the Data</span>"
+    ]
+  },
+  {
+    "objectID": "02_Section_2.html#continuous-features",
+    "href": "02_Section_2.html#continuous-features",
+    "title": "2  Visualizing the Data",
+    "section": "2.3 Continuous Features",
+    "text": "2.3 Continuous Features\nContinuous variables are features that can take any value within a given range, often measured and including fractions or decimals. For example,\n\nHeight: A person’s height can be any value within a range (e.g., 150.5 cm, 170.2 cm).\nTemperature: Temperature can vary continuously (e.g., 22.3°C, 35.6°C).\nWeight: Weight can take on any value within a range (e.g., 55.5 kg, 72.8 kg).\n\nWe uses histogram to visualize the continuous variables.\n\n2.3.1 Histogram\nA histogram is a chart that uses bars to represent the distribution of a continuous variable, showing the frequency of data within certain ranges or bins.\nHistogram makes it easier to identify patterns, such as skewness, central tendency, and the presence of outliers.\n\n\n\n\n\n\nSelect a continuous column to visualize:\n\ncont_columns = ['Income', 'Age', 'Experience']\nviewof selected_column = Inputs.radio(cont_columns, {value: 'Income'})\nviewof bin_count = Inputs.range([1, 50], {step: 1, value: 15, label: \"Number of Bins\"})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlot.plot({\n  marks: [\n    Plot.rectY(data, Plot.binX({y: \"count\"}, {x: selected_column, fill: \"steelblue\", thresholds: bin_count}))\n  ],\n  x: {\n    label: selected_column\n  },\n  y: {\n    label: \"Count\"\n  },\n  color: {\n    legend: false\n  }\n})",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Visualizing the Data</span>"
+    ]
+  },
+  {
+    "objectID": "02_Section_2.html#relationship-analysis",
+    "href": "02_Section_2.html#relationship-analysis",
+    "title": "2  Visualizing the Data",
+    "section": "2.4 Relationship Analysis",
+    "text": "2.4 Relationship Analysis\n\n2.4.1 Between Categorical Variable\n\n\n\n\n\n\nSelect a column to compare against diagnosis:\n\nbivariate_cat_columns =['Married/Single', 'House_Ownership', 'Car_Ownership']\nviewof selected_bivariate_cat_column = Inputs.radio(bivariate_cat_columns, {value: bivariate_cat_columns[0]})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfunction calculateGroupedPercentages(data, groupColumn, stackColumn) {\n  const grouped = d3.rollup(data, v =&gt; v.length, d =&gt; d[groupColumn], d =&gt; d[stackColumn]);\n  const totals = d3.rollup(data, v =&gt; v.length, d =&gt; d[groupColumn]);\n\n  return Array.from(grouped, ([key, values]) =&gt; {\n    const total = totals.get(key);\n    return Array.from(values, ([stackKey, count]) =&gt; ({\n      group: key,\n      stack: stackKey,\n      count,\n      percentage: (count / total) * 100\n    }));\n  }).flat();\n}\n\ngrouped_bivariate_data = calculateGroupedPercentages(data, 'Risk_Flag', selected_bivariate_cat_column);\n\nPlot.plot({\n  marks: [\n    Plot.barY(grouped_bivariate_data, {\n      x: d =&gt; d.group + \":\" + d.stack,\n      y: \"percentage\",\n      fill: \"stack\",\n      title: d =&gt; `${d.stack}: ${d.percentage.toFixed(1)}%`\n    }),\n    Plot.text(grouped_bivariate_data, {\n      x: d =&gt; d.group + \":\" + d.stack,\n      y: d =&gt; d.percentage,\n      text: d =&gt; `${d.percentage.toFixed(1)}%`,\n      dy: -4\n    })\n  ],\n  x: {\n    label: \"Loan Default\",\n    domain: Array.from(new Set(grouped_bivariate_data.map(d =&gt; d.group + \":\" + d.stack))),\n    tickFormat: d =&gt; d.split(\":\")[0] // Format ticks to show only the group\n  },\n  y: {\n    label: \"Percentage\"\n  },\n  color: {\n    legend: true\n  }\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2.4.2 Between Continuous Variables\n\n2.4.2.1 Correlation\nCorrelation measures how two things are related to each other, like how one changes when the other does.\n\nPositive correlation means as one thing increases, the other also increases (e.g., more study time, better grades).\nNegative correlation means as one thing increases, the other decreases (e.g., more exercise, lower stress).\n\n\n\n\n\n\n\nSelect Continuous Variables for Correlation Heatmap:\n\nbivariate_cont_columns = ['Income', 'Age', 'Experience', 'CURRENT_JOB_YRS', 'CURRENT_HOUSE_YRS','Risk_Flag']\nviewof selected_bivariate_cont_columns = Inputs.checkbox(bivariate_cont_columns, {value: bivariate_cont_columns})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfunction calculateCorrelationMatrix(data, selectedColumns) {\n  const n = selectedColumns.length;\n  const correlationMatrix = Array.from({ length: n }, () =&gt; Array(n).fill(0));\n\n  function pearsonCorrelation(x, y) {\n    const meanX = d3.mean(x);\n    const meanY = d3.mean(y);\n    const diffX = x.map(d =&gt; d - meanX);\n    const diffY = y.map(d =&gt; d - meanY);\n    const numerator = d3.sum(diffX.map((d, i) =&gt; d * diffY[i]));\n    const denominator = Math.sqrt(d3.sum(diffX.map(d =&gt; d * d)) * d3.sum(diffY.map(d =&gt; d * d)));\n    return numerator / denominator;\n  }\n\n  for (let i = 0; i &lt; n; i++) {\n    for (let j = 0; j &lt; n; j++) {\n      const col1 = selectedColumns[i];\n      const col2 = selectedColumns[j];\n      const values1 = data.map(d =&gt; d[col1]);\n      const values2 = data.map(d =&gt; d[col2]);\n      const correlation = pearsonCorrelation(values1, values2);\n      correlationMatrix[i][j] = correlation;\n    }\n  }\n\n  return correlationMatrix;\n}\n\ncorrelation_matrix = calculateCorrelationMatrix(data, selected_bivariate_cont_columns);\ncorrelation_data = selected_bivariate_cont_columns.flatMap((col1, i) =&gt;\n  selected_bivariate_cont_columns.map((col2, j) =&gt; ({\n    x: col1,\n    y: col2,\n    value: correlation_matrix[i][j]\n  }))\n);\n\nPlot.plot({\n  marks: [\n    Plot.cell(correlation_data, {x: \"x\", y: \"y\", fill: \"value\", title: d =&gt; d.value.toFixed(2)}),\n    Plot.text(correlation_data, {x: \"x\", y: \"y\", text: d =&gt; d.value.toFixed(2), dy: 0, textAnchor: \"middle\"})\n  ],\n  x: {\n    domain: selected_bivariate_cont_columns,\n    label: \"Variables\"\n  },\n  y: {\n    domain: selected_bivariate_cont_columns,\n    label: \"Variables\"\n  },\n  color: {\n    type: \"linear\",\n    scheme: \"blues\",\n    label: \"Correlation\"\n  },\n  width: 600,\n  height: 600\n})",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Visualizing the Data</span>"
+    ]
+  },
+  {
+    "objectID": "02_Section_2.html#relationship-by-target-variable",
+    "href": "02_Section_2.html#relationship-by-target-variable",
+    "title": "2  Visualizing the Data",
+    "section": "2.5 Relationship by target variable",
+    "text": "2.5 Relationship by target variable\nThe scatterplot colored by the “diagnosis” variable visually represents the relationship between the selected features and the target outcome. By plotting the data points and coloring them based on the binary diagnosis (e.g., positive or negative), you can quickly see patterns or clusters that indicate how the features are associated with the diagnosis.\n\n\n\n\n\n\nSelect a X-Axis and Y-Axis Column:\n\nviewof x_column_scatt = Inputs.radio(bivariate_cont_columns, {value: 'Income'})\nviewof y_column_scatt = Inputs.radio(bivariate_cont_columns, {value: 'Age'})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlot.plot({\n  marks: [\n    Plot.dot(data, {x: x_column_scatt, y: y_column_scatt, fill: 'Risk_Flag', fillOpacity: 0.7})\n  ],\n  x: {\n    label: x_column_scatt\n  },\n  y: {\n    label: y_column_scatt\n  },\n  color: {\n    domain: [1, 0], // Assuming \"diagnosis\" has binary labels like \"positive\" and \"negative\"\n    range: [\"blue\", \"orange\"], // Use contrasting colors like blue and orange\n    legend: true // Shows a legend for the binary categories\n  }\n})\n\n\n\n\n\n\n\\(\\,\\)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Visualizing the Data</span>"
+    ]
+  },
+  {
+    "objectID": "03_Section_3.html",
+    "href": "03_Section_3.html",
+    "title": "3  Baseline",
+    "section": "",
+    "text": "3.1 Coding in AI: Quick Breakdown\nMoving forward, we will have this framework in mind.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Baseline</span>"
+    ]
+  },
+  {
+    "objectID": "03_Section_3.html#coding-in-ai-quick-breakdown",
+    "href": "03_Section_3.html#coding-in-ai-quick-breakdown",
+    "title": "3  Baseline",
+    "section": "",
+    "text": "Calling Libraries: Importing libraries is like visiting a library to borrow tools (functions) you need, such as import numpy as np for numerical operations or import tensorflow as tf for deep learning.\nFunction Implementation: This is where you define the specific tasks your code will perform, like training a model or processing data. Functions are reusable blocks of code that perform specific tasks.\nOther Essentials:\n\nConstant Assignment: Setting values that don’t change during execution, like learning rates or thresholds (learning_rate = 0.01).\nPrinting/Debugging: Using print statements to check the output of your code at various stages, ensuring it behaves as expected (print(model.summary())).",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Baseline</span>"
+    ]
+  },
+  {
+    "objectID": "03_Section_3.html#brief-outline-of-ai-machine-learning",
+    "href": "03_Section_3.html#brief-outline-of-ai-machine-learning",
+    "title": "3  Baseline",
+    "section": "3.2 Brief Outline of AI / Machine Learning",
+    "text": "3.2 Brief Outline of AI / Machine Learning\n\nGetting Data\nAnalyzing Data, in which we did just now.\nTrain-Test Split\nRunning Baseline\nRunning Model\nImprove and Iterate",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Baseline</span>"
+    ]
+  },
+  {
+    "objectID": "03_Section_3.html#train-test-split",
+    "href": "03_Section_3.html#train-test-split",
+    "title": "3  Baseline",
+    "section": "3.3 Train-Test Split",
+    "text": "3.3 Train-Test Split\nThe train-test split is a technique used in AI to divide a dataset into two parts: one for training the model (learning) and one for testing it (evaluating its performance).\n\n\n\n\n\n\nWhy do you think it’s important to test a model on data it hasn’t seen before, rather than just using the training data to evaluate its performance?\n\n\n\n\n\nWill be released after the section",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Baseline</span>"
+    ]
+  },
+  {
+    "objectID": "03_Section_3.html#building-baseline",
+    "href": "03_Section_3.html#building-baseline",
+    "title": "3  Baseline",
+    "section": "3.4 Building Baseline",
+    "text": "3.4 Building Baseline\nA baseline model serves as a simple reference point for evaluating the performance of more complex models. It represents the minimum level of performance that any model should achieve. Common baselines include predicting the most frequent class or random guessing.\nEstablishing a baseline is crucial because it provides a benchmark to compare against. It helps in understanding whether the added complexity of a model is actually improving performance. If a model does not perform better than the baseline, it indicates that the model might not be useful.\nThis is some starter code to build the baseline models. Do not change the following code. Just run it! :)\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Baseline</span>"
+    ]
+  },
+  {
+    "objectID": "03_Section_3.html#understanding-the-metrics",
+    "href": "03_Section_3.html#understanding-the-metrics",
+    "title": "3  Baseline",
+    "section": "3.5 Understanding the metrics",
+    "text": "3.5 Understanding the metrics\nWe are going to investigate 4 metrics to evalaute the performance of our machine learning algorithms, namely, accuracy, precision, recall and F1 score. We will go through it one-by-one in the following:\n\n3.5.1 Accuracy\nThe ratio of correctly predicted instances to the total instances. Mathematically it is defined as \\[\\text{Accuracy} =\\frac{TP+TN}{\\text{Total}}\\]\n\n\n\n\n\n\nWhy can’t we blindly trust accuracy?\n\n\n\n\n\nWill be released after the section\n\n\n\n\n\n\n3.5.2 Precision\nBefore we move on to talk about precision, recall & F1 score, we would like you to think about the following problem:\n\n\n\n\n\n\nWhat is the impact of false positive and false negative in diagnosing pancreas cancer?\n\n\n\n\n\nWill be released after the section\n\n\n\n\nThus, precision, recall and F1 score are important metrics to help us to get a hollistic picture of our model performance.\nPrecision is defined as the ratio of true positive predictions to the total predicted positives. Mathematically, \\[\\text{Precision} =\\frac{TP}{TP+FP}\\]\nPrecision tells us how many of the patients predicted to have PDAC actually have the disease. High precision means fewer false positives.\n\n\n3.5.3 Recall\nRecall is defined as the ratio of true positive predictions to the total actual positives. Mathematically, it is defined as\n\\[\\text{Recall} = \\frac{TP}{TP+FN}\\]\nRecall (or sensitivity) indicates how many patients with PDAC are correctly identified by the model. High recall means fewer false negatives, which is crucial for medical diagnosis.\n\n\n3.5.4 F1 Score\nF1 Score is the harmonic mean of precision and recall. Mathematically, it is defined as\n\\[\\text{F1 Score} = 2 \\times \\frac{\\text{Precision} \\times \\text{Recall}}{\\text{Precision} + \\text{Recall}}\\]\nThe F1 Score provides a balance between precision and recall. It is particularly useful when the class distribution is imbalanced, as it considers both false positives and false negatives.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Baseline</span>"
+    ]
+  },
+  {
+    "objectID": "03_Section_3.html#baseline-1-all-false",
+    "href": "03_Section_3.html#baseline-1-all-false",
+    "title": "3  Baseline",
+    "section": "3.6 Baseline 1: All False",
+    "text": "3.6 Baseline 1: All False\nFirst, we will create a baseline around the most frequent class, which in our case, is 0, where we assume all patients do not have cnacer.This baseline mimics a current system where we assume that all patients do not have Pancreatic ductal adenocarcinoma (PDAC).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nWhy is precision, recall and F1 score are all 0 in our case?\n\n\n\n\n\nWill be released after the section\n\nDid you realize the importance of different metrics in judging performance?",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Baseline</span>"
+    ]
+  },
+  {
+    "objectID": "03_Section_3.html#baseline-2-random-guess",
+    "href": "03_Section_3.html#baseline-2-random-guess",
+    "title": "3  Baseline",
+    "section": "3.7 Baseline 2: Random Guess",
+    "text": "3.7 Baseline 2: Random Guess\nRandom guessing is a baseline method where predictions are made by randomly assigning classes (positive or negative) without any consideration of the input features. As an analogy, it is like you flipping a coin and randomly assign a patient of its status based on the coins (for example, has cancer if the coin is head, and has no cancer if the coin is tail).\nRandom guessing sets a very low bar for model performance. If a machine learning model cannot outperform random guessing, it indicates that the model has not captured any meaningful patterns from the data. Beating random guessing demonstrates that the model has predictive power and can provide reliable results.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\\(\\,\\)",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Baseline</span>"
+    ]
+  },
+  {
+    "objectID": "04_Section_4.html",
+    "href": "04_Section_4.html",
+    "title": "4  Logistic Regression",
+    "section": "",
+    "text": "4.1 Logistic Regression\nLogistic regression is a statistical method used for predicting a binary outcome based on one or more independent variables. The outcome is modeled as a probability between 0 and 1. It models the probability of an event occurring as a function of the independent variables using the sigmoid curve, which is defined as:\n\\[\\sigma(x) = \\frac{1}{1+e^{-x}}\\]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Logistic Regression</span>"
+    ]
+  },
+  {
+    "objectID": "04_Section_4.html#logistic-regression",
+    "href": "04_Section_4.html#logistic-regression",
+    "title": "4  Logistic Regression",
+    "section": "",
+    "text": "4.1.1 Importance of logistic regression\n\nInterpretability: The coefficients can be interpreted as the change in log-odds of the outcome for a one-unit change in the predictor.\nHandles non-linear relationships: The sigmoid curve can model non-linear relationships between variables.\nRelatively simple and Provides probability estimates: It’s a simple model and thus less prone to overfitting compared to more complex models. Furthermore, unlike some other classification methods, it gives probabilities of outcomes.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Logistic Regression</span>"
+    ]
+  },
+  {
+    "objectID": "04_Section_4.html#implementation-of-algorithm",
+    "href": "04_Section_4.html#implementation-of-algorithm",
+    "title": "4  Logistic Regression",
+    "section": "4.2 Implementation of Algorithm",
+    "text": "4.2 Implementation of Algorithm\nNext, we will run logistic regression on our training dataset, then compute the performance of the metrics using our dataset and then\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nCan you try to delete the class weight to observe what happened to the performance of the algorithm?",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Logistic Regression</span>"
+    ]
+  },
+  {
+    "objectID": "04_Section_4.html#feature-importance",
+    "href": "04_Section_4.html#feature-importance",
+    "title": "4  Logistic Regression",
+    "section": "4.3 Feature Importance",
+    "text": "4.3 Feature Importance\nFeature importance indicates how much each input variable (feature) contributes to predicting the outcome. In logistic regression, the log-odds of the outcome are modeled as a linear combination of features:\n\\[log(p/(1-p)) = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + ... + \\beta_n x_n\\]\nThe magnitude of each coefficient \\(|\\beta_i|\\) represents how much the log-odds change for a one-unit increase in the corresponding feature \\(x_i\\), holding other features constant. Larger \\(|\\beta_i|\\) implies a stronger effect on the outcome probability, hence greater importance.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\\(\\,\\)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Logistic Regression</span>"
+    ]
+  },
+  {
+    "objectID": "05_Section_5.html",
+    "href": "05_Section_5.html",
+    "title": "5  Decision Tree",
+    "section": "",
+    "text": "5.1 Decision Tree\nDecision trees are tree-like models that make decisions based on asking a series of questions about the features of the data. Starting from a root node, the tree splits the data into subsets based on the most significant attribute at each step. This process continues recursively, forming branches and leaves, until a stopping criterion is met. The leaf nodes represent the final decisions or predictions.\nDecision trees are valuable for their simplicity and interpretability. Beyond healthcare, decision trees are useful in various fields such as finance, healthcare, and customer segmentation.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Decision Tree</span>"
+    ]
+  },
+  {
+    "objectID": "05_Section_5.html#train-test-split",
+    "href": "05_Section_5.html#train-test-split",
+    "title": "5  Decision Tree",
+    "section": "5.2 Train-Test Split",
+    "text": "5.2 Train-Test Split\nAs we have done previosuly under logistic regression, we will first perform a train-test split.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Decision Tree</span>"
+    ]
+  },
+  {
+    "objectID": "05_Section_5.html#algorithm",
+    "href": "05_Section_5.html#algorithm",
+    "title": "5  Decision Tree",
+    "section": "5.3 Algorithm",
+    "text": "5.3 Algorithm\nNext, we will run decision treeon our training dataset, then compute the performance of the metrics using our dataset and then\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nTry Removing Class Weight, how does the metrics changes?\n\n\n\n\n\nAccuracy stays the same at 0.89. However, we observe the precision increased and recall decreased. The F1 score stays approximately the same.\nWhy Precision Improved?\nPrecision increases when the class weight is removed, suggesting that the model makes fewer false positive predictions. This might be because, without class balancing, the model is biased towards the majority class.\nWhy Recall Decreased?\nRecall decreases when the class weight is removed, indicating that the model misses more true positive instances. This is critical in medical diagnoses where missing a positive case (false negative) can be detrimental.\n\n\n\n\n\n\n\n\n\nIncrease max_depth=None observe the difference in the performance, and also in visualization of the tree?\n\n\n\n\n\nHint:Max depth controls the maximum number of levels (or layers) in a decision tree. It determines how deep the tree can grow.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Decision Tree</span>"
+    ]
+  },
+  {
+    "objectID": "05_Section_5.html#visualizing-the-tree",
+    "href": "05_Section_5.html#visualizing-the-tree",
+    "title": "5  Decision Tree",
+    "section": "5.4 Visualizing the tree",
+    "text": "5.4 Visualizing the tree\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\\(\\,\\)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Decision Tree</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#discuss-why-is-it-important-to-predict-whether-customers-will-default",
+    "href": "index.html#discuss-why-is-it-important-to-predict-whether-customers-will-default",
+    "title": "Predicting Loan Defaults",
+    "section": "Discuss: Why is it important to predict whether customers will default?",
+    "text": "Discuss: Why is it important to predict whether customers will default?\n\n\\(\\,\\)",
+    "crumbs": [
+      "Problem Statement"
+    ]
+  },
+  {
+    "objectID": "index.html#discussion-1",
+    "href": "index.html#discussion-1",
+    "title": "Predicting Loan Defaults",
+    "section": "Discussion (1)",
+    "text": "Discussion (1)\nWhy is it important to predict whether customers will default?\nPlease Wait for the Slido to load",
+    "crumbs": [
+      "Problem Statement"
+    ]
+  },
+  {
+    "objectID": "index.html#discussion-2",
+    "href": "index.html#discussion-2",
+    "title": "Predicting Loan Defaults",
+    "section": "Discussion (2)",
+    "text": "Discussion (2)\nWhat can we use to predict predict whether customers will default?\n\n\\(\\,\\)",
+    "crumbs": [
+      "Problem Statement"
+    ]
+  }
+]

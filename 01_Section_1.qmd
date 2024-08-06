@@ -1,0 +1,56 @@
+---
+title: "Understanding the Data"
+execute:
+  echo: false
+
+---
+
+## Overview
+
+This dataset is provided as part of a hackathon. It includes a variety of variables collected at the time of the loan application, intended to facilitate the development and testing of predictive models focusing on loan defaults.
+
+
+## A look at the Dataset
+
+The dataset contains **252000** rows and **13** columns. Here are the 100 example rows:
+
+
+```{r}
+library(readr)
+library(DT)
+data_r <- read_csv("loandata.csv", show_col_types = FALSE)
+datatable(head(data_r, 100))
+```
+
+::: {.callout-tip appearance="simple"}
+
+We defined **features** and **target variable** as follow:
+
+- Features: These are the input variables or predictors in a dataset that are used to make predictions or understand patterns.
+
+- Target Variable: This is the output variable or the outcome you want to predict or explain, based on the features.
+
+:::
+
+
+### Columns
+
+
+The dataset comprises several attributes related to the applicants' personal and professional backgrounds, captured at the point of their loan application. Below is a detailed description of each column in the dataset:
+
+- **income**: The income of the user (Type: int)
+- **age**: The age of the user (Type: int)
+- **experience**: The professional experience of the user in years (Type: int)
+- **profession**: The profession of the user (Type: string)
+- **married**: Indicates whether the user is married or single (Type: string)
+- **house_ownership**: Specifies whether the house is owned, rented, or neither (Type: string)
+- **car_ownership**: Indicates whether the user owns a car (Type: string)
+- **risk_flag**: Shows whether the user has defaulted on a loan in the past (Type: string)
+- **current_job_years**: The number of years the user has been in their current job (Type: int)
+- **current_house_years**: The number of years the user has been living in their current residence (Type: int)
+- **city**: The city of residence of the user (Type: string)
+- **state**: The state of residence of the user (Type: string)
+- **risk_flag**: A categorical variable indicating whether the applicant has previously defaulted on a loa
+
+
+$\,$

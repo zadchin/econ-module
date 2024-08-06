@@ -1,0 +1,92 @@
+---
+title: Logistic Regression
+format: html
+navbar: false
+filters:
+  - pyodide
+---
+
+## Logistic Regression
+
+Logistic regression is a statistical method used for predicting a binary outcome based on one or more independent variables. The outcome is modeled as a probability between 0 and 1. It models the probability of an event occurring as a function of the independent variables using the sigmoid curve, which is defined as:
+
+$$\sigma(x) = \frac{1}{1+e^{-x}}$$
+
+### Importance of logistic regression
+
+1. Interpretability: The coefficients can be interpreted as the change in log-odds of the outcome for a one-unit change in the predictor.
+
+
+2. Handles non-linear relationships: The sigmoid curve can model non-linear relationships between variables.
+
+
+3. Relatively simple and Provides probability estimates: It's a simple model and thus less prone to overfitting compared to more complex models. Furthermore, unlike some other classification methods, it gives probabilities of outcomes.
+
+
+## Implementation of Algorithm
+
+
+Next, we will run logistic regression on our training dataset, then compute the performance of the metrics using our dataset and then 
+
+
+```{pyodide-python}
+# importing libraries
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix
+
+# reading data and defining features
+data_url = "https://raw.githubusercontent.com/zadchin/RT-test/master/final_dataset.csv"
+data = pd.read_csv(data_url)
+features = data.drop("diagnosis", axis = 1) 
+target = data.diagnosis
+
+# train-test split
+X_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)
+
+# print to make sure train-test split suggest
+print("X train shape: ", X_train.shape)
+print("X test shape: ", X_test.shape)
+
+# call on logistic regression function imported
+LR_model = LogisticRegression(max_iter=10000, C=1.0, class_weight="balanced")
+
+# train the model
+LR_model.fit(X_train, y_train)
+
+# test the model
+y_pred_LR = LR_model.predict(X_test)
+
+# print result
+print("Accuracy: ", np.round(accuracy_score(y_test, y_pred_LR), 2))
+print("Precision: ",np.round(precision_score(y_test, y_pred_LR), 2))
+print("Recall: ", np.round(recall_score(y_test, y_pred_LR), 2))
+print("F1 Score: ", np.round(f1_score(y_test, y_pred_LR), 2))
+```
+
+::: {.callout-tip appearance="simple"}
+
+Can you try to delete the class weight to observe what happened to the performance of the algorithm?
+:::
+
+## Feature Importance
+
+Feature importance indicates how much each input variable (feature) contributes to predicting the outcome. In logistic regression, the log-odds of the outcome are modeled as a linear combination of features:
+
+$$log(p/(1-p)) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_n x_n$$
+
+The magnitude of each coefficient $|\beta_i|$ represents how much the log-odds change for a one-unit increase in the corresponding feature $x_i$, holding other features constant. Larger  $|\beta_i|$  implies a stronger effect on the outcome probability, hence greater importance.
+
+```{pyodide-python}
+feature_importance = pd.DataFrame({
+    'Feature': X_train.columns,
+    'Importance': LR_model.coef_[0]
+})
+
+feature_importance = feature_importance.sort_values(by='Importance', ascending=False)
+feature_importance
+```
+
+$\,$

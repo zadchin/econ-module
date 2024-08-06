@@ -1,0 +1,90 @@
+---
+title: Decision Tree
+format: html
+navbar: false
+filters:
+  - pyodide
+---
+
+## Decision Tree
+
+Decision trees are tree-like models that make decisions based on asking a series of questions about the features of the data. Starting from a root node, the tree splits the data into subsets based on the most significant attribute at each step. This process continues recursively, forming branches and leaves, until a stopping criterion is met. The leaf nodes represent the final decisions or predictions.
+
+Decision trees are valuable for their simplicity and interpretability. Beyond healthcare, decision trees are useful in various fields such as finance, healthcare, and customer segmentation.
+
+
+## Train-Test Split
+
+As we have done previosuly under logistic regression, we will first perform a train-test split.
+
+```{pyodide-python}
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn import tree
+from sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix
+
+data_url = "https://raw.githubusercontent.com/zadchin/RT-test/master/final_dataset.csv"
+data = pd.read_csv(data_url)
+features = data.drop("diagnosis", axis = 1) 
+target = data.diagnosis
+X_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)
+print("X train shape: ", X_train.shape)
+print("X test shape: ", X_test.shape)
+```
+
+
+## Algorithm
+
+
+Next, we will run decision treeon our training dataset, then compute the performance of the metrics using our dataset and then 
+
+
+```{pyodide-python}
+import numpy as np
+DT_model = tree.DecisionTreeClassifier(max_leaf_nodes=3, max_depth=None,
+                                  class_weight="balanced")
+DT_model = DT_model.fit(X_train, y_train)
+y_pred_DT = DT_model.predict(X_test)
+print("Accuracy: ", np.round(accuracy_score(y_test, y_pred_DT), 2))
+print("Precision: ",np.round(precision_score(y_test, y_pred_DT), 2))
+print("Recall: ",np.round(recall_score(y_test, y_pred_DT), 2))
+print("F1 Score: ", np.round(f1_score(y_test, y_pred_DT), 2))
+```
+
+::: {.callout-note collapse="true" appearance="simple"}
+
+## Try Removing Class Weight, how does the metrics changes?
+
+Accuracy stays the same at 0.89. However, we observe the precision increased and recall decreased. The F1 score stays approximately the same.
+
+**Why Precision Improved?**
+
+Precision increases when the class weight is removed, suggesting that the model makes fewer false positive predictions. This might be because, without class balancing, the model is biased towards the majority class.
+
+**Why Recall Decreased?**
+
+Recall decreases when the class weight is removed, indicating that the model misses more true positive instances. This is critical in medical diagnoses where missing a positive case (false negative) can be detrimental.
+
+:::
+
+::: {.callout-note collapse="true" appearance="simple"}
+
+## Increase `max_depth=None` observe the difference in the performance, and also in visualization of the tree?
+
+*Hint:Max depth controls the maximum number of levels (or layers) in a decision tree. It determines how deep the tree can grow.*
+
+<!-- - Increasing Max Depth: Allows the tree to capture more complex patterns but can lead to overfitting, where the model performs well on training data but poorly on unseen data.
+- Decreasing Max Depth: Simplifies the model, reducing overfitting risk but possibly leading to underfitting, where the model is too simple to capture important patterns. -->
+
+:::
+
+
+## Visualizing the tree
+
+```{pyodide-python}
+feature_names = list(X_train.columns)
+text_representation = tree.export_text(DT_model, feature_names=feature_names)
+print(text_representation)
+```
+
+$\,$
