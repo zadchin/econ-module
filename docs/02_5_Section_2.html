@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Decision Tree – Predicting Loan Defaults</title>
+<title>3&nbsp; Train-Test Split – Predicting Loan Defaults</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./06_Section_6.html" rel="next">
-<link href="./04_Section_4.html" rel="prev">
+<link href="./03_Section_3.html" rel="next">
+<link href="./02_Section_2.html" rel="prev">
 <link href="./assets/img/cs50duck.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -233,7 +233,7 @@ globalThis.qpyodideCustomizedPyodideOptions = {
 }
 
 // Store cell data
-globalThis.qpyodideCellDetails = [{"id":1,"options":{"read-only":"false","context":"interactive","warning":"true","autorun":"","message":"true","out-height":"","results":"markup","output":"true","classes":"","fig-height":5,"out-width":"700px","fig-cap":"","comment":"","dpi":72,"label":"","fig-width":7},"code":"import pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn import tree\nfrom sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix\n\ndata_url = \"https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv\"\ndata = pd.read_csv(data_url)\nfeatures = data.drop(\"Risk_Flag\", axis = 1) \ntarget = data.Risk_Flag \nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\nprint(\"X train shape: \", X_train.shape)\nprint(\"X test shape: \", X_test.shape)"},{"id":2,"options":{"read-only":"false","context":"interactive","warning":"true","autorun":"","message":"true","out-height":"","results":"markup","output":"true","classes":"","fig-height":5,"out-width":"700px","fig-cap":"","comment":"","dpi":72,"label":"","fig-width":7},"code":"import numpy as np\nDT_model = tree.DecisionTreeClassifier(max_leaf_nodes=3, max_depth=None,\n                                  class_weight=\"balanced\")\nDT_model = DT_model.fit(X_train, y_train)\ny_pred_DT = DT_model.predict(X_test)\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_DT), 2))\nprint(\"Precision: \",np.round(precision_score(y_test, y_pred_DT), 2))\nprint(\"Recall: \",np.round(recall_score(y_test, y_pred_DT), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_DT), 2))"},{"id":3,"options":{"read-only":"false","context":"interactive","warning":"true","autorun":"","message":"true","out-height":"","results":"markup","output":"true","classes":"","fig-height":5,"out-width":"700px","fig-cap":"","comment":"","dpi":72,"label":"","fig-width":7},"code":"feature_names = list(X_train.columns)\ntext_representation = tree.export_text(DT_model, feature_names=feature_names)\nprint(text_representation)"}];
+globalThis.qpyodideCellDetails = [{"options":{"results":"markup","context":"interactive","out-width":"700px","label":"","out-height":"","dpi":72,"warning":"true","fig-height":5,"autorun":"","read-only":"false","fig-width":7,"classes":"","message":"true","output":"true","fig-cap":"","comment":""},"code":"## importing libraries\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split\n\n## calling function from library to read data\ndata_url = \"hhttps://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv\"\ndata = pd.read_csv(data_url)\n\n## constant assigning to determine features & target\nfeatures = data.drop(\"Risk_Flag\", axis = 1) \ntarget = data.Risk_Flag\n\n## calling function from library to train-test split \nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\nprint(\"Train Test Split Completed\")","id":1}];
 
 
 </script>
@@ -466,7 +466,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05_Section_5.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Decision Tree</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_5_Section_2.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Train-Test Split</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -520,7 +520,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_5_Section_2.html" class="sidebar-item-text sidebar-link">
+  <a href="./02_5_Section_2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Train-Test Split</span></span></a>
   </div>
 </li>
@@ -538,14 +538,8 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05_Section_5.html" class="sidebar-item-text sidebar-link active">
+  <a href="./05_Section_5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Decision Tree</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06_Section_6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Random Forest</span></span></a>
   </div>
 </li>
     </ul>
@@ -558,11 +552,9 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#decision-tree" id="toc-decision-tree" class="nav-link active" data-scroll-target="#decision-tree"><span class="header-section-number">6.1</span> Decision Tree</a></li>
-  <li><a href="#train-test-split" id="toc-train-test-split" class="nav-link" data-scroll-target="#train-test-split"><span class="header-section-number">6.2</span> Train-Test Split</a></li>
-  <li><a href="#algorithm" id="toc-algorithm" class="nav-link" data-scroll-target="#algorithm"><span class="header-section-number">6.3</span> Algorithm</a></li>
-  <li><a href="#discussion-what-is-the-pro-and-cons-of-deciscion-tree" id="toc-discussion-what-is-the-pro-and-cons-of-deciscion-tree" class="nav-link" data-scroll-target="#discussion-what-is-the-pro-and-cons-of-deciscion-tree"><span class="header-section-number">6.4</span> Discussion: What is the pro and cons of deciscion tree?</a></li>
-  <li><a href="#visualizing-the-tree" id="toc-visualizing-the-tree" class="nav-link" data-scroll-target="#visualizing-the-tree"><span class="header-section-number">6.5</span> Visualizing the tree</a></li>
+  <li><a href="#coding-in-ai-quick-breakdown" id="toc-coding-in-ai-quick-breakdown" class="nav-link active" data-scroll-target="#coding-in-ai-quick-breakdown"><span class="header-section-number">3.1</span> Coding in AI: Quick Breakdown</a></li>
+  <li><a href="#brief-outline-of-ai-machine-learning" id="toc-brief-outline-of-ai-machine-learning" class="nav-link" data-scroll-target="#brief-outline-of-ai-machine-learning"><span class="header-section-number">3.2</span> Brief Outline of AI / Machine Learning</a></li>
+  <li><a href="#train-test-split" id="toc-train-test-split" class="nav-link" data-scroll-target="#train-test-split"><span class="header-section-number">3.3</span> Train-Test Split</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/zadchin/CS50Section/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -638,7 +630,7 @@ $$
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Decision Tree</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Train-Test Split</span></h1>
 </div>
 
 
@@ -655,29 +647,51 @@ $$
 </header>
 
 
-<section id="decision-tree" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="decision-tree"><span class="header-section-number">6.1</span> Decision Tree</h2>
-<p>Decision trees are tree-like models that make decisions based on asking a series of questions about the features of the data. Starting from a root node, the tree splits the data into subsets based on the most significant attribute at each step. This process continues recursively, forming branches and leaves, until a stopping criterion is met. The leaf nodes represent the final decisions or predictions. A simple decision tree classifying heart disease is as follow:</p>
-<p><img src="assets/img/decisiontree.png" class="img-fluid"></p>
+<section id="coding-in-ai-quick-breakdown" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="coding-in-ai-quick-breakdown"><span class="header-section-number">3.1</span> Coding in AI: Quick Breakdown</h2>
+<ul>
+<li><p><strong>Calling Libraries</strong>: Importing libraries is like visiting a library to borrow tools (functions) you need, such as <code>import numpy as np</code> for numerical operations or <code>import tensorflow as tf</code> for deep learning.</p></li>
+<li><p><strong>Function Implementation</strong>: This is where you define the specific tasks your code will perform, like training a model or processing data. Functions are reusable blocks of code that perform specific tasks.</p></li>
+<li><p><strong>Other Essentials</strong>:</p>
+<ul>
+<li><strong>Constant Assignment</strong>: Setting values that don’t change during execution, like learning rates or thresholds (<code>learning_rate = 0.01</code>).</li>
+<li><strong>Printing/Debugging</strong>: Using print statements to check the output of your code at various stages, ensuring it behaves as expected (<code>print(model.summary())</code>).</li>
+</ul></li>
+</ul>
+<p>Moving forward, we will have this framework in mind.</p>
 </section>
-<section id="train-test-split" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="train-test-split"><span class="header-section-number">6.2</span> Train-Test Split</h2>
-<p>As we have done previosuly under logistic regression, we will first perform a train-test split.</p>
+<section id="brief-outline-of-ai-machine-learning" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="brief-outline-of-ai-machine-learning"><span class="header-section-number">3.2</span> Brief Outline of AI / Machine Learning</h2>
+<ol type="1">
+<li><p>Getting Data</p></li>
+<li><p>Analyzing Data, in which we did just now.</p></li>
+<li><p>Train-Test Split</p></li>
+<li><p>Running Baseline</p></li>
+<li><p>Running Model</p></li>
+<li><p>Improve and Iterate</p></li>
+</ol>
+</section>
+<section id="train-test-split" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="train-test-split"><span class="header-section-number">3.3</span> Train-Test Split</h2>
+<p>The train-test split is a technique used in AI to divide a dataset into two parts: one for training the model (learning) and one for testing it (evaluating its performance).</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why do you think it’s important to test a model on data it hasn’t seen before, rather than just using the training data to evaluate its performance?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Will be released after the section</p>
+</div>
+</div>
+</div>
+<p>Here is the code for train-test split:</p>
 <div id="qpyodide-insertion-location-1"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="algorithm" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="algorithm"><span class="header-section-number">6.3</span> Algorithm</h2>
-<p>Next, we will run decision treeon our training dataset, then compute the performance of the metrics using our dataset and then</p>
-<div id="qpyodide-insertion-location-2"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="discussion-what-is-the-pro-and-cons-of-deciscion-tree" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="discussion-what-is-the-pro-and-cons-of-deciscion-tree"><span class="header-section-number">6.4</span> Discussion: What is the pro and cons of deciscion tree?</h2>
-</section>
-<section id="visualizing-the-tree" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="visualizing-the-tree"><span class="header-section-number">6.5</span> Visualizing the tree</h2>
-<div id="qpyodide-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><span class="math inline">\(\,\)</span></p>
 
@@ -1251,13 +1265,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./04_Section_4.html" class="pagination-link" aria-label="Logistic Regression">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span>
+      <a href="./02_Section_2.html" class="pagination-link" aria-label="Visualizing the Data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Visualizing the Data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./06_Section_6.html" class="pagination-link" aria-label="Random Forest">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Random Forest</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./03_Section_3.html" class="pagination-link" aria-label="Baseline">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Baseline</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

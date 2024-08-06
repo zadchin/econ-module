@@ -1,48 +1,9 @@
 ---
-title: Baseline
+title: "Baseline"
 format: html
 filters:
   - pyodide
 ---
-
-## Coding in AI: Quick Breakdown
-
-- **Calling Libraries**: Importing libraries is like visiting a library to borrow tools (functions) you need, such as `import numpy as np` for numerical operations or `import tensorflow as tf` for deep learning.
-
-- **Function Implementation**: This is where you define the specific tasks your code will perform, like training a model or processing data. Functions are reusable blocks of code that perform specific tasks.
-
-- **Other Essentials**:
-  - **Constant Assignment**: Setting values that don't change during execution, like learning rates or thresholds (`learning_rate = 0.01`).
-  - **Printing/Debugging**: Using print statements to check the output of your code at various stages, ensuring it behaves as expected (`print(model.summary())`).
-
-Moving forward, we will have this framework in mind.
-
-## Brief Outline of AI / Machine Learning
-
-1. Getting Data
-
-2. Analyzing Data, in which we did just now.
-
-3. Train-Test Split
-
-4. Running Baseline
-
-5. Running Model
-
-6. Improve and Iterate
-
-## Train-Test Split
-
-The train-test split is a technique used in AI to divide a dataset into two parts: one for training the model (learning) and one for testing it (evaluating its performance).
-
-::: {.callout-note collapse="true" appearance="simple"}
-
-## Why do you think it's important to test a model on data it hasn’t seen before, rather than just using the training data to evaluate its performance?
-
-Will be released after the section
-
-:::
-
 
 ## Building Baseline
 
@@ -51,7 +12,7 @@ A baseline model serves as a simple reference point for evaluating the performan
 
 **Establishing a baseline is crucial because it provides a benchmark to compare against.** It helps in understanding whether the added complexity of a model is actually improving performance. If a model does not perform better than the baseline, it indicates that the model might not be useful.
 
-This is some starter code to build the baseline models. **Do not change the following code**. Just run it! :)
+This is train-test split code to build the baseline models. **Do not change the following code**. Just run it! :)
 
 ```{pyodide-python}
 ## importing libraries
@@ -59,12 +20,12 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 ## calling function from library to read data
-data_url = "https://raw.githubusercontent.com/zadchin/RT-test/master/final_dataset.csv"
+data_url = "hhttps://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv"
 data = pd.read_csv(data_url)
 
 ## constant assigning to determine features & target
-features = data.drop("diagnosis", axis = 1) 
-target = data.diagnosis
+features = data.drop("Risk_Flag", axis = 1) 
+target = data.Risk_Flag 
 
 ## calling function from library to train-test split 
 X_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)
@@ -97,13 +58,9 @@ Before we move on to talk about precision, recall & F1 score, we would like you 
 
 ::: {.callout-note collapse="true" appearance="simple"}
 
-## What is the impact of false positive and false negative in diagnosing pancreas cancer?
+## What is the impact of false positive and false negative in defaulting loans?
 
 Will be released after the section
-
-<!-- **False Positive:** The patient doesn't have pancreatic cancer, but the AI incorrectly diagnoses them with it. This can lead to unnecessary tests and procedures, causing stress and potential harm.
-
-**False Negative:** The patient has pancreatic cancer, but the AI incorrectly diagnoses them as not having it. This is very dangerous as the patient misses the chance for early treatment, leading to potentially severe consequences. -->
 
 :::
 
@@ -136,7 +93,7 @@ The F1 Score provides a balance between precision and recall. It is particularly
 
 ## Baseline 1: All False
 
-First, we will create a baseline around the most frequent class, which in our case, is 0, where we assume all patients do not have cnacer.This baseline mimics a current system where we assume that all patients do not have Pancreatic ductal adenocarcinoma (PDAC).
+First, we will create a baseline around the most frequent class, which in our case, is 0, where we assume all customers are not going to default loan.This baseline mimics a current system where we assume that all customers are not defaulting loans.
 
 
 ```{pyodide-python}
@@ -168,7 +125,7 @@ Will be released after the section
 
 ## Baseline 2: Random Guess
 
-Random guessing is a baseline method where predictions are made by randomly assigning classes (positive or negative) without any consideration of the input features. As an analogy, it is like you flipping a coin and randomly assign a patient of its status based on the coins (for example, has cancer if the coin is head, and has no cancer if the coin is tail).
+Random guessing is a baseline method where predictions are made by randomly assigning classes (positive or negative) without any consideration of the input features. As an analogy, it is like you flipping a coin and randomly assign a patient of its status based on the coins (for example, default loan if the coin is head, and has not going to default loan if the coin is tail).
 
 Random guessing sets a very low bar for model performance. If a machine learning model cannot outperform random guessing, it indicates that the model has not captured any meaningful patterns from the data.  Beating random guessing demonstrates that the model has predictive power and can provide reliable results. 
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Logistic Regression – AI for Pancreas Cancer</title>
+<title>5&nbsp; Logistic Regression – Predicting Loan Defaults</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -233,7 +233,7 @@ globalThis.qpyodideCustomizedPyodideOptions = {
 }
 
 // Store cell data
-globalThis.qpyodideCellDetails = [{"code":"# importing libraries\nimport pandas as pd\nimport numpy as np\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix\n\n# reading data and defining features\ndata_url = \"https://raw.githubusercontent.com/zadchin/RT-test/master/final_dataset.csv\"\ndata = pd.read_csv(data_url)\nfeatures = data.drop(\"diagnosis\", axis = 1) \ntarget = data.diagnosis\n\n# train-test split\nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\n\n# print to make sure train-test split suggest\nprint(\"X train shape: \", X_train.shape)\nprint(\"X test shape: \", X_test.shape)\n\n# call on logistic regression function imported\nLR_model = LogisticRegression(max_iter=10000, C=1.0, class_weight=\"balanced\")\n\n# train the model\nLR_model.fit(X_train, y_train)\n\n# test the model\ny_pred_LR = LR_model.predict(X_test)\n\n# print result\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_LR), 2))\nprint(\"Precision: \",np.round(precision_score(y_test, y_pred_LR), 2))\nprint(\"Recall: \", np.round(recall_score(y_test, y_pred_LR), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_LR), 2))","id":1,"options":{"context":"interactive","autorun":"","label":"","fig-height":5,"out-height":"","results":"markup","output":"true","fig-cap":"","comment":"","classes":"","out-width":"700px","warning":"true","message":"true","fig-width":7,"read-only":"false","dpi":72}},{"code":"feature_importance = pd.DataFrame({\n    'Feature': X_train.columns,\n    'Importance': LR_model.coef_[0]\n})\n\nfeature_importance = feature_importance.sort_values(by='Importance', ascending=False)\nfeature_importance","id":2,"options":{"context":"interactive","autorun":"","label":"","fig-height":5,"out-height":"","results":"markup","output":"true","fig-cap":"","comment":"","classes":"","out-width":"700px","warning":"true","message":"true","fig-width":7,"read-only":"false","dpi":72}}];
+globalThis.qpyodideCellDetails = [{"options":{"message":"true","warning":"true","comment":"","out-width":"700px","read-only":"false","out-height":"","output":"true","autorun":"","classes":"","fig-height":5,"dpi":72,"fig-cap":"","context":"interactive","results":"markup","label":"","fig-width":7},"code":"# importing libraries\nimport pandas as pd\nimport numpy as np\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix\n\n# reading data and defining features\ndata_url = \"https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv\"\ndata = pd.read_csv(data_url)\nfeatures = data.drop(\"Risk_Flag\", axis = 1) \ntarget = data.Risk_Flag \n\n# train-test split\nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\n\n# print to make sure train-test split suggest\nprint(\"X train shape: \", X_train.shape)\nprint(\"X test shape: \", X_test.shape)\n\n# call on logistic regression function imported\nLR_model = LogisticRegression(max_iter=10000, C=1.0, class_weight=\"balanced\")\n\n# train the model\nLR_model.fit(X_train, y_train)\n\n# test the model\ny_pred_LR = LR_model.predict(X_test)\n\n# print result\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_LR), 2))\nprint(\"Precision: \",np.round(precision_score(y_test, y_pred_LR), 2))\nprint(\"Recall: \", np.round(recall_score(y_test, y_pred_LR), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_LR), 2))","id":1},{"options":{"message":"true","warning":"true","comment":"","out-width":"700px","read-only":"false","out-height":"","output":"true","autorun":"","classes":"","fig-height":5,"dpi":72,"fig-cap":"","context":"interactive","results":"markup","label":"","fig-width":7},"code":"feature_importance = pd.DataFrame({\n    'Feature': X_train.columns,\n    'Importance': LR_model.coef_[0]\n})\n\nfeature_importance = feature_importance.sort_values(by='Importance', ascending=False)\nfeature_importance","id":2}];
 
 
 </script>
@@ -466,7 +466,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04_Section_4.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Logistic Regression</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04_Section_4.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Logistic Regression</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -481,7 +481,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">AI for Pancreas Cancer</a> 
+      <a href="./">Predicting Loan Defaults</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/zadchin/CS50Section" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -503,7 +503,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Background</span></a>
+ <span class="menu-text">Problem Statement</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -520,20 +520,32 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./02_5_Section_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Train-Test Split</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./03_Section_3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Baseline</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Baseline</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04_Section_4.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_Section_5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Decision Tree</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Decision Tree</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_Section_6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Random Forest</span></span></a>
   </div>
 </li>
     </ul>
@@ -546,12 +558,13 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link active" data-scroll-target="#logistic-regression"><span class="header-section-number">4.1</span> Logistic Regression</a>
+  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link active" data-scroll-target="#logistic-regression"><span class="header-section-number">5.1</span> Logistic Regression</a>
   <ul class="collapse">
-  <li><a href="#importance-of-logistic-regression" id="toc-importance-of-logistic-regression" class="nav-link" data-scroll-target="#importance-of-logistic-regression"><span class="header-section-number">4.1.1</span> Importance of logistic regression</a></li>
+  <li><a href="#importance-of-logistic-regression" id="toc-importance-of-logistic-regression" class="nav-link" data-scroll-target="#importance-of-logistic-regression"><span class="header-section-number">5.1.1</span> Importance of logistic regression</a></li>
   </ul></li>
-  <li><a href="#implementation-of-algorithm" id="toc-implementation-of-algorithm" class="nav-link" data-scroll-target="#implementation-of-algorithm"><span class="header-section-number">4.2</span> Implementation of Algorithm</a></li>
-  <li><a href="#feature-importance" id="toc-feature-importance" class="nav-link" data-scroll-target="#feature-importance"><span class="header-section-number">4.3</span> Feature Importance</a></li>
+  <li><a href="#implementation-of-algorithm" id="toc-implementation-of-algorithm" class="nav-link" data-scroll-target="#implementation-of-algorithm"><span class="header-section-number">5.2</span> Implementation of Algorithm</a></li>
+  <li><a href="#discussion-what-is-the-pro-and-cons-of-logistic-regression" id="toc-discussion-what-is-the-pro-and-cons-of-logistic-regression" class="nav-link" data-scroll-target="#discussion-what-is-the-pro-and-cons-of-logistic-regression"><span class="header-section-number">5.3</span> Discussion: What is the pro and cons of logistic regression?</a></li>
+  <li><a href="#feature-importance" id="toc-feature-importance" class="nav-link" data-scroll-target="#feature-importance"><span class="header-section-number">5.4</span> Feature Importance</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/zadchin/CS50Section/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -627,7 +640,7 @@ $$
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Logistic Regression</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Logistic Regression</span></h1>
 </div>
 
 
@@ -644,12 +657,13 @@ $$
 </header>
 
 
-<section id="logistic-regression" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="logistic-regression"><span class="header-section-number">4.1</span> Logistic Regression</h2>
-<p>Logistic regression is a statistical method used for predicting a binary outcome based on one or more independent variables. The outcome is modeled as a probability between 0 and 1. It models the probability of an event occurring as a function of the independent variables using the sigmoid curve, which is defined as:</p>
-<p><span class="math display">\[\sigma(x) = \frac{1}{1+e^{-x}}\]</span></p>
-<section id="importance-of-logistic-regression" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="importance-of-logistic-regression"><span class="header-section-number">4.1.1</span> Importance of logistic regression</h3>
+<section id="logistic-regression" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="logistic-regression"><span class="header-section-number">5.1</span> Logistic Regression</h2>
+<p>Logistic regression is a statistical method used for predicting a binary outcome based on one or more independent variables. The outcome is modeled as a probability between 0 and 1. It models the probability of an event occurring as a function of the independent variables using the sigmoid curve, which is defined as</p>
+<p><span class="math display">\[\sigma(x) = \frac{1}{1+e^{-x}}\]</span> A visualization of logistic regression compared to linear regression is as follow:</p>
+<p><img src="assets/img/logisticregression.png" class="img-fluid"></p>
+<section id="importance-of-logistic-regression" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="importance-of-logistic-regression"><span class="header-section-number">5.1.1</span> Importance of logistic regression</h3>
 <ol type="1">
 <li><p>Interpretability: The coefficients can be interpreted as the change in log-odds of the outcome for a one-unit change in the predictor.</p></li>
 <li><p>Handles non-linear relationships: The sigmoid curve can model non-linear relationships between variables.</p></li>
@@ -657,24 +671,17 @@ $$
 </ol>
 </section>
 </section>
-<section id="implementation-of-algorithm" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="implementation-of-algorithm"><span class="header-section-number">4.2</span> Implementation of Algorithm</h2>
+<section id="implementation-of-algorithm" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="implementation-of-algorithm"><span class="header-section-number">5.2</span> Implementation of Algorithm</h2>
 <p>Next, we will run logistic regression on our training dataset, then compute the performance of the metrics using our dataset and then</p>
 <div id="qpyodide-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-simple callout-tip">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Can you try to delete the class weight to observe what happened to the performance of the algorithm?</p>
-</div>
-</div>
-</div>
 </section>
-<section id="feature-importance" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="feature-importance"><span class="header-section-number">4.3</span> Feature Importance</h2>
+<section id="discussion-what-is-the-pro-and-cons-of-logistic-regression" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="discussion-what-is-the-pro-and-cons-of-logistic-regression"><span class="header-section-number">5.3</span> Discussion: What is the pro and cons of logistic regression?</h2>
+</section>
+<section id="feature-importance" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="feature-importance"><span class="header-section-number">5.4</span> Feature Importance</h2>
 <p>Feature importance indicates how much each input variable (feature) contributes to predicting the outcome. In logistic regression, the log-odds of the outcome are modeled as a linear combination of features:</p>
 <p><span class="math display">\[log(p/(1-p)) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_n x_n\]</span></p>
 <p>The magnitude of each coefficient <span class="math inline">\(|\beta_i|\)</span> represents how much the log-odds change for a one-unit increase in the corresponding feature <span class="math inline">\(x_i\)</span>, holding other features constant. Larger <span class="math inline">\(|\beta_i|\)</span> implies a stronger effect on the outcome probability, hence greater importance.</p>
@@ -1253,12 +1260,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./03_Section_3.html" class="pagination-link" aria-label="Baseline">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Baseline</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Baseline</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./05_Section_5.html" class="pagination-link" aria-label="Decision Tree">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Decision Tree</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Decision Tree</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

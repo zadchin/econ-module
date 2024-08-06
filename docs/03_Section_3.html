@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Baseline – AI for Pancreas Cancer</title>
+<title>4&nbsp; Baseline – Predicting Loan Defaults</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./04_Section_4.html" rel="next">
-<link href="./02_Section_2.html" rel="prev">
+<link href="./02_5_Section_2.html" rel="prev">
 <link href="./assets/img/cs50duck.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -233,7 +233,7 @@ globalThis.qpyodideCustomizedPyodideOptions = {
 }
 
 // Store cell data
-globalThis.qpyodideCellDetails = [{"options":{"warning":"true","message":"true","results":"markup","context":"interactive","out-height":"","classes":"","output":"true","read-only":"false","out-width":"700px","fig-height":5,"fig-width":7,"comment":"","dpi":72,"label":"","fig-cap":"","autorun":""},"id":1,"code":"## importing libraries\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split\n\n## calling function from library to read data\ndata_url = \"https://raw.githubusercontent.com/zadchin/RT-test/master/final_dataset.csv\"\ndata = pd.read_csv(data_url)\n\n## constant assigning to determine features & target\nfeatures = data.drop(\"diagnosis\", axis = 1) \ntarget = data.diagnosis\n\n## calling function from library to train-test split \nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\nprint(\"Train Test Split Completed\")"},{"options":{"warning":"true","message":"true","results":"markup","context":"interactive","out-height":"","classes":"","output":"true","read-only":"false","out-width":"700px","fig-height":5,"fig-width":7,"comment":"","dpi":72,"label":"","fig-cap":"","autorun":""},"id":2,"code":"# importing libraries\nfrom sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score\nimport numpy as np\n\n# defining result \ny_pred_baseline = [0] * len(y_test)\nprint(\"Baseline (All Negative) Model\")\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_baseline), 2))\nprint(\"Precision: \", np.round(precision_score(y_test, y_pred_baseline, zero_division=0),2))\nprint(\"Recall: \", np.round(recall_score(y_test, y_pred_baseline, zero_division=0),2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_baseline, zero_division=0),2))"},{"options":{"warning":"true","message":"true","results":"markup","context":"interactive","out-height":"","classes":"","output":"true","read-only":"false","out-width":"700px","fig-height":5,"fig-width":7,"comment":"","dpi":72,"label":"","fig-cap":"","autorun":""},"id":3,"code":"np.random.seed(42)\ny_pred_random = np.random.randint(2, size=len(y_test))\ny_pred_baseline = [0] * len(y_test)\nprint(\"Baseline (Random Guessing) Model\")\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_random), 2))\nprint(\"Precision: \", np.round(precision_score(y_test, y_pred_random, zero_division=0), 2))\nprint(\"Recall: \", np.round(recall_score(y_test, y_pred_random, zero_division=0), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_random, zero_division=0), 2))"}];
+globalThis.qpyodideCellDetails = [{"code":"## importing libraries\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split\n\n## calling function from library to read data\ndata_url = \"hhttps://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv\"\ndata = pd.read_csv(data_url)\n\n## constant assigning to determine features & target\nfeatures = data.drop(\"Risk_Flag\", axis = 1) \ntarget = data.Risk_Flag \n\n## calling function from library to train-test split \nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\nprint(\"Train Test Split Completed\")","id":1,"options":{"results":"markup","fig-height":5,"read-only":"false","fig-cap":"","output":"true","out-width":"700px","context":"interactive","classes":"","comment":"","label":"","autorun":"","message":"true","dpi":72,"fig-width":7,"warning":"true","out-height":""}},{"code":"# importing libraries\nfrom sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score\nimport numpy as np\n\n# defining result \ny_pred_baseline = [0] * len(y_test)\nprint(\"Baseline (All Negative) Model\")\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_baseline), 2))\nprint(\"Precision: \", np.round(precision_score(y_test, y_pred_baseline, zero_division=0),2))\nprint(\"Recall: \", np.round(recall_score(y_test, y_pred_baseline, zero_division=0),2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_baseline, zero_division=0),2))","id":2,"options":{"results":"markup","fig-height":5,"read-only":"false","fig-cap":"","output":"true","out-width":"700px","context":"interactive","classes":"","comment":"","label":"","autorun":"","message":"true","dpi":72,"fig-width":7,"warning":"true","out-height":""}},{"code":"np.random.seed(42)\ny_pred_random = np.random.randint(2, size=len(y_test))\ny_pred_baseline = [0] * len(y_test)\nprint(\"Baseline (Random Guessing) Model\")\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_random), 2))\nprint(\"Precision: \", np.round(precision_score(y_test, y_pred_random, zero_division=0), 2))\nprint(\"Recall: \", np.round(recall_score(y_test, y_pred_random, zero_division=0), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_random, zero_division=0), 2))","id":3,"options":{"results":"markup","fig-height":5,"read-only":"false","fig-cap":"","output":"true","out-width":"700px","context":"interactive","classes":"","comment":"","label":"","autorun":"","message":"true","dpi":72,"fig-width":7,"warning":"true","out-height":""}}];
 
 
 </script>
@@ -466,7 +466,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03_Section_3.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Baseline</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03_Section_3.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Baseline</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -481,7 +481,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">AI for Pancreas Cancer</a> 
+      <a href="./">Predicting Loan Defaults</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/zadchin/CS50Section" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -503,7 +503,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Background</span></a>
+ <span class="menu-text">Problem Statement</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -520,20 +520,26 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./02_5_Section_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Train-Test Split</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./03_Section_3.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Baseline</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Baseline</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04_Section_4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_Section_5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Decision Tree</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Decision Tree</span></span></a>
   </div>
 </li>
     </ul>
@@ -546,19 +552,16 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#coding-in-ai-quick-breakdown" id="toc-coding-in-ai-quick-breakdown" class="nav-link active" data-scroll-target="#coding-in-ai-quick-breakdown"><span class="header-section-number">3.1</span> Coding in AI: Quick Breakdown</a></li>
-  <li><a href="#brief-outline-of-ai-machine-learning" id="toc-brief-outline-of-ai-machine-learning" class="nav-link" data-scroll-target="#brief-outline-of-ai-machine-learning"><span class="header-section-number">3.2</span> Brief Outline of AI / Machine Learning</a></li>
-  <li><a href="#train-test-split" id="toc-train-test-split" class="nav-link" data-scroll-target="#train-test-split"><span class="header-section-number">3.3</span> Train-Test Split</a></li>
-  <li><a href="#building-baseline" id="toc-building-baseline" class="nav-link" data-scroll-target="#building-baseline"><span class="header-section-number">3.4</span> Building Baseline</a></li>
-  <li><a href="#understanding-the-metrics" id="toc-understanding-the-metrics" class="nav-link" data-scroll-target="#understanding-the-metrics"><span class="header-section-number">3.5</span> Understanding the metrics</a>
+  <li><a href="#building-baseline" id="toc-building-baseline" class="nav-link active" data-scroll-target="#building-baseline"><span class="header-section-number">4.1</span> Building Baseline</a></li>
+  <li><a href="#understanding-the-metrics" id="toc-understanding-the-metrics" class="nav-link" data-scroll-target="#understanding-the-metrics"><span class="header-section-number">4.2</span> Understanding the metrics</a>
   <ul class="collapse">
-  <li><a href="#accuracy" id="toc-accuracy" class="nav-link" data-scroll-target="#accuracy"><span class="header-section-number">3.5.1</span> Accuracy</a></li>
-  <li><a href="#precision" id="toc-precision" class="nav-link" data-scroll-target="#precision"><span class="header-section-number">3.5.2</span> Precision</a></li>
-  <li><a href="#recall" id="toc-recall" class="nav-link" data-scroll-target="#recall"><span class="header-section-number">3.5.3</span> Recall</a></li>
-  <li><a href="#f1-score" id="toc-f1-score" class="nav-link" data-scroll-target="#f1-score"><span class="header-section-number">3.5.4</span> F1 Score</a></li>
+  <li><a href="#accuracy" id="toc-accuracy" class="nav-link" data-scroll-target="#accuracy"><span class="header-section-number">4.2.1</span> Accuracy</a></li>
+  <li><a href="#precision" id="toc-precision" class="nav-link" data-scroll-target="#precision"><span class="header-section-number">4.2.2</span> Precision</a></li>
+  <li><a href="#recall" id="toc-recall" class="nav-link" data-scroll-target="#recall"><span class="header-section-number">4.2.3</span> Recall</a></li>
+  <li><a href="#f1-score" id="toc-f1-score" class="nav-link" data-scroll-target="#f1-score"><span class="header-section-number">4.2.4</span> F1 Score</a></li>
   </ul></li>
-  <li><a href="#baseline-1-all-false" id="toc-baseline-1-all-false" class="nav-link" data-scroll-target="#baseline-1-all-false"><span class="header-section-number">3.6</span> Baseline 1: All False</a></li>
-  <li><a href="#baseline-2-random-guess" id="toc-baseline-2-random-guess" class="nav-link" data-scroll-target="#baseline-2-random-guess"><span class="header-section-number">3.7</span> Baseline 2: Random Guess</a></li>
+  <li><a href="#baseline-1-all-false" id="toc-baseline-1-all-false" class="nav-link" data-scroll-target="#baseline-1-all-false"><span class="header-section-number">4.3</span> Baseline 1: All False</a></li>
+  <li><a href="#baseline-2-random-guess" id="toc-baseline-2-random-guess" class="nav-link" data-scroll-target="#baseline-2-random-guess"><span class="header-section-number">4.4</span> Baseline 2: Random Guess</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/zadchin/CS50Section/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -634,7 +637,7 @@ $$
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Baseline</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Baseline</span></h1>
 </div>
 
 
@@ -651,66 +654,22 @@ $$
 </header>
 
 
-<section id="coding-in-ai-quick-breakdown" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="coding-in-ai-quick-breakdown"><span class="header-section-number">3.1</span> Coding in AI: Quick Breakdown</h2>
-<ul>
-<li><p><strong>Calling Libraries</strong>: Importing libraries is like visiting a library to borrow tools (functions) you need, such as <code>import numpy as np</code> for numerical operations or <code>import tensorflow as tf</code> for deep learning.</p></li>
-<li><p><strong>Function Implementation</strong>: This is where you define the specific tasks your code will perform, like training a model or processing data. Functions are reusable blocks of code that perform specific tasks.</p></li>
-<li><p><strong>Other Essentials</strong>:</p>
-<ul>
-<li><strong>Constant Assignment</strong>: Setting values that don’t change during execution, like learning rates or thresholds (<code>learning_rate = 0.01</code>).</li>
-<li><strong>Printing/Debugging</strong>: Using print statements to check the output of your code at various stages, ensuring it behaves as expected (<code>print(model.summary())</code>).</li>
-</ul></li>
-</ul>
-<p>Moving forward, we will have this framework in mind.</p>
-</section>
-<section id="brief-outline-of-ai-machine-learning" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="brief-outline-of-ai-machine-learning"><span class="header-section-number">3.2</span> Brief Outline of AI / Machine Learning</h2>
-<ol type="1">
-<li><p>Getting Data</p></li>
-<li><p>Analyzing Data, in which we did just now.</p></li>
-<li><p>Train-Test Split</p></li>
-<li><p>Running Baseline</p></li>
-<li><p>Running Model</p></li>
-<li><p>Improve and Iterate</p></li>
-</ol>
-</section>
-<section id="train-test-split" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="train-test-split"><span class="header-section-number">3.3</span> Train-Test Split</h2>
-<p>The train-test split is a technique used in AI to divide a dataset into two parts: one for training the model (learning) and one for testing it (evaluating its performance).</p>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Why do you think it’s important to test a model on data it hasn’t seen before, rather than just using the training data to evaluate its performance?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Will be released after the section</p>
-</div>
-</div>
-</div>
-</section>
-<section id="building-baseline" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="building-baseline"><span class="header-section-number">3.4</span> Building Baseline</h2>
+<section id="building-baseline" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="building-baseline"><span class="header-section-number">4.1</span> Building Baseline</h2>
 <p>A baseline model serves as a simple reference point for evaluating the performance of more complex models. It represents the minimum level of performance that any model should achieve. Common baselines include predicting the most frequent class or random guessing.</p>
 <p><strong>Establishing a baseline is crucial because it provides a benchmark to compare against.</strong> It helps in understanding whether the added complexity of a model is actually improving performance. If a model does not perform better than the baseline, it indicates that the model might not be useful.</p>
-<p>This is some starter code to build the baseline models. <strong>Do not change the following code</strong>. Just run it! :)</p>
+<p>This is train-test split code to build the baseline models. <strong>Do not change the following code</strong>. Just run it! :)</p>
 <div id="qpyodide-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="understanding-the-metrics" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="understanding-the-metrics"><span class="header-section-number">3.5</span> Understanding the metrics</h2>
+<section id="understanding-the-metrics" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="understanding-the-metrics"><span class="header-section-number">4.2</span> Understanding the metrics</h2>
 <p>We are going to investigate 4 metrics to evalaute the performance of our machine learning algorithms, namely, accuracy, precision, recall and F1 score. We will go through it one-by-one in the following:</p>
-<section id="accuracy" class="level3" data-number="3.5.1">
-<h3 data-number="3.5.1" class="anchored" data-anchor-id="accuracy"><span class="header-section-number">3.5.1</span> Accuracy</h3>
+<section id="accuracy" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="accuracy"><span class="header-section-number">4.2.1</span> Accuracy</h3>
 <p>The ratio of correctly predicted instances to the total instances. Mathematically it is defined as <span class="math display">\[\text{Accuracy} =\frac{TP+TN}{\text{Total}}\]</span></p>
 <div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -719,7 +678,7 @@ Why can’t we blindly trust accuracy?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Will be released after the section</p>
 <!-- In our dataset, 30% of the people are diagnosed with pancreatic cancer, and 70% are not. If we rely only on accuracy, our model could just predict everyone as not having cancer and still be 70% accurate. This doesn't help us identify those who actually have cancer. That's why we need to look at other metrics like precision and recall to ensure our model is correctly identifying both those with and without the disease.-->
@@ -727,25 +686,22 @@ Why can’t we blindly trust accuracy?
 </div>
 </div>
 </section>
-<section id="precision" class="level3" data-number="3.5.2">
-<h3 data-number="3.5.2" class="anchored" data-anchor-id="precision"><span class="header-section-number">3.5.2</span> Precision</h3>
+<section id="precision" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="precision"><span class="header-section-number">4.2.2</span> Precision</h3>
 <p>Before we move on to talk about precision, recall &amp; F1 score, we would like you to think about the following problem:</p>
 <div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-What is the impact of false positive and false negative in diagnosing pancreas cancer?
+What is the impact of false positive and false negative in defaulting loans?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Will be released after the section</p>
-<!-- **False Positive:** The patient doesn't have pancreatic cancer, but the AI incorrectly diagnoses them with it. This can lead to unnecessary tests and procedures, causing stress and potential harm.
-
-**False Negative:** The patient has pancreatic cancer, but the AI incorrectly diagnoses them as not having it. This is very dangerous as the patient misses the chance for early treatment, leading to potentially severe consequences. -->
 </div>
 </div>
 </div>
@@ -753,26 +709,26 @@ What is the impact of false positive and false negative in diagnosing pancreas c
 <p>Precision is defined as the ratio of true positive predictions to the total predicted positives. Mathematically, <span class="math display">\[\text{Precision} =\frac{TP}{TP+FP}\]</span></p>
 <p>Precision tells us how many of the patients predicted to have PDAC actually have the disease. High precision means fewer false positives.</p>
 </section>
-<section id="recall" class="level3" data-number="3.5.3">
-<h3 data-number="3.5.3" class="anchored" data-anchor-id="recall"><span class="header-section-number">3.5.3</span> Recall</h3>
+<section id="recall" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="recall"><span class="header-section-number">4.2.3</span> Recall</h3>
 <p>Recall is defined as the ratio of true positive predictions to the total actual positives. Mathematically, it is defined as</p>
 <p><span class="math display">\[\text{Recall} = \frac{TP}{TP+FN}\]</span></p>
 <p>Recall (or sensitivity) indicates how many patients with PDAC are correctly identified by the model. High recall means fewer false negatives, which is crucial for medical diagnosis.</p>
 </section>
-<section id="f1-score" class="level3" data-number="3.5.4">
-<h3 data-number="3.5.4" class="anchored" data-anchor-id="f1-score"><span class="header-section-number">3.5.4</span> F1 Score</h3>
+<section id="f1-score" class="level3" data-number="4.2.4">
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="f1-score"><span class="header-section-number">4.2.4</span> F1 Score</h3>
 <p>F1 Score is the harmonic mean of precision and recall. Mathematically, it is defined as</p>
 <p><span class="math display">\[\text{F1 Score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}\]</span></p>
 <p>The F1 Score provides a balance between precision and recall. It is particularly useful when the class distribution is imbalanced, as it considers both false positives and false negatives.</p>
 </section>
 </section>
-<section id="baseline-1-all-false" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="baseline-1-all-false"><span class="header-section-number">3.6</span> Baseline 1: All False</h2>
-<p>First, we will create a baseline around the most frequent class, which in our case, is 0, where we assume all patients do not have cnacer.This baseline mimics a current system where we assume that all patients do not have Pancreatic ductal adenocarcinoma (PDAC).</p>
+<section id="baseline-1-all-false" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="baseline-1-all-false"><span class="header-section-number">4.3</span> Baseline 1: All False</h2>
+<p>First, we will create a baseline around the most frequent class, which in our case, is 0, where we assume all customers are not going to default loan.This baseline mimics a current system where we assume that all customers are not defaulting loans.</p>
 <div id="qpyodide-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -781,7 +737,7 @@ Why is precision, recall and F1 score are all 0 in our case?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Will be released after the section</p>
 <!-- Precision, recall, and F1 score are all zero because the baseline model predicts all patients as negative (no PDAC), resulting in no true positives! -->
@@ -790,9 +746,9 @@ Why is precision, recall and F1 score are all 0 in our case?
 </div>
 </div>
 </section>
-<section id="baseline-2-random-guess" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="baseline-2-random-guess"><span class="header-section-number">3.7</span> Baseline 2: Random Guess</h2>
-<p>Random guessing is a baseline method where predictions are made by randomly assigning classes (positive or negative) without any consideration of the input features. As an analogy, it is like you flipping a coin and randomly assign a patient of its status based on the coins (for example, has cancer if the coin is head, and has no cancer if the coin is tail).</p>
+<section id="baseline-2-random-guess" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="baseline-2-random-guess"><span class="header-section-number">4.4</span> Baseline 2: Random Guess</h2>
+<p>Random guessing is a baseline method where predictions are made by randomly assigning classes (positive or negative) without any consideration of the input features. As an analogy, it is like you flipping a coin and randomly assign a patient of its status based on the coins (for example, default loan if the coin is head, and has not going to default loan if the coin is tail).</p>
 <p>Random guessing sets a very low bar for model performance. If a machine learning model cannot outperform random guessing, it indicates that the model has not captured any meaningful patterns from the data. Beating random guessing demonstrates that the model has predictive power and can provide reliable results.</p>
 <div id="qpyodide-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -1368,13 +1324,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./02_Section_2.html" class="pagination-link" aria-label="Visualizing the Data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Visualizing the Data</span></span>
+      <a href="./02_5_Section_2.html" class="pagination-link" aria-label="Train-Test Split">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Train-Test Split</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./04_Section_4.html" class="pagination-link" aria-label="Logistic Regression">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

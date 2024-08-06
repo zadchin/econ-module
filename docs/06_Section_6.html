@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Decision Tree – Predicting Loan Defaults</title>
+<title>7&nbsp; Random Forest – Predicting Loan Defaults</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./06_Section_6.html" rel="next">
-<link href="./04_Section_4.html" rel="prev">
+<link href="./05_Section_5.html" rel="prev">
 <link href="./assets/img/cs50duck.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -233,7 +232,7 @@ globalThis.qpyodideCustomizedPyodideOptions = {
 }
 
 // Store cell data
-globalThis.qpyodideCellDetails = [{"id":1,"options":{"read-only":"false","context":"interactive","warning":"true","autorun":"","message":"true","out-height":"","results":"markup","output":"true","classes":"","fig-height":5,"out-width":"700px","fig-cap":"","comment":"","dpi":72,"label":"","fig-width":7},"code":"import pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn import tree\nfrom sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix\n\ndata_url = \"https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv\"\ndata = pd.read_csv(data_url)\nfeatures = data.drop(\"Risk_Flag\", axis = 1) \ntarget = data.Risk_Flag \nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\nprint(\"X train shape: \", X_train.shape)\nprint(\"X test shape: \", X_test.shape)"},{"id":2,"options":{"read-only":"false","context":"interactive","warning":"true","autorun":"","message":"true","out-height":"","results":"markup","output":"true","classes":"","fig-height":5,"out-width":"700px","fig-cap":"","comment":"","dpi":72,"label":"","fig-width":7},"code":"import numpy as np\nDT_model = tree.DecisionTreeClassifier(max_leaf_nodes=3, max_depth=None,\n                                  class_weight=\"balanced\")\nDT_model = DT_model.fit(X_train, y_train)\ny_pred_DT = DT_model.predict(X_test)\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_DT), 2))\nprint(\"Precision: \",np.round(precision_score(y_test, y_pred_DT), 2))\nprint(\"Recall: \",np.round(recall_score(y_test, y_pred_DT), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_DT), 2))"},{"id":3,"options":{"read-only":"false","context":"interactive","warning":"true","autorun":"","message":"true","out-height":"","results":"markup","output":"true","classes":"","fig-height":5,"out-width":"700px","fig-cap":"","comment":"","dpi":72,"label":"","fig-width":7},"code":"feature_names = list(X_train.columns)\ntext_representation = tree.export_text(DT_model, feature_names=feature_names)\nprint(text_representation)"}];
+globalThis.qpyodideCellDetails = [{"id":1,"options":{"classes":"","label":"","results":"markup","context":"interactive","dpi":72,"message":"true","warning":"true","output":"true","fig-cap":"","fig-width":7,"autorun":"","fig-height":5,"comment":"","read-only":"false","out-height":"","out-width":"700px"},"code":"import pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix\n\ndata_url = \"https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv\"\ndata = pd.read_csv(data_url)\nfeatures = data.drop(\"Risk_Flag\", axis = 1) \ntarget = data.Risk_Flag \nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\nprint(\"X train shape: \", X_train.shape)\nprint(\"X test shape: \", X_test.shape)"},{"id":2,"options":{"classes":"","label":"","results":"markup","context":"interactive","dpi":72,"message":"true","warning":"true","output":"true","fig-cap":"","fig-width":7,"autorun":"","fig-height":5,"comment":"","read-only":"false","out-height":"","out-width":"700px"},"code":"import numpy as np\nRF_model = RandomForestClassifier(n_estimators=100, max_depth=None,\n                                  class_weight=\"balanced\")\nRF_model = RF_model.fit(X_train, y_train)\ny_pred_RF = RF_model.predict(X_test)\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_RF), 2))\nprint(\"Precision: \",np.round(precision_score(y_test, y_pred_RF), 2))\nprint(\"Recall: \",np.round(recall_score(y_test, y_pred_RF), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_RF), 2))"}];
 
 
 </script>
@@ -466,7 +465,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05_Section_5.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Decision Tree</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06_Section_6.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Random Forest</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -538,13 +537,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05_Section_5.html" class="sidebar-item-text sidebar-link active">
+  <a href="./05_Section_5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Decision Tree</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06_Section_6.html" class="sidebar-item-text sidebar-link">
+  <a href="./06_Section_6.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Random Forest</span></span></a>
   </div>
 </li>
@@ -558,11 +557,13 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#decision-tree" id="toc-decision-tree" class="nav-link active" data-scroll-target="#decision-tree"><span class="header-section-number">6.1</span> Decision Tree</a></li>
-  <li><a href="#train-test-split" id="toc-train-test-split" class="nav-link" data-scroll-target="#train-test-split"><span class="header-section-number">6.2</span> Train-Test Split</a></li>
-  <li><a href="#algorithm" id="toc-algorithm" class="nav-link" data-scroll-target="#algorithm"><span class="header-section-number">6.3</span> Algorithm</a></li>
-  <li><a href="#discussion-what-is-the-pro-and-cons-of-deciscion-tree" id="toc-discussion-what-is-the-pro-and-cons-of-deciscion-tree" class="nav-link" data-scroll-target="#discussion-what-is-the-pro-and-cons-of-deciscion-tree"><span class="header-section-number">6.4</span> Discussion: What is the pro and cons of deciscion tree?</a></li>
-  <li><a href="#visualizing-the-tree" id="toc-visualizing-the-tree" class="nav-link" data-scroll-target="#visualizing-the-tree"><span class="header-section-number">6.5</span> Visualizing the tree</a></li>
+  <li><a href="#random-forest" id="toc-random-forest" class="nav-link active" data-scroll-target="#random-forest"><span class="header-section-number">7.1</span> Random Forest</a>
+  <ul class="collapse">
+  <li><a href="#key-difference-from-decision-trees" id="toc-key-difference-from-decision-trees" class="nav-link" data-scroll-target="#key-difference-from-decision-trees"><span class="header-section-number">7.1.1</span> Key difference from Decision Trees:</a></li>
+  </ul></li>
+  <li><a href="#train-test-split" id="toc-train-test-split" class="nav-link" data-scroll-target="#train-test-split"><span class="header-section-number">7.2</span> Train-Test Split</a></li>
+  <li><a href="#algorithm" id="toc-algorithm" class="nav-link" data-scroll-target="#algorithm"><span class="header-section-number">7.3</span> Algorithm</a></li>
+  <li><a href="#discussion-what-are-the-pros-and-cons-of-random-forest" id="toc-discussion-what-are-the-pros-and-cons-of-random-forest" class="nav-link" data-scroll-target="#discussion-what-are-the-pros-and-cons-of-random-forest"><span class="header-section-number">7.4</span> Discussion: What are the pros and cons of Random Forest?</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/zadchin/CS50Section/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -638,7 +639,7 @@ $$
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Decision Tree</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Random Forest</span></h1>
 </div>
 
 
@@ -655,30 +656,33 @@ $$
 </header>
 
 
-<section id="decision-tree" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="decision-tree"><span class="header-section-number">6.1</span> Decision Tree</h2>
-<p>Decision trees are tree-like models that make decisions based on asking a series of questions about the features of the data. Starting from a root node, the tree splits the data into subsets based on the most significant attribute at each step. This process continues recursively, forming branches and leaves, until a stopping criterion is met. The leaf nodes represent the final decisions or predictions. A simple decision tree classifying heart disease is as follow:</p>
-<p><img src="assets/img/decisiontree.png" class="img-fluid"></p>
+<section id="random-forest" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="random-forest"><span class="header-section-number">7.1</span> Random Forest</h2>
+<p>Random Forests are an ensemble learning method that operates by constructing multiple decision trees during training and outputting the class that is the mode of the classes of the individual trees. Starting from multiple root nodes, each tree in the forest makes decisions based on subsets of features and data. This process helps in reducing overfitting and improving the model’s accuracy by averaging the results of different trees. An Visualization of decision tree is shown below:</p>
+<p><img src="assets/img/randomforest.png" class="img-fluid"></p>
+<section id="key-difference-from-decision-trees" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="key-difference-from-decision-trees"><span class="header-section-number">7.1.1</span> Key difference from Decision Trees:</h3>
+<ul>
+<li>Ensemble Learning: This is the concept of combining multiple models to produce a better overall result</li>
+<li>Bootstrap Sampling: Each decision tree in the forest is trained on a different subset of the data, chosen randomly with replacement</li>
+<li>Random Feature Selection: When splitting nodes, each tree in the forest considers a random subset of features, rather than all features. This helps create diverse trees.</li>
+</ul>
 </section>
-<section id="train-test-split" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="train-test-split"><span class="header-section-number">6.2</span> Train-Test Split</h2>
-<p>As we have done previosuly under logistic regression, we will first perform a train-test split.</p>
+</section>
+<section id="train-test-split" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="train-test-split"><span class="header-section-number">7.2</span> Train-Test Split</h2>
+<p>As we have done previously under logistic regression, we will first perform a train-test split.</p>
 <div id="qpyodide-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="algorithm" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="algorithm"><span class="header-section-number">6.3</span> Algorithm</h2>
-<p>Next, we will run decision treeon our training dataset, then compute the performance of the metrics using our dataset and then</p>
+<section id="algorithm" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="algorithm"><span class="header-section-number">7.3</span> Algorithm</h2>
+<p>Next, we will run a Random Forest classifier on our training dataset, then compute the performance of the metrics using our dataset.</p>
 <div id="qpyodide-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="discussion-what-is-the-pro-and-cons-of-deciscion-tree" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="discussion-what-is-the-pro-and-cons-of-deciscion-tree"><span class="header-section-number">6.4</span> Discussion: What is the pro and cons of deciscion tree?</h2>
-</section>
-<section id="visualizing-the-tree" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="visualizing-the-tree"><span class="header-section-number">6.5</span> Visualizing the tree</h2>
-<div id="qpyodide-insertion-location-3"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<section id="discussion-what-are-the-pros-and-cons-of-random-forest" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="discussion-what-are-the-pros-and-cons-of-random-forest"><span class="header-section-number">7.4</span> Discussion: What are the pros and cons of Random Forest?</h2>
 <p><span class="math inline">\(\,\)</span></p>
 
 
@@ -1251,14 +1255,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./04_Section_4.html" class="pagination-link" aria-label="Logistic Regression">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span>
+      <a href="./05_Section_5.html" class="pagination-link" aria-label="Decision Tree">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Decision Tree</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./06_Section_6.html" class="pagination-link" aria-label="Random Forest">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Random Forest</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

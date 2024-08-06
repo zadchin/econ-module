@@ -8,9 +8,13 @@ filters:
 
 ## Logistic Regression
 
-Logistic regression is a statistical method used for predicting a binary outcome based on one or more independent variables. The outcome is modeled as a probability between 0 and 1. It models the probability of an event occurring as a function of the independent variables using the sigmoid curve, which is defined as:
+Logistic regression is a statistical method used for predicting a binary outcome based on one or more independent variables. The outcome is modeled as a probability between 0 and 1. It models the probability of an event occurring as a function of the independent variables using the sigmoid curve, which is defined as
 
 $$\sigma(x) = \frac{1}{1+e^{-x}}$$
+A visualization of logistic regression compared to linear regression is as follow:
+
+![](assets/img/logisticregression.png)
+
 
 ### Importance of logistic regression
 
@@ -38,10 +42,10 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix
 
 # reading data and defining features
-data_url = "https://raw.githubusercontent.com/zadchin/RT-test/master/final_dataset.csv"
+data_url = "https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv"
 data = pd.read_csv(data_url)
-features = data.drop("diagnosis", axis = 1) 
-target = data.diagnosis
+features = data.drop("Risk_Flag", axis = 1) 
+target = data.Risk_Flag 
 
 # train-test split
 X_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)
@@ -66,10 +70,10 @@ print("Recall: ", np.round(recall_score(y_test, y_pred_LR), 2))
 print("F1 Score: ", np.round(f1_score(y_test, y_pred_LR), 2))
 ```
 
-::: {.callout-tip appearance="simple"}
 
-Can you try to delete the class weight to observe what happened to the performance of the algorithm?
-:::
+## Discussion: What is the pro and cons of logistic regression?
+
+
 
 ## Feature Importance
 
