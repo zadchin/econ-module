@@ -12,13 +12,13 @@ This dataset is provided as part of a hackathon. It includes a variety of variab
 
 ## A look at the Dataset
 
-The dataset contains **252000** rows and **13** columns. Here are the 100 example rows:
+The dataset contains **18778** rows and **13** columns. Here are the 100 example rows:
 
 
 ```{r}
 library(readr)
 library(DT)
-data_r <- read_csv("loandata.csv", show_col_types = FALSE)
+data_r <- read_csv("loandata_sampled.csv", show_col_types = FALSE)
 datatable(head(data_r, 100))
 ```
 

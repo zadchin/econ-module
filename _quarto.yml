@@ -7,7 +7,7 @@ execute:
   
 book:
   title: "Predicting Loan Defaults"
-  favicon: assets/img/cs50duck.jpeg
+  favicon: assets/img/logo.png
   output-file: "users-guide"
   reader-mode: true
   public-url: https://zadchin.github.io/CS50Section/

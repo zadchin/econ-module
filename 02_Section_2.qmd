@@ -39,8 +39,8 @@ Bar plots are ideal for discrete variables because they clearly show the count o
 ::: {.callout-tip appearance="simple"}
 Select a categorical column to visualize:
 ```{ojs}
-data = FileAttachment("loandata.csv").csv({ typed: true })
-cat_columns = ['Married/Single', 'House_Ownership', 'Car_Ownership','Risk_Flag','CURRENT_JOB_YRS', 'CURRENT_HOUSE_YRS']
+data = FileAttachment("loandata_sampled.csv").csv({ typed: true })
+cat_columns = ['Married/Single', 'House_Ownership', 'Car_Ownership','Risk_Flag', 'CURRENT_HOUSE_YRS']
 viewof selected_column_cat = Inputs.radio(cat_columns, {value: cat_columns[0]})
 ```
 :::
@@ -196,7 +196,7 @@ Plot.plot({
 ::: {.callout-tip appearance="simple"}
 Select Continuous Variables for Correlation Heatmap:
 ```{ojs}
-bivariate_cont_columns = ['Income', 'Age', 'Experience', 'CURRENT_JOB_YRS', 'CURRENT_HOUSE_YRS','Risk_Flag']
+bivariate_cont_columns = ['Income', 'Age', 'Experience', 'CURRENT_HOUSE_YRS','Risk_Flag']
 viewof selected_bivariate_cont_columns = Inputs.checkbox(bivariate_cont_columns, {value: bivariate_cont_columns})
 ```
 :::
@@ -265,40 +265,6 @@ Plot.plot({
 
 ```
 
-
-
-## Relationship by target variable
-
-The scatterplot colored by the "diagnosis" variable visually represents the relationship between the selected features and the target outcome. By plotting the data points and coloring them based on the binary diagnosis (e.g., positive or negative), you can quickly see patterns or clusters that indicate how the features are associated with the diagnosis. 
-
-::: {.callout-tip appearance="simple"}
-
-Select a X-Axis and Y-Axis Column:
-
-```{ojs}
-viewof x_column_scatt = Inputs.radio(bivariate_cont_columns, {value: 'Income'})
-viewof y_column_scatt = Inputs.radio(bivariate_cont_columns, {value: 'Age'})
-```
-:::
-
-```{ojs}
-Plot.plot({
-  marks: [
-    Plot.dot(data, {x: x_column_scatt, y: y_column_scatt, fill: 'Risk_Flag', fillOpacity: 0.7})
-  ],
-  x: {
-    label: x_column_scatt
-  },
-  y: {
-    label: y_column_scatt
-  },
-  color: {
-    domain: [1, 0], // Assuming "diagnosis" has binary labels like "positive" and "negative"
-    range: ["blue", "orange"], // Use contrasting colors like blue and orange
-    legend: true // Shows a legend for the binary categories
-  }
-})
-```
 
 
 $\,$
