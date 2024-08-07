@@ -22,6 +22,7 @@ book:
     - 04_Section_4.qmd
     - 05_Section_5.qmd
     - 06_Section_6.qmd
+    - 07_Section_7.qmd
 
 
 include-after-body:

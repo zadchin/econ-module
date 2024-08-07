@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./07_Section_7.html" rel="next">
 <link href="./05_Section_5.html" rel="prev">
 <link href="./assets/img/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -232,7 +233,7 @@ globalThis.qpyodideCustomizedPyodideOptions = {
 }
 
 // Store cell data
-globalThis.qpyodideCellDetails = [{"code":"import pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix\n\ndata_url = \"https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv\"\ndata = pd.read_csv(data_url)\nfeatures = data.drop(\"Risk_Flag\", axis = 1) \ntarget = data.Risk_Flag \nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\nprint(\"X train shape: \", X_train.shape)\nprint(\"X test shape: \", X_test.shape)","id":1,"options":{"message":"true","fig-width":7,"context":"interactive","fig-height":5,"results":"markup","out-width":"700px","warning":"true","output":"true","classes":"","read-only":"false","comment":"","dpi":72,"autorun":"","label":"","out-height":"","fig-cap":""}},{"code":"import numpy as np\nRF_model = RandomForestClassifier(n_estimators=100, max_depth=None,\n                                  class_weight=\"balanced\")\nRF_model = RF_model.fit(X_train, y_train)\ny_pred_RF = RF_model.predict(X_test)\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_RF), 2))\nprint(\"Precision: \",np.round(precision_score(y_test, y_pred_RF), 2))\nprint(\"Recall: \",np.round(recall_score(y_test, y_pred_RF), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_RF), 2))","id":2,"options":{"message":"true","fig-width":7,"context":"interactive","fig-height":5,"results":"markup","out-width":"700px","warning":"true","output":"true","classes":"","read-only":"false","comment":"","dpi":72,"autorun":"","label":"","out-height":"","fig-cap":""}}];
+globalThis.qpyodideCellDetails = [{"options":{"output":"true","label":"","dpi":72,"warning":"true","message":"true","results":"markup","context":"interactive","autorun":"","classes":"","comment":"","out-height":"","fig-width":7,"fig-cap":"","fig-height":5,"read-only":"false","out-width":"700px"},"code":"import pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix\n\ndata_url = \"https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv\"\ndata = pd.read_csv(data_url)\nfeatures = data.drop(\"Risk_Flag\", axis = 1) \ntarget = data.Risk_Flag \nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\nprint(\"X train shape: \", X_train.shape)\nprint(\"X test shape: \", X_test.shape)","id":1},{"options":{"output":"true","label":"","dpi":72,"warning":"true","message":"true","results":"markup","context":"interactive","autorun":"","classes":"","comment":"","out-height":"","fig-width":7,"fig-cap":"","fig-height":5,"read-only":"false","out-width":"700px"},"code":"import numpy as np\nRF_model = RandomForestClassifier(n_estimators=200, max_depth=None,\n                                  class_weight=\"balanced\")\nRF_model = RF_model.fit(X_train, y_train)\ny_pred_RF = RF_model.predict(X_test)\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_RF), 2))\nprint(\"Precision: \",np.round(precision_score(y_test, y_pred_RF), 2))\nprint(\"Recall: \",np.round(recall_score(y_test, y_pred_RF), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_RF), 2))","id":2}];
 
 
 </script>
@@ -545,6 +546,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./06_Section_6.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Random Forest</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_Section_7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">XGBoost</span></span></a>
   </div>
 </li>
     </ul>
@@ -1260,6 +1267,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./07_Section_7.html" class="pagination-link" aria-label="XGBoost">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">XGBoost</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

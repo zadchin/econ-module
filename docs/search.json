@@ -338,5 +338,55 @@
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Random Forest</span>"
     ]
+  },
+  {
+    "objectID": "07_Section_7.html",
+    "href": "07_Section_7.html",
+    "title": "8  XGBoost",
+    "section": "",
+    "text": "8.1 XGBoost\nXGBoost (Extreme Gradient Boosting) is an advanced implementation of gradient boosting for supervised learning. It is designed to be highly efficient, flexible, and portable, enhancing performance by using more accurate approximations to find the best tree model. XGBoost builds multiple decision trees sequentially, where each tree tries to correct the errors of the previous one, improving accuracy by focusing on hard-to-predict instances.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>XGBoost</span>"
+    ]
+  },
+  {
+    "objectID": "07_Section_7.html#xgboost",
+    "href": "07_Section_7.html#xgboost",
+    "title": "8  XGBoost",
+    "section": "",
+    "text": "8.1.1 Key Differences from Random Forest:\n\nGradient Boosting: XGBoost uses gradient boosting, which builds trees sequentially to correct errors from previous trees, while Random Forest builds trees independently and combines their results.\nRegularization: XGBoost includes regularization parameters to control overfitting, providing more precise control over the model complexity.\nHandling Missing Data: XGBoost has a built-in method for handling missing data during training.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>XGBoost</span>"
+    ]
+  },
+  {
+    "objectID": "07_Section_7.html#train-test-split",
+    "href": "07_Section_7.html#train-test-split",
+    "title": "8  XGBoost",
+    "section": "8.2 Train-Test Split",
+    "text": "8.2 Train-Test Split\nSimilar to our approach under Random Forest, we will perform a train-test split first.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>XGBoost</span>"
+    ]
+  },
+  {
+    "objectID": "07_Section_7.html#algorithm",
+    "href": "07_Section_7.html#algorithm",
+    "title": "8  XGBoost",
+    "section": "8.3 Algorithm",
+    "text": "8.3 Algorithm\nNext, we will run an XGBoost classifier on our training dataset, then compute the performance metrics using our test dataset.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>XGBoost</span>"
+    ]
+  },
+  {
+    "objectID": "07_Section_7.html#discussion-what-are-the-pros-and-cons-of-xgboost",
+    "href": "07_Section_7.html#discussion-what-are-the-pros-and-cons-of-xgboost",
+    "title": "8  XGBoost",
+    "section": "8.4 Discussion: What are the pros and cons of XGBoost?",
+    "text": "8.4 Discussion: What are the pros and cons of XGBoost?\n\\(\\,\\)",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>XGBoost</span>"
+    ]
   }
 ]

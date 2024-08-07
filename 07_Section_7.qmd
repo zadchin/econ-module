@@ -1,0 +1,57 @@
+---
+title: XGBoost
+format: html
+navbar: false
+filters:
+  - pyodide
+---
+
+## XGBoost
+
+XGBoost (Extreme Gradient Boosting) is an advanced implementation of gradient boosting for supervised learning. It is designed to be highly efficient, flexible, and portable, enhancing performance by using more accurate approximations to find the best tree model. XGBoost builds multiple decision trees sequentially, where each tree tries to correct the errors of the previous one, improving accuracy by focusing on hard-to-predict instances.
+
+![](assets/img/xgboost.png)
+
+### Key Differences from Random Forest:
+
+- Gradient Boosting: XGBoost uses gradient boosting, which builds trees sequentially to correct errors from previous trees, while Random Forest builds trees independently and combines their results.
+- Regularization: XGBoost includes regularization parameters to control overfitting, providing more precise control over the model complexity.
+- Handling Missing Data: XGBoost has a built-in method for handling missing data during training.
+
+## Train-Test Split
+
+Similar to our approach under Random Forest, we will perform a train-test split first.
+
+```{pyodide-python}
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from xgboost import XGBClassifier
+from sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix
+
+data_url = "https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv"
+data = pd.read_csv(data_url)
+features = data.drop("Risk_Flag", axis = 1) 
+target = data.Risk_Flag 
+X_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)
+print("X train shape: ", X_train.shape)
+print("X test shape: ", X_test.shape)
+```
+
+## Algorithm
+
+Next, we will run an XGBoost classifier on our training dataset, then compute the performance metrics using our test dataset.
+
+```{pyodide-python}
+import numpy as np
+XGB_model = XGBClassifier(n_estimators=200, max_depth=None, scale_pos_weight=1)
+XGB_model = XGB_model.fit(X_train, y_train)
+y_pred_XGB = XGB_model.predict(X_test)
+print("Accuracy: ", np.round(accuracy_score(y_test, y_pred_XGB), 2))
+print("Precision: ", np.round(precision_score(y_test, y_pred_XGB), 2))
+print("Recall: ", np.round(recall_score(y_test, y_pred_XGB), 2))
+print("F1 Score: ", np.round(f1_score(y_test, y_pred_XGB), 2))
+```
+
+## Discussion: What are the pros and cons of XGBoost?
+
+$\,$

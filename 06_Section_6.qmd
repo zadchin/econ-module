@@ -45,7 +45,7 @@ Next, we will run a Random Forest classifier on our training dataset, then compu
 
 ```{pyodide-python}
 import numpy as np
-RF_model = RandomForestClassifier(n_estimators=100, max_depth=None,
+RF_model = RandomForestClassifier(n_estimators=200, max_depth=None,
                                   class_weight="balanced")
 RF_model = RF_model.fit(X_train, y_train)
 y_pred_RF = RF_model.predict(X_test)

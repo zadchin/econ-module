@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Decision Tree – Predicting Loan Defaults</title>
+<title>8&nbsp; XGBoost – Predicting Loan Defaults</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./06_Section_6.html" rel="next">
-<link href="./04_Section_4.html" rel="prev">
+<link href="./06_Section_6.html" rel="prev">
 <link href="./assets/img/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -233,7 +232,7 @@ globalThis.qpyodideCustomizedPyodideOptions = {
 }
 
 // Store cell data
-globalThis.qpyodideCellDetails = [{"id":1,"options":{"autorun":"","message":"true","fig-width":7,"warning":"true","output":"true","results":"markup","fig-cap":"","read-only":"false","classes":"","dpi":72,"context":"interactive","fig-height":5,"label":"","out-width":"700px","comment":"","out-height":""},"code":"import pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn import tree\nfrom sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix\n\ndata_url = \"https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv\"\ndata = pd.read_csv(data_url)\nfeatures = data.drop(\"Risk_Flag\", axis = 1) \ntarget = data.Risk_Flag \nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\nprint(\"X train shape: \", X_train.shape)\nprint(\"X test shape: \", X_test.shape)"},{"id":2,"options":{"autorun":"","message":"true","fig-width":7,"warning":"true","output":"true","results":"markup","fig-cap":"","read-only":"false","classes":"","dpi":72,"context":"interactive","fig-height":5,"label":"","out-width":"700px","comment":"","out-height":""},"code":"import numpy as np\nDT_model = tree.DecisionTreeClassifier(max_leaf_nodes=3, max_depth=None,\n                                  class_weight=\"balanced\")\nDT_model = DT_model.fit(X_train, y_train)\ny_pred_DT = DT_model.predict(X_test)\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_DT), 2))\nprint(\"Precision: \",np.round(precision_score(y_test, y_pred_DT), 2))\nprint(\"Recall: \",np.round(recall_score(y_test, y_pred_DT), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_DT), 2))"},{"id":3,"options":{"autorun":"","message":"true","fig-width":7,"warning":"true","output":"true","results":"markup","fig-cap":"","read-only":"false","classes":"","dpi":72,"context":"interactive","fig-height":5,"label":"","out-width":"700px","comment":"","out-height":""},"code":"feature_names = list(X_train.columns)\ntext_representation = tree.export_text(DT_model, feature_names=feature_names)\nprint(text_representation)"}];
+globalThis.qpyodideCellDetails = [{"id":1,"options":{"message":"true","comment":"","out-height":"","output":"true","warning":"true","dpi":72,"autorun":"","classes":"","read-only":"false","results":"markup","context":"interactive","fig-height":5,"fig-width":7,"fig-cap":"","out-width":"700px","label":""},"code":"import pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom xgboost import XGBClassifier\nfrom sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix\n\ndata_url = \"https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv\"\ndata = pd.read_csv(data_url)\nfeatures = data.drop(\"Risk_Flag\", axis = 1) \ntarget = data.Risk_Flag \nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\nprint(\"X train shape: \", X_train.shape)\nprint(\"X test shape: \", X_test.shape)"},{"id":2,"options":{"message":"true","comment":"","out-height":"","output":"true","warning":"true","dpi":72,"autorun":"","classes":"","read-only":"false","results":"markup","context":"interactive","fig-height":5,"fig-width":7,"fig-cap":"","out-width":"700px","label":""},"code":"import numpy as np\nXGB_model = XGBClassifier(n_estimators=200, max_depth=None, scale_pos_weight=1)\nXGB_model = XGB_model.fit(X_train, y_train)\ny_pred_XGB = XGB_model.predict(X_test)\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_XGB), 2))\nprint(\"Precision: \", np.round(precision_score(y_test, y_pred_XGB), 2))\nprint(\"Recall: \", np.round(recall_score(y_test, y_pred_XGB), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_XGB), 2))"}];
 
 
 </script>
@@ -466,7 +465,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05_Section_5.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Decision Tree</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07_Section_7.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">XGBoost</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -538,7 +537,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05_Section_5.html" class="sidebar-item-text sidebar-link active">
+  <a href="./05_Section_5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Decision Tree</span></span></a>
   </div>
 </li>
@@ -550,7 +549,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_Section_7.html" class="sidebar-item-text sidebar-link">
+  <a href="./07_Section_7.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">XGBoost</span></span></a>
   </div>
 </li>
@@ -564,11 +563,13 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#decision-tree" id="toc-decision-tree" class="nav-link active" data-scroll-target="#decision-tree"><span class="header-section-number">6.1</span> Decision Tree</a></li>
-  <li><a href="#train-test-split" id="toc-train-test-split" class="nav-link" data-scroll-target="#train-test-split"><span class="header-section-number">6.2</span> Train-Test Split</a></li>
-  <li><a href="#algorithm" id="toc-algorithm" class="nav-link" data-scroll-target="#algorithm"><span class="header-section-number">6.3</span> Algorithm</a></li>
-  <li><a href="#discussion-what-is-the-pro-and-cons-of-deciscion-tree" id="toc-discussion-what-is-the-pro-and-cons-of-deciscion-tree" class="nav-link" data-scroll-target="#discussion-what-is-the-pro-and-cons-of-deciscion-tree"><span class="header-section-number">6.4</span> Discussion: What is the pro and cons of deciscion tree?</a></li>
-  <li><a href="#visualizing-the-tree" id="toc-visualizing-the-tree" class="nav-link" data-scroll-target="#visualizing-the-tree"><span class="header-section-number">6.5</span> Visualizing the tree</a></li>
+  <li><a href="#xgboost" id="toc-xgboost" class="nav-link active" data-scroll-target="#xgboost"><span class="header-section-number">8.1</span> XGBoost</a>
+  <ul class="collapse">
+  <li><a href="#key-differences-from-random-forest" id="toc-key-differences-from-random-forest" class="nav-link" data-scroll-target="#key-differences-from-random-forest"><span class="header-section-number">8.1.1</span> Key Differences from Random Forest:</a></li>
+  </ul></li>
+  <li><a href="#train-test-split" id="toc-train-test-split" class="nav-link" data-scroll-target="#train-test-split"><span class="header-section-number">8.2</span> Train-Test Split</a></li>
+  <li><a href="#algorithm" id="toc-algorithm" class="nav-link" data-scroll-target="#algorithm"><span class="header-section-number">8.3</span> Algorithm</a></li>
+  <li><a href="#discussion-what-are-the-pros-and-cons-of-xgboost" id="toc-discussion-what-are-the-pros-and-cons-of-xgboost" class="nav-link" data-scroll-target="#discussion-what-are-the-pros-and-cons-of-xgboost"><span class="header-section-number">8.4</span> Discussion: What are the pros and cons of XGBoost?</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/zadchin/CS50Section/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -644,7 +645,7 @@ $$
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Decision Tree</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">XGBoost</span></h1>
 </div>
 
 
@@ -661,30 +662,33 @@ $$
 </header>
 
 
-<section id="decision-tree" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="decision-tree"><span class="header-section-number">6.1</span> Decision Tree</h2>
-<p>Decision trees are tree-like models that make decisions based on asking a series of questions about the features of the data. Starting from a root node, the tree splits the data into subsets based on the most significant attribute at each step. This process continues recursively, forming branches and leaves, until a stopping criterion is met. The leaf nodes represent the final decisions or predictions. A simple decision tree classifying heart disease is as follow:</p>
-<p><img src="assets/img/decisiontree.png" class="img-fluid"></p>
+<section id="xgboost" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="xgboost"><span class="header-section-number">8.1</span> XGBoost</h2>
+<p>XGBoost (Extreme Gradient Boosting) is an advanced implementation of gradient boosting for supervised learning. It is designed to be highly efficient, flexible, and portable, enhancing performance by using more accurate approximations to find the best tree model. XGBoost builds multiple decision trees sequentially, where each tree tries to correct the errors of the previous one, improving accuracy by focusing on hard-to-predict instances.</p>
+<p><img src="assets/img/xgboost.png" class="img-fluid"></p>
+<section id="key-differences-from-random-forest" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="key-differences-from-random-forest"><span class="header-section-number">8.1.1</span> Key Differences from Random Forest:</h3>
+<ul>
+<li>Gradient Boosting: XGBoost uses gradient boosting, which builds trees sequentially to correct errors from previous trees, while Random Forest builds trees independently and combines their results.</li>
+<li>Regularization: XGBoost includes regularization parameters to control overfitting, providing more precise control over the model complexity.</li>
+<li>Handling Missing Data: XGBoost has a built-in method for handling missing data during training.</li>
+</ul>
 </section>
-<section id="train-test-split" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="train-test-split"><span class="header-section-number">6.2</span> Train-Test Split</h2>
-<p>As we have done previosuly under logistic regression, we will first perform a train-test split.</p>
+</section>
+<section id="train-test-split" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="train-test-split"><span class="header-section-number">8.2</span> Train-Test Split</h2>
+<p>Similar to our approach under Random Forest, we will perform a train-test split first.</p>
 <div id="qpyodide-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="algorithm" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="algorithm"><span class="header-section-number">6.3</span> Algorithm</h2>
-<p>Next, we will run decision treeon our training dataset, then compute the performance of the metrics using our dataset and then</p>
+<section id="algorithm" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="algorithm"><span class="header-section-number">8.3</span> Algorithm</h2>
+<p>Next, we will run an XGBoost classifier on our training dataset, then compute the performance metrics using our test dataset.</p>
 <div id="qpyodide-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="discussion-what-is-the-pro-and-cons-of-deciscion-tree" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="discussion-what-is-the-pro-and-cons-of-deciscion-tree"><span class="header-section-number">6.4</span> Discussion: What is the pro and cons of deciscion tree?</h2>
-</section>
-<section id="visualizing-the-tree" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="visualizing-the-tree"><span class="header-section-number">6.5</span> Visualizing the tree</h2>
-<div id="qpyodide-insertion-location-3"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<section id="discussion-what-are-the-pros-and-cons-of-xgboost" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="discussion-what-are-the-pros-and-cons-of-xgboost"><span class="header-section-number">8.4</span> Discussion: What are the pros and cons of XGBoost?</h2>
 <p><span class="math inline">\(\,\)</span></p>
 
 
@@ -1257,14 +1261,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./04_Section_4.html" class="pagination-link" aria-label="Logistic Regression">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span>
+      <a href="./06_Section_6.html" class="pagination-link" aria-label="Random Forest">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Random Forest</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./06_Section_6.html" class="pagination-link" aria-label="Random Forest">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Random Forest</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
