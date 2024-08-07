@@ -13,43 +13,48 @@ Decision trees are tree-like models that make decisions based on asking a series
 ![](assets/img/decisiontree.png)
 
 
-## Train-Test Split
+## Implementation of Algorithm
 
-As we have done previosuly under logistic regression, we will first perform a train-test split.
+Next, we will run deciscion tree on our training dataset, then compute the performance of the metrics using our dataset.
 
 ```{pyodide-python}
+# importing libraries
+import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn import tree
 from sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix
 
+# reading data and defining features
 data_url = "https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv"
 data = pd.read_csv(data_url)
 features = data.drop("Risk_Flag", axis = 1) 
 target = data.Risk_Flag 
+
+# train-test split
 X_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)
+
+# print to make sure train-test split is completed
 print("X train shape: ", X_train.shape)
 print("X test shape: ", X_test.shape)
-```
 
-
-## Algorithm
-
-
-Next, we will run decision treeon our training dataset, then compute the performance of the metrics using our dataset and then 
-
-
-```{pyodide-python}
-import numpy as np
+# Call on decision tree function imported
 DT_model = tree.DecisionTreeClassifier(max_leaf_nodes=3, max_depth=None,
                                   class_weight="balanced")
+
+# Train the model on X_train, y_train (training data)
 DT_model = DT_model.fit(X_train, y_train)
+
+# Test the model on X_test (testing data)
 y_pred_DT = DT_model.predict(X_test)
+
+# Print result
 print("Accuracy: ", np.round(accuracy_score(y_test, y_pred_DT), 2))
 print("Precision: ",np.round(precision_score(y_test, y_pred_DT), 2))
 print("Recall: ",np.round(recall_score(y_test, y_pred_DT), 2))
 print("F1 Score: ", np.round(f1_score(y_test, y_pred_DT), 2))
 ```
+
 
 ## Discussion: What is the pro and cons of deciscion tree?
 

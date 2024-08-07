@@ -214,7 +214,7 @@
     "href": "04_Section_4.html#implementation-of-algorithm",
     "title": "5  Logistic Regression",
     "section": "5.2 Implementation of Algorithm",
-    "text": "5.2 Implementation of Algorithm\nNext, we will run logistic regression on our training dataset, then compute the performance of the metrics using our dataset and then\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "5.2 Implementation of Algorithm\nNext, we will run logistic regression on our training dataset, then compute the performance of the metrics using our dataset.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Logistic Regression</span>"
     ]
@@ -250,21 +250,11 @@
     ]
   },
   {
-    "objectID": "05_Section_5.html#train-test-split",
-    "href": "05_Section_5.html#train-test-split",
+    "objectID": "05_Section_5.html#implementation-of-algorithm",
+    "href": "05_Section_5.html#implementation-of-algorithm",
     "title": "6  Decision Tree",
-    "section": "6.2 Train-Test Split",
-    "text": "6.2 Train-Test Split\nAs we have done previosuly under logistic regression, we will first perform a train-test split.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Decision Tree</span>"
-    ]
-  },
-  {
-    "objectID": "05_Section_5.html#algorithm",
-    "href": "05_Section_5.html#algorithm",
-    "title": "6  Decision Tree",
-    "section": "6.3 Algorithm",
-    "text": "6.3 Algorithm\nNext, we will run decision treeon our training dataset, then compute the performance of the metrics using our dataset and then\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "section": "6.2 Implementation of Algorithm",
+    "text": "6.2 Implementation of Algorithm\nNext, we will run deciscion tree on our training dataset, then compute the performance of the metrics using our dataset.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Decision Tree</span>"
     ]
@@ -273,8 +263,8 @@
     "objectID": "05_Section_5.html#discussion-what-is-the-pro-and-cons-of-deciscion-tree",
     "href": "05_Section_5.html#discussion-what-is-the-pro-and-cons-of-deciscion-tree",
     "title": "6  Decision Tree",
-    "section": "6.4 Discussion: What is the pro and cons of deciscion tree?",
-    "text": "6.4 Discussion: What is the pro and cons of deciscion tree?",
+    "section": "6.3 Discussion: What is the pro and cons of deciscion tree?",
+    "text": "6.3 Discussion: What is the pro and cons of deciscion tree?",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Decision Tree</span>"
     ]
@@ -283,8 +273,8 @@
     "objectID": "05_Section_5.html#visualizing-the-tree",
     "href": "05_Section_5.html#visualizing-the-tree",
     "title": "6  Decision Tree",
-    "section": "6.5 Visualizing the tree",
-    "text": "6.5 Visualizing the tree\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\\(\\,\\)",
+    "section": "6.4 Visualizing the tree",
+    "text": "6.4 Visualizing the tree\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\\(\\,\\)",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Decision Tree</span>"
     ]
@@ -310,21 +300,11 @@
     ]
   },
   {
-    "objectID": "06_Section_6.html#train-test-split",
-    "href": "06_Section_6.html#train-test-split",
+    "objectID": "06_Section_6.html#implementation-of-algorithm",
+    "href": "06_Section_6.html#implementation-of-algorithm",
     "title": "7  Random Forest",
-    "section": "7.2 Train-Test Split",
-    "text": "7.2 Train-Test Split\nAs we have done previously under logistic regression, we will first perform a train-test split.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Random Forest</span>"
-    ]
-  },
-  {
-    "objectID": "06_Section_6.html#algorithm",
-    "href": "06_Section_6.html#algorithm",
-    "title": "7  Random Forest",
-    "section": "7.3 Algorithm",
-    "text": "7.3 Algorithm\nNext, we will run a Random Forest classifier on our training dataset, then compute the performance of the metrics using our dataset.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "section": "7.2 Implementation of Algorithm",
+    "text": "7.2 Implementation of Algorithm\nNext, we will run random forest on our training dataset, then compute the performance of the metrics using our dataset.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Random Forest</span>"
     ]
@@ -333,8 +313,8 @@
     "objectID": "06_Section_6.html#discussion-what-are-the-pros-and-cons-of-random-forest",
     "href": "06_Section_6.html#discussion-what-are-the-pros-and-cons-of-random-forest",
     "title": "7  Random Forest",
-    "section": "7.4 Discussion: What are the pros and cons of Random Forest?",
-    "text": "7.4 Discussion: What are the pros and cons of Random Forest?\n\\(\\,\\)",
+    "section": "7.3 Discussion: What are the pros and cons of Random Forest?",
+    "text": "7.3 Discussion: What are the pros and cons of Random Forest?\n\\(\\,\\)",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Random Forest</span>"
     ]
@@ -360,21 +340,11 @@
     ]
   },
   {
-    "objectID": "07_Section_7.html#train-test-split",
-    "href": "07_Section_7.html#train-test-split",
+    "objectID": "07_Section_7.html#implementation-of-algorithm",
+    "href": "07_Section_7.html#implementation-of-algorithm",
     "title": "8  XGBoost",
-    "section": "8.2 Train-Test Split",
-    "text": "8.2 Train-Test Split\nSimilar to our approach under Random Forest, we will perform a train-test split first.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>XGBoost</span>"
-    ]
-  },
-  {
-    "objectID": "07_Section_7.html#algorithm",
-    "href": "07_Section_7.html#algorithm",
-    "title": "8  XGBoost",
-    "section": "8.3 Algorithm",
-    "text": "8.3 Algorithm\nNext, we will run an XGBoost classifier on our training dataset, then compute the performance metrics using our test dataset.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "section": "8.2 Implementation of Algorithm",
+    "text": "8.2 Implementation of Algorithm\nNext, we will run XGBoost on our training dataset, then compute the performance of the metrics using our dataset.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>XGBoost</span>"
     ]
@@ -383,8 +353,8 @@
     "objectID": "07_Section_7.html#discussion-what-are-the-pros-and-cons-of-xgboost",
     "href": "07_Section_7.html#discussion-what-are-the-pros-and-cons-of-xgboost",
     "title": "8  XGBoost",
-    "section": "8.4 Discussion: What are the pros and cons of XGBoost?",
-    "text": "8.4 Discussion: What are the pros and cons of XGBoost?\n\\(\\,\\)",
+    "section": "8.3 Discussion: What are the pros and cons of XGBoost?",
+    "text": "8.3 Discussion: What are the pros and cons of XGBoost?\n\\(\\,\\)",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>XGBoost</span>"
     ]

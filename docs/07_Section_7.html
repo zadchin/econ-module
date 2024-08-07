@@ -232,7 +232,7 @@ globalThis.qpyodideCustomizedPyodideOptions = {
 }
 
 // Store cell data
-globalThis.qpyodideCellDetails = [{"id":1,"options":{"message":"true","comment":"","out-height":"","output":"true","warning":"true","dpi":72,"autorun":"","classes":"","read-only":"false","results":"markup","context":"interactive","fig-height":5,"fig-width":7,"fig-cap":"","out-width":"700px","label":""},"code":"import pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom xgboost import XGBClassifier\nfrom sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix\n\ndata_url = \"https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv\"\ndata = pd.read_csv(data_url)\nfeatures = data.drop(\"Risk_Flag\", axis = 1) \ntarget = data.Risk_Flag \nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\nprint(\"X train shape: \", X_train.shape)\nprint(\"X test shape: \", X_test.shape)"},{"id":2,"options":{"message":"true","comment":"","out-height":"","output":"true","warning":"true","dpi":72,"autorun":"","classes":"","read-only":"false","results":"markup","context":"interactive","fig-height":5,"fig-width":7,"fig-cap":"","out-width":"700px","label":""},"code":"import numpy as np\nXGB_model = XGBClassifier(n_estimators=200, max_depth=None, scale_pos_weight=1)\nXGB_model = XGB_model.fit(X_train, y_train)\ny_pred_XGB = XGB_model.predict(X_test)\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_XGB), 2))\nprint(\"Precision: \", np.round(precision_score(y_test, y_pred_XGB), 2))\nprint(\"Recall: \", np.round(recall_score(y_test, y_pred_XGB), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_XGB), 2))"}];
+globalThis.qpyodideCellDetails = [{"id":1,"options":{"classes":"","message":"true","warning":"true","comment":"","fig-width":7,"out-height":"","fig-height":5,"context":"interactive","out-width":"700px","read-only":"false","results":"markup","label":"","autorun":"","dpi":72,"output":"true","fig-cap":""},"code":"## importing libraries\nimport pandas as pd\nimport numpy as np\nfrom sklearn.model_selection import train_test_split\nfrom xgboost import XGBClassifier\nfrom sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix\n\n# reading data and defining features\ndata_url = \"https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv\"\ndata = pd.read_csv(data_url)\nfeatures = data.drop(\"Risk_Flag\", axis = 1) \ntarget = data.Risk_Flag \n\n# train-test split\nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\n\n# print to make sure train-test split is completed\nprint(\"X train shape: \", X_train.shape)\nprint(\"X test shape: \", X_test.shape)\n\n# Call on XGBoost function imported\nXGB_model = XGBClassifier(n_estimators=200, max_depth=None, scale_pos_weight=1)\n\n# Train the model on X_train, y_train (training data)\nXGB_model = XGB_model.fit(X_train, y_train)\n\n# Test the model on X_test (testing data)\ny_pred_XGB = XGB_model.predict(X_test)\n\n# Print result\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_XGB), 2))\nprint(\"Precision: \", np.round(precision_score(y_test, y_pred_XGB), 2))\nprint(\"Recall: \", np.round(recall_score(y_test, y_pred_XGB), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_XGB), 2))"}];
 
 
 </script>
@@ -567,9 +567,8 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#key-differences-from-random-forest" id="toc-key-differences-from-random-forest" class="nav-link" data-scroll-target="#key-differences-from-random-forest"><span class="header-section-number">8.1.1</span> Key Differences from Random Forest:</a></li>
   </ul></li>
-  <li><a href="#train-test-split" id="toc-train-test-split" class="nav-link" data-scroll-target="#train-test-split"><span class="header-section-number">8.2</span> Train-Test Split</a></li>
-  <li><a href="#algorithm" id="toc-algorithm" class="nav-link" data-scroll-target="#algorithm"><span class="header-section-number">8.3</span> Algorithm</a></li>
-  <li><a href="#discussion-what-are-the-pros-and-cons-of-xgboost" id="toc-discussion-what-are-the-pros-and-cons-of-xgboost" class="nav-link" data-scroll-target="#discussion-what-are-the-pros-and-cons-of-xgboost"><span class="header-section-number">8.4</span> Discussion: What are the pros and cons of XGBoost?</a></li>
+  <li><a href="#implementation-of-algorithm" id="toc-implementation-of-algorithm" class="nav-link" data-scroll-target="#implementation-of-algorithm"><span class="header-section-number">8.2</span> Implementation of Algorithm</a></li>
+  <li><a href="#discussion-what-are-the-pros-and-cons-of-xgboost" id="toc-discussion-what-are-the-pros-and-cons-of-xgboost" class="nav-link" data-scroll-target="#discussion-what-are-the-pros-and-cons-of-xgboost"><span class="header-section-number">8.3</span> Discussion: What are the pros and cons of XGBoost?</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/zadchin/CS50Section/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -675,20 +674,14 @@ $$
 </ul>
 </section>
 </section>
-<section id="train-test-split" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="train-test-split"><span class="header-section-number">8.2</span> Train-Test Split</h2>
-<p>Similar to our approach under Random Forest, we will perform a train-test split first.</p>
+<section id="implementation-of-algorithm" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="implementation-of-algorithm"><span class="header-section-number">8.2</span> Implementation of Algorithm</h2>
+<p>Next, we will run XGBoost on our training dataset, then compute the performance of the metrics using our dataset.</p>
 <div id="qpyodide-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="algorithm" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="algorithm"><span class="header-section-number">8.3</span> Algorithm</h2>
-<p>Next, we will run an XGBoost classifier on our training dataset, then compute the performance metrics using our test dataset.</p>
-<div id="qpyodide-insertion-location-2"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="discussion-what-are-the-pros-and-cons-of-xgboost" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="discussion-what-are-the-pros-and-cons-of-xgboost"><span class="header-section-number">8.4</span> Discussion: What are the pros and cons of XGBoost?</h2>
+<section id="discussion-what-are-the-pros-and-cons-of-xgboost" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="discussion-what-are-the-pros-and-cons-of-xgboost"><span class="header-section-number">8.3</span> Discussion: What are the pros and cons of XGBoost?</h2>
 <p><span class="math inline">\(\,\)</span></p>
 
 

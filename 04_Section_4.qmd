@@ -30,7 +30,7 @@ A visualization of logistic regression compared to linear regression is as follo
 ## Implementation of Algorithm
 
 
-Next, we will run logistic regression on our training dataset, then compute the performance of the metrics using our dataset and then 
+Next, we will run logistic regression on our training dataset, then compute the performance of the metrics using our dataset.
 
 
 ```{pyodide-python}
@@ -44,26 +44,29 @@ from sklearn.metrics import precision_score, accuracy_score, recall_score, f1_sc
 # reading data and defining features
 data_url = "https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv"
 data = pd.read_csv(data_url)
-features = data.drop("Risk_Flag", axis = 1) 
+
+## target is the Risk_Flag column in our data
 target = data.Risk_Flag 
+## features will exclude the target
+features = data.drop("Risk_Flag", axis = 1) 
 
 # train-test split
 X_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)
 
-# print to make sure train-test split suggest
+# print to make sure train-test split is completed
 print("X train shape: ", X_train.shape)
 print("X test shape: ", X_test.shape)
 
-# call on logistic regression function imported
+# Call on logistic regression function imported
 LR_model = LogisticRegression(max_iter=10000, C=1.0, class_weight="balanced")
 
-# train the model
+# Train the model on X_train, y_train (training data)
 LR_model.fit(X_train, y_train)
 
-# test the model
+# Test the model on X_test (testing data)
 y_pred_LR = LR_model.predict(X_test)
 
-# print result
+# Print result
 print("Accuracy: ", np.round(accuracy_score(y_test, y_pred_LR), 2))
 print("Precision: ",np.round(precision_score(y_test, y_pred_LR), 2))
 print("Recall: ", np.round(recall_score(y_test, y_pred_LR), 2))
