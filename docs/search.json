@@ -10,33 +10,23 @@
     ]
   },
   {
-    "objectID": "index.html#background",
-    "href": "index.html#background",
-    "title": "AI for Pancreas Cancer",
-    "section": "",
-    "text": "Healthy controls\nPatients with non-cancerous pancreatic conditions, like chronic pancreatitis\nPatients with pancreatic ductal adenocarcinoma",
+    "objectID": "index.html#discussion-1",
+    "href": "index.html#discussion-1",
+    "title": "Predicting Loan Defaults",
+    "section": "Discussion (1)",
+    "text": "Discussion (1)\nWhy is it important to predict whether customers will default?\nPlease Wait for the Slido to load",
     "crumbs": [
-      "Background"
+      "Problem Statement"
     ]
   },
   {
-    "objectID": "index.html#the-4-urinary-biomarkers",
-    "href": "index.html#the-4-urinary-biomarkers",
-    "title": "AI for Pancreas Cancer",
-    "section": "The 4 Urinary Biomarkers",
-    "text": "The 4 Urinary Biomarkers\nThe 4 Urinary Biomarkers collected and its description is as follow:\n\nCreatinine is a protein that is often used as an indicator of kidney function.\nYVLE1 is lymphatic vessel endothelial hyaluronan receptor 1, a protein that may play a role in tumor metastasis\nREG1B is a protein that may be associated with pancreas regeneration\nTFF1 is trefoil factor 1, which may be related to regeneration and repair of the urinary tract",
+    "objectID": "index.html#discussion-2",
+    "href": "index.html#discussion-2",
+    "title": "Predicting Loan Defaults",
+    "section": "Discussion (2)",
+    "text": "Discussion (2)\nWhat can we use to predict predict whether customers will default?\n\n\\(\\,\\)",
     "crumbs": [
-      "Background"
-    ]
-  },
-  {
-    "objectID": "index.html#task",
-    "href": "index.html#task",
-    "title": "AI for Pancreas Cancer",
-    "section": "Task",
-    "text": "Task\nOur goal is to build an AI algorithm that can predict patients that has pancreas cancers and those who don’t, as accurately as possible.\nLet’s start by exploring the dataset to understand the task better!\n\\(\\,\\)",
-    "crumbs": [
-      "Background"
+      "Problem Statement"
     ]
   },
   {
@@ -120,6 +110,46 @@
     ]
   },
   {
+    "objectID": "02_5_Section_2.html",
+    "href": "02_5_Section_2.html",
+    "title": "3  Train-Test Split",
+    "section": "",
+    "text": "3.1 Coding in AI: Quick Breakdown\nMoving forward, we will have this framework in mind.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Train-Test Split</span>"
+    ]
+  },
+  {
+    "objectID": "02_5_Section_2.html#coding-in-ai-quick-breakdown",
+    "href": "02_5_Section_2.html#coding-in-ai-quick-breakdown",
+    "title": "3  Train-Test Split",
+    "section": "",
+    "text": "Calling Libraries: Importing libraries is like visiting a library to borrow tools (functions) you need, such as import numpy as np for numerical operations or import tensorflow as tf for deep learning.\nFunction Implementation: This is where you define the specific tasks your code will perform, like training a model or processing data. Functions are reusable blocks of code that perform specific tasks.\nOther Essentials:\n\nConstant Assignment: Setting values that don’t change during execution, like learning rates or thresholds (learning_rate = 0.01).\nPrinting/Debugging: Using print statements to check the output of your code at various stages, ensuring it behaves as expected (print(model.summary())).",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Train-Test Split</span>"
+    ]
+  },
+  {
+    "objectID": "02_5_Section_2.html#brief-outline-of-ai-machine-learning",
+    "href": "02_5_Section_2.html#brief-outline-of-ai-machine-learning",
+    "title": "3  Train-Test Split",
+    "section": "3.2 Brief Outline of AI / Machine Learning",
+    "text": "3.2 Brief Outline of AI / Machine Learning\n\nGetting Data\nAnalyzing Data, in which we did just now.\nTrain-Test Split\nRunning Baseline\nRunning Model\nImprove and Iterate",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Train-Test Split</span>"
+    ]
+  },
+  {
+    "objectID": "02_5_Section_2.html#train-test-split",
+    "href": "02_5_Section_2.html#train-test-split",
+    "title": "3  Train-Test Split",
+    "section": "3.3 Train-Test Split",
+    "text": "3.3 Train-Test Split\nThe train-test split is a technique used in AI to divide a dataset into two parts: one for training the model (learning) and one for testing it (evaluating its performance).\n\n\n\n\n\n\nWhy do you think it’s important to test a model on data it hasn’t seen before, rather than just using the training data to evaluate its performance?\n\n\n\n\n\nWill be released after the section\n\n\n\nHere is the code for train-test split:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\\(\\,\\)",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Train-Test Split</span>"
+    ]
+  },
+  {
     "objectID": "03_Section_3.html",
     "href": "03_Section_3.html",
     "title": "4  Baseline",
@@ -127,36 +157,6 @@
     "text": "4.1 Building Baseline\nA baseline model serves as a simple reference point for evaluating the performance of more complex models. It represents the minimum level of performance that any model should achieve. Common baselines include predicting the most frequent class or random guessing.\nEstablishing a baseline is crucial because it provides a benchmark to compare against. It helps in understanding whether the added complexity of a model is actually improving performance. If a model does not perform better than the baseline, it indicates that the model might not be useful.\nThis is train-test split code to build the baseline models. Do not change the following code. Just run it! :)",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Baseline</span>"
-    ]
-  },
-  {
-    "objectID": "03_Section_3.html#coding-in-ai-quick-breakdown",
-    "href": "03_Section_3.html#coding-in-ai-quick-breakdown",
-    "title": "3  Baseline",
-    "section": "",
-    "text": "Calling Libraries: Importing libraries is like visiting a library to borrow tools (functions) you need, such as import numpy as np for numerical operations or import tensorflow as tf for deep learning.\nFunction Implementation: This is where you define the specific tasks your code will perform, like training a model or processing data. Functions are reusable blocks of code that perform specific tasks.\nOther Essentials:\n\nConstant Assignment: Setting values that don’t change during execution, like learning rates or thresholds (learning_rate = 0.01).\nPrinting/Debugging: Using print statements to check the output of your code at various stages, ensuring it behaves as expected (print(model.summary())).",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Baseline</span>"
-    ]
-  },
-  {
-    "objectID": "03_Section_3.html#brief-outline-of-ai-machine-learning",
-    "href": "03_Section_3.html#brief-outline-of-ai-machine-learning",
-    "title": "3  Baseline",
-    "section": "3.2 Brief Outline of AI / Machine Learning",
-    "text": "3.2 Brief Outline of AI / Machine Learning\n\nGetting Data\nAnalyzing Data, in which we did just now.\nTrain-Test Split\nRunning Baseline\nRunning Model\nImprove and Iterate",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Baseline</span>"
-    ]
-  },
-  {
-    "objectID": "03_Section_3.html#train-test-split",
-    "href": "03_Section_3.html#train-test-split",
-    "title": "3  Baseline",
-    "section": "3.3 Train-Test Split",
-    "text": "3.3 Train-Test Split\nThe train-test split is a technique used in AI to divide a dataset into two parts: one for training the model (learning) and one for testing it (evaluating its performance).\n\n\n\n\n\n\nWhy do you think it’s important to test a model on data it hasn’t seen before, rather than just using the training data to evaluate its performance?\n\n\n\n\n\nWill be released after the section",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Baseline</span>"
     ]
   },
   {
@@ -230,6 +230,16 @@
     ]
   },
   {
+    "objectID": "04_Section_4.html#discussion-what-is-the-pro-and-cons-of-logistic-regression",
+    "href": "04_Section_4.html#discussion-what-is-the-pro-and-cons-of-logistic-regression",
+    "title": "5  Logistic Regression",
+    "section": "5.3 Discussion: What is the pro and cons of logistic regression?",
+    "text": "5.3 Discussion: What is the pro and cons of logistic regression?",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Logistic Regression</span>"
+    ]
+  },
+  {
     "objectID": "04_Section_4.html#feature-importance",
     "href": "04_Section_4.html#feature-importance",
     "title": "5  Logistic Regression",
@@ -270,46 +280,6 @@
     ]
   },
   {
-    "objectID": "05_Section_5.html#visualizing-the-tree",
-    "href": "05_Section_5.html#visualizing-the-tree",
-    "title": "6  Decision Tree",
-    "section": "6.5 Visualizing the tree",
-    "text": "6.5 Visualizing the tree\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\\(\\,\\)",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Decision Tree</span>"
-    ]
-  },
-  {
-    "objectID": "index.html#discuss-why-is-it-important-to-predict-whether-customers-will-default",
-    "href": "index.html#discuss-why-is-it-important-to-predict-whether-customers-will-default",
-    "title": "Predicting Loan Defaults",
-    "section": "Discuss: Why is it important to predict whether customers will default?",
-    "text": "Discuss: Why is it important to predict whether customers will default?\n\n\\(\\,\\)",
-    "crumbs": [
-      "Problem Statement"
-    ]
-  },
-  {
-    "objectID": "index.html#discussion-1",
-    "href": "index.html#discussion-1",
-    "title": "Predicting Loan Defaults",
-    "section": "Discussion (1)",
-    "text": "Discussion (1)\nWhy is it important to predict whether customers will default?\nPlease Wait for the Slido to load",
-    "crumbs": [
-      "Problem Statement"
-    ]
-  },
-  {
-    "objectID": "index.html#discussion-2",
-    "href": "index.html#discussion-2",
-    "title": "Predicting Loan Defaults",
-    "section": "Discussion (2)",
-    "text": "Discussion (2)\nWhat can we use to predict predict whether customers will default?\n\n\\(\\,\\)",
-    "crumbs": [
-      "Problem Statement"
-    ]
-  },
-  {
     "objectID": "05_Section_5.html#discussion-what-is-the-pro-and-cons-of-deciscion-tree",
     "href": "05_Section_5.html#discussion-what-is-the-pro-and-cons-of-deciscion-tree",
     "title": "6  Decision Tree",
@@ -320,53 +290,13 @@
     ]
   },
   {
-    "objectID": "02_5_Section_2.html",
-    "href": "02_5_Section_2.html",
-    "title": "3  Train-Test Split",
-    "section": "",
-    "text": "3.1 Coding in AI: Quick Breakdown\nMoving forward, we will have this framework in mind.",
+    "objectID": "05_Section_5.html#visualizing-the-tree",
+    "href": "05_Section_5.html#visualizing-the-tree",
+    "title": "6  Decision Tree",
+    "section": "6.5 Visualizing the tree",
+    "text": "6.5 Visualizing the tree\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\\(\\,\\)",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Train-Test Split</span>"
-    ]
-  },
-  {
-    "objectID": "02_5_Section_2.html#coding-in-ai-quick-breakdown",
-    "href": "02_5_Section_2.html#coding-in-ai-quick-breakdown",
-    "title": "3  Train-Test Split",
-    "section": "",
-    "text": "Calling Libraries: Importing libraries is like visiting a library to borrow tools (functions) you need, such as import numpy as np for numerical operations or import tensorflow as tf for deep learning.\nFunction Implementation: This is where you define the specific tasks your code will perform, like training a model or processing data. Functions are reusable blocks of code that perform specific tasks.\nOther Essentials:\n\nConstant Assignment: Setting values that don’t change during execution, like learning rates or thresholds (learning_rate = 0.01).\nPrinting/Debugging: Using print statements to check the output of your code at various stages, ensuring it behaves as expected (print(model.summary())).",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Train-Test Split</span>"
-    ]
-  },
-  {
-    "objectID": "02_5_Section_2.html#brief-outline-of-ai-machine-learning",
-    "href": "02_5_Section_2.html#brief-outline-of-ai-machine-learning",
-    "title": "3  Train-Test Split",
-    "section": "3.2 Brief Outline of AI / Machine Learning",
-    "text": "3.2 Brief Outline of AI / Machine Learning\n\nGetting Data\nAnalyzing Data, in which we did just now.\nTrain-Test Split\nRunning Baseline\nRunning Model\nImprove and Iterate",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Train-Test Split</span>"
-    ]
-  },
-  {
-    "objectID": "02_5_Section_2.html#train-test-split",
-    "href": "02_5_Section_2.html#train-test-split",
-    "title": "3  Train-Test Split",
-    "section": "3.3 Train-Test Split",
-    "text": "3.3 Train-Test Split\nThe train-test split is a technique used in AI to divide a dataset into two parts: one for training the model (learning) and one for testing it (evaluating its performance).\n\n\n\n\n\n\nWhy do you think it’s important to test a model on data it hasn’t seen before, rather than just using the training data to evaluate its performance?\n\n\n\n\n\nWill be released after the section\n\n\n\nHere is the code for train-test split:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\\(\\,\\)",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Train-Test Split</span>"
-    ]
-  },
-  {
-    "objectID": "04_Section_4.html#discussion-what-is-the-pro-and-cons-of-logistic-regression",
-    "href": "04_Section_4.html#discussion-what-is-the-pro-and-cons-of-logistic-regression",
-    "title": "5  Logistic Regression",
-    "section": "5.3 Discussion: What is the pro and cons of logistic regression?",
-    "text": "5.3 Discussion: What is the pro and cons of logistic regression?",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Logistic Regression</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Decision Tree</span>"
     ]
   },
   {
