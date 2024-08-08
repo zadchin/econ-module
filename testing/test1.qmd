@@ -1,0 +1,329 @@
+---
+title: "Classifying Pancreatic Cancer"
+execute:
+  echo: false
+format: html
+navbar: false
+filters:
+  - pyodide
+---
+
+## A look at the Dataset
+
+The dataset contains **590** rows and **10** columns. Each row represents a unique patient, and each column provides specific information about the patient's diagnosis, treatment, and other relevant factors.
+
+Here's the dataset:
+
+
+```{r}
+library(readr)
+library(DT)
+data_r <- read_csv("cancer_dataset.csv",show_col_types = FALSE)
+datatable(data_r)
+```
+
+There are 10 columns in the dataset, namely
+
+- *Patient Cohort* : Details which patients cohort a particular patient is from. In our case, there are 2 cohorts, Cohort 1 and Cohort 2
+- *Age* : Details the age of the patient
+- *Sex* : Details the gender of the patient. F stands for Female, M stands for maLE
+- *Diagnosis* : Details the diagnosis of the patient. 1 stands for diagnosed with Pancreatic ductal adenocarcinoma (PDAC) and 0 stands for not-diagnosed with cancer.
+- *plasma CA19_9* : Details the amount of a protein called CA 19-9 in the blood, which is often used in monitoring pancreatic cancer
+- *Creatinine* : Details the level of creatinine of the patient, which is a protein that is often used as an indicator of kidney function.
+- *YVLE1* : Details the level of YVLE1, a urinaly biomarker, which may play a role in tumor metastasis
+- *REG1A* : Details the level of REG1A, which may be associated with pancreas regeneration
+- *REG1B* : Details the level of REG1B, a urinary biomarker, which may be associated with pancreas regeneration
+- *TFF1* : Details the level of trefoil factor 1, which may be related to regeneration and repair of the urinary tract
+
+## Exploratory Data Analysis
+
+### Bar Plot
+
+::: {.callout-tip appearance="simple"}
+Select a categorical column to visualize:
+```{ojs}
+data = FileAttachment("cancer_dataset.csv").csv({ typed: true })
+cat_columns = ['patient_cohort', 'diagnosis', 'sex']
+viewof selected_column_cat = Inputs.radio(cat_columns, {value: cat_columns[0]})
+```
+:::
+
+```{ojs}
+grouped_data = d3.groups(data, d => d[selected_column_cat]).map(([key, values]) => ({key, count: values.length}));
+
+Plot.plot({
+  marks: [
+    Plot.barY(grouped_data, {x: "key", y: "count", fill: "steelblue"}),
+    Plot.text(grouped_data, {x: "key", y: "count", text: d => d.count, dy: -10})
+  ],
+  x: {
+    label: selected_column_cat
+  },
+  y: {
+    label: "Count"
+  },
+  color: {
+    legend: false
+  }
+})
+```
+
+### Histogram
+
+::: {.callout-tip appearance="simple"}
+Select a continuous column to visualize:
+```{ojs}
+cont_columns = ['age', 'LYVE1', 'REG1B', 'TFF1', 'REG1A', 'creatinine', 'plasma_CA19_9']
+viewof selected_column = Inputs.radio(cont_columns, {value: 'LYVE1'})
+viewof bin_count = Inputs.range([1, 50], {step: 1, value: 15, label: "Number of Bins"})
+
+```
+:::
+
+
+```{ojs}
+Plot.plot({
+  marks: [
+    Plot.rectY(data, Plot.binX({y: "count"}, {x: selected_column, fill: "steelblue", thresholds: bin_count}))
+  ],
+  x: {
+    label: selected_column
+  },
+  y: {
+    label: "Count"
+  },
+  color: {
+    legend: false
+  }
+})
+```
+
+### Relationship Aanalysis
+
+#### Between Categorical Variable
+
+::: {.callout-tip appearance="simple"}
+Select a column to compare against diagnosis:
+```{ojs}
+bivariate_cat_columns = ['sex', 'patient_cohort']
+viewof selected_bivariate_cat_column = Inputs.radio(bivariate_cat_columns, {value: bivariate_cat_columns[0]})
+```
+:::
+
+```{ojs}
+function calculateGroupedPercentages(data, groupColumn, stackColumn) {
+  const grouped = d3.rollup(data, v => v.length, d => d[groupColumn], d => d[stackColumn]);
+  const totals = d3.rollup(data, v => v.length, d => d[groupColumn]);
+
+  return Array.from(grouped, ([key, values]) => {
+    const total = totals.get(key);
+    return Array.from(values, ([stackKey, count]) => ({
+      group: key,
+      stack: stackKey,
+      count,
+      percentage: (count / total) * 100
+    }));
+  }).flat();
+}
+
+grouped_bivariate_data = calculateGroupedPercentages(data, "diagnosis", selected_bivariate_cat_column);
+
+Plot.plot({
+  marks: [
+    Plot.barY(grouped_bivariate_data, {
+      x: d => d.group + ":" + d.stack,
+      y: "percentage",
+      fill: "stack",
+      title: d => `${d.stack}: ${d.percentage.toFixed(1)}%`
+    }),
+    Plot.text(grouped_bivariate_data, {
+      x: d => d.group + ":" + d.stack,
+      y: d => d.percentage,
+      text: d => `${d.percentage.toFixed(1)}%`,
+      dy: -4
+    })
+  ],
+  x: {
+    label: "Diagnosis",
+    domain: Array.from(new Set(grouped_bivariate_data.map(d => d.group + ":" + d.stack))),
+    tickFormat: d => d.split(":")[0] // Format ticks to show only the group
+  },
+  y: {
+    label: "Percentage"
+  },
+  color: {
+    legend: true
+  }
+})
+
+```
+
+#### Between Continuous Variables
+
+::: {.callout-tip appearance="simple"}
+Select Continuous Variables for Correlation Heatmap:
+```{ojs}
+bivariate_cont_columns = ['age', 'LYVE1', 'REG1B', 'TFF1', 'REG1A', 'creatinine', 'plasma_CA19_9']
+viewof selected_bivariate_cont_columns = Inputs.checkbox(bivariate_cont_columns, {value: bivariate_cont_columns})
+```
+:::
+
+
+```{ojs}
+function calculateCorrelationMatrix(data, selectedColumns) {
+  const n = selectedColumns.length;
+  const correlationMatrix = Array.from({ length: n }, () => Array(n).fill(0));
+
+  function pearsonCorrelation(x, y) {
+    const meanX = d3.mean(x);
+    const meanY = d3.mean(y);
+    const diffX = x.map(d => d - meanX);
+    const diffY = y.map(d => d - meanY);
+    const numerator = d3.sum(diffX.map((d, i) => d * diffY[i]));
+    const denominator = Math.sqrt(d3.sum(diffX.map(d => d * d)) * d3.sum(diffY.map(d => d * d)));
+    return numerator / denominator;
+  }
+
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      const col1 = selectedColumns[i];
+      const col2 = selectedColumns[j];
+      const values1 = data.map(d => d[col1]);
+      const values2 = data.map(d => d[col2]);
+      const correlation = pearsonCorrelation(values1, values2);
+      correlationMatrix[i][j] = correlation;
+    }
+  }
+
+  return correlationMatrix;
+}
+
+correlation_matrix = calculateCorrelationMatrix(data, selected_bivariate_cont_columns);
+correlation_data = selected_bivariate_cont_columns.flatMap((col1, i) =>
+  selected_bivariate_cont_columns.map((col2, j) => ({
+    x: col1,
+    y: col2,
+    value: correlation_matrix[i][j]
+  }))
+);
+
+Plot.plot({
+  marks: [
+    Plot.cell(correlation_data, {x: "x", y: "y", fill: "value", title: d => d.value.toFixed(2)}),
+    Plot.text(correlation_data, {x: "x", y: "y", text: d => d.value.toFixed(2), dy: 0, textAnchor: "middle"})
+  ],
+  x: {
+    domain: selected_bivariate_cont_columns,
+    label: "Variables"
+  },
+  y: {
+    domain: selected_bivariate_cont_columns,
+    label: "Variables"
+  },
+  color: {
+    type: "linear",
+    scheme: "blues",
+    label: "Correlation"
+  },
+  width: 600,
+  height: 600
+})
+
+
+```
+
+
+## Checkpoint
+::: {.callout-tip collapse="true" appearance="simple"}
+
+## What's our target variable?
+
+Our Target Variable is the diagnosis column. Diagnosis = 0 indicates patient that does not have cancer and diagnosis = 1 indicates that patient is diagnosed with Pancreatic ductal adenocarcinoma (PDAC).
+
+:::
+
+
+## Logistic Regression
+
+In this section, you are tasked to implement a logistic regression to the following data path following the comments in the code block and what we have learnt previously.
+
+```{pyodide-python}
+# importing libraries
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix
+
+
+data_url = "https://raw.githubusercontent.com/zadchin/RT-test/master/final_dataset.csv"
+
+# TODO: read data from data_url, define feature and target
+data =
+
+# TODO: train-test split
+X_train, X_test, y_train, y_test =
+
+# CHECKPOINT 1: Make sure train-test split print something
+print("X train shape: ", X_train.shape)
+print("X test shape: ", X_test.shape)
+
+# TODO: Define logistic regression model based on function
+
+# TODO: Train the model
+
+# TODO: Test the model
+
+# TODO: Print Result
+```
+
+## Decision Tree
+
+```{pyodide-python}
+
+# TODO: Define deciscion tree model based on function
+
+# TODO: Train the model
+
+# TODO: Test the model
+
+# TODO: Print Result
+```
+
+## Random Forest
+
+```{pyodide-python}
+
+# TODO: Define random forest model based on function
+
+# TODO: Train the model
+
+# TODO: Test the model
+
+# TODO: Print Result
+```
+
+
+## XGBoost
+
+```{pyodide-python}
+
+# TODO: Define XGBoost model based on function
+
+# TODO: Train the model
+
+# TODO: Test the model
+
+# TODO: Print Result
+```
+
+## Optional Challenge & Discussion
+
+Here are some optional challenge and questions that you can implements and think about:
+- Implement a baseline model to be compared against
+- Reimplement all above algorithms and remove class weight. What did you observe
+- Think about the difference in the performance of the models. What are the difference and why?
+
+
+
+$\,$

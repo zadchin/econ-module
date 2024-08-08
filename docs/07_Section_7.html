@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./08_Section_8.html" rel="next">
 <link href="./06_Section_6.html" rel="prev">
 <link href="./assets/img/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -232,7 +233,7 @@ globalThis.qpyodideCustomizedPyodideOptions = {
 }
 
 // Store cell data
-globalThis.qpyodideCellDetails = [{"id":1,"options":{"classes":"","message":"true","warning":"true","comment":"","fig-width":7,"out-height":"","fig-height":5,"context":"interactive","out-width":"700px","read-only":"false","results":"markup","label":"","autorun":"","dpi":72,"output":"true","fig-cap":""},"code":"## importing libraries\nimport pandas as pd\nimport numpy as np\nfrom sklearn.model_selection import train_test_split\nfrom xgboost import XGBClassifier\nfrom sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix\n\n# reading data and defining features\ndata_url = \"https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv\"\ndata = pd.read_csv(data_url)\nfeatures = data.drop(\"Risk_Flag\", axis = 1) \ntarget = data.Risk_Flag \n\n# train-test split\nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\n\n# print to make sure train-test split is completed\nprint(\"X train shape: \", X_train.shape)\nprint(\"X test shape: \", X_test.shape)\n\n# Call on XGBoost function imported\nXGB_model = XGBClassifier(n_estimators=200, max_depth=None, scale_pos_weight=1)\n\n# Train the model on X_train, y_train (training data)\nXGB_model = XGB_model.fit(X_train, y_train)\n\n# Test the model on X_test (testing data)\ny_pred_XGB = XGB_model.predict(X_test)\n\n# Print result\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_XGB), 2))\nprint(\"Precision: \", np.round(precision_score(y_test, y_pred_XGB), 2))\nprint(\"Recall: \", np.round(recall_score(y_test, y_pred_XGB), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_XGB), 2))"}];
+globalThis.qpyodideCellDetails = [{"id":1,"code":"## importing libraries\nimport pandas as pd\nimport numpy as np\nfrom sklearn.model_selection import train_test_split\nfrom xgboost import XGBClassifier\nfrom sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix\n\n# reading data and defining features\ndata_url = \"https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv\"\ndata = pd.read_csv(data_url)\nfeatures = data.drop(\"Risk_Flag\", axis = 1) \ntarget = data.Risk_Flag \n\n# train-test split\nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\n\n# print to make sure train-test split is completed\nprint(\"X train shape: \", X_train.shape)\nprint(\"X test shape: \", X_test.shape)\n\n# Call on XGBoost function imported\nXGB_model = XGBClassifier(n_estimators=200, max_depth=None, scale_pos_weight=1)\n\n# Train the model on X_train, y_train (training data)\nXGB_model = XGB_model.fit(X_train, y_train)\n\n# Test the model on X_test (testing data)\ny_pred_XGB = XGB_model.predict(X_test)\n\n# Print result\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_XGB), 2))\nprint(\"Precision: \", np.round(precision_score(y_test, y_pred_XGB), 2))\nprint(\"Recall: \", np.round(recall_score(y_test, y_pred_XGB), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_XGB), 2))","options":{"results":"markup","fig-cap":"","label":"","comment":"","message":"true","classes":"","out-width":"700px","autorun":"","warning":"true","fig-height":5,"output":"true","fig-width":7,"out-height":"","context":"interactive","read-only":"false","dpi":72}}];
 
 
 </script>
@@ -502,7 +503,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Problem Statement</span></a>
+ <span class="menu-text">Loan Default</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -553,6 +554,29 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">XGBoost</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./08_Section_8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hands-On Activity</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing/test1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Classifying Pancreatic Cancer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing/test2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Credit Card Default</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -1259,6 +1283,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./08_Section_8.html" class="pagination-link" aria-label="Hands-On Activity">
+        <span class="nav-page-text">Hands-On Activity</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

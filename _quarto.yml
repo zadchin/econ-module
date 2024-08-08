@@ -23,7 +23,10 @@ book:
     - 05_Section_5.qmd
     - 06_Section_6.qmd
     - 07_Section_7.qmd
-
+    - part: 08_Section_8.qmd
+      chapters:
+        - testing/test1.qmd
+        - testing/test2.qmd
 
 include-after-body:
   text: <script type="text/javascript" src="page-nav-foot.js"></script>

@@ -233,7 +233,7 @@ globalThis.qpyodideCustomizedPyodideOptions = {
 }
 
 // Store cell data
-globalThis.qpyodideCellDetails = [{"id":1,"options":{"classes":"","read-only":"false","out-width":"700px","autorun":"","output":"true","results":"markup","warning":"true","label":"","fig-width":7,"dpi":72,"fig-cap":"","comment":"","fig-height":5,"context":"interactive","out-height":"","message":"true"},"code":"# importing libraries\nimport numpy as np\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn import tree\nfrom sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix\n\n# reading data and defining features\ndata_url = \"https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv\"\ndata = pd.read_csv(data_url)\nfeatures = data.drop(\"Risk_Flag\", axis = 1) \ntarget = data.Risk_Flag \n\n# train-test split\nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\n\n# print to make sure train-test split is completed\nprint(\"X train shape: \", X_train.shape)\nprint(\"X test shape: \", X_test.shape)\n\n# Call on decision tree function imported\nDT_model = tree.DecisionTreeClassifier(max_leaf_nodes=3, max_depth=None,\n                                  class_weight=\"balanced\")\n\n# Train the model on X_train, y_train (training data)\nDT_model = DT_model.fit(X_train, y_train)\n\n# Test the model on X_test (testing data)\ny_pred_DT = DT_model.predict(X_test)\n\n# Print result\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_DT), 2))\nprint(\"Precision: \",np.round(precision_score(y_test, y_pred_DT), 2))\nprint(\"Recall: \",np.round(recall_score(y_test, y_pred_DT), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_DT), 2))"},{"id":2,"options":{"classes":"","read-only":"false","out-width":"700px","autorun":"","output":"true","results":"markup","warning":"true","label":"","fig-width":7,"dpi":72,"fig-cap":"","comment":"","fig-height":5,"context":"interactive","out-height":"","message":"true"},"code":"feature_names = list(X_train.columns)\ntext_representation = tree.export_text(DT_model, feature_names=feature_names)\nprint(text_representation)"}];
+globalThis.qpyodideCellDetails = [{"id":1,"options":{"message":"true","warning":"true","read-only":"false","fig-height":5,"label":"","results":"markup","comment":"","context":"interactive","out-height":"","dpi":72,"autorun":"","classes":"","output":"true","fig-cap":"","fig-width":7,"out-width":"700px"},"code":"# importing libraries\nimport numpy as np\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn import tree\nfrom sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix\n\n# reading data and defining features\ndata_url = \"https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv\"\ndata = pd.read_csv(data_url)\nfeatures = data.drop(\"Risk_Flag\", axis = 1) \ntarget = data.Risk_Flag \n\n# train-test split\nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\n\n# print to make sure train-test split is completed\nprint(\"X train shape: \", X_train.shape)\nprint(\"X test shape: \", X_test.shape)\n\n# Call on decision tree function imported\nDT_model = tree.DecisionTreeClassifier(max_leaf_nodes=3, max_depth=None,\n                                  class_weight=\"balanced\")\n\n# Train the model on X_train, y_train (training data)\nDT_model = DT_model.fit(X_train, y_train)\n\n# Test the model on X_test (testing data)\ny_pred_DT = DT_model.predict(X_test)\n\n# Print result\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_DT), 2))\nprint(\"Precision: \",np.round(precision_score(y_test, y_pred_DT), 2))\nprint(\"Recall: \",np.round(recall_score(y_test, y_pred_DT), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_DT), 2))"},{"id":2,"options":{"message":"true","warning":"true","read-only":"false","fig-height":5,"label":"","results":"markup","comment":"","context":"interactive","out-height":"","dpi":72,"autorun":"","classes":"","output":"true","fig-cap":"","fig-width":7,"out-width":"700px"},"code":"feature_names = list(X_train.columns)\ntext_representation = tree.export_text(DT_model, feature_names=feature_names)\nprint(text_representation)"}];
 
 
 </script>
@@ -503,7 +503,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Problem Statement</span></a>
+ <span class="menu-text">Loan Default</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -554,6 +554,29 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">XGBoost</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./08_Section_8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hands-On Activity</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing/test1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Classifying Pancreatic Cancer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing/test2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Credit Card Default</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>

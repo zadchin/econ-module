@@ -1,0 +1,27 @@
+---
+title: Hands-On Activity
+format: html
+navbar: false
+filters:
+  - pyodide
+---
+
+## Hands-On Activity
+
+We provide two different tracks for our hands-on coding activity. Please choose one that fits your passion and vibezz!
+
+- [Classifying Pancreatic Cancer](testing/test1.qmd)
+- [Credit Card Default](testing/test2.qmd)
+
+
+A brief description for the tracks are as follow:
+
+### Classifying Pancreatic Cancer
+
+Pancreatic ductal adenocarcinoma (PDAC) is one of the deadliest forms of cancer, with only around 9% of patients surviving beyond five years. Early detection significantly improves survival rates, but unfortunately, many cases remain asymptomatic until the disease has advanced and spread throughout the body. Developing an AI-based diagnostic tool to identify pancreatic cancer early could be life-saving, offering a critical opportunity for timely intervention and treatment.
+
+### Predicting Credit Card Default
+
+Your bank has issued thousands of credit card loans, but recently, there has been a noticeable increase in defaults. To manage this risk, your manager asks if you can develop a predictive model to identify customers likely to default. By identifying these customers early, the bank can implement strategies such as reducing credit limits or creating debt reduction plans, ultimately minimizing financial loss and better managing customer relationships.
+
+$\,$

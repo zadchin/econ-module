@@ -4,9 +4,19 @@
     "href": "index.html",
     "title": "Predicting Loan Defaults",
     "section": "",
-    "text": "Problem Statement\nImagine a scenario where a customer approaches your bank for a loan. How do you decide if this loan should be granted? More importantly, how do you set the interest rate that accurately reflects the risk involved?\nThis decision-making process is where the concept of classification in data science comes into play, especially in the banking sector. By leveraging historical data, including information on past borrowers’ profiles and their loan repayment histories, you can build predictive models. These models assess the probability of default for new loan applicants, guiding banks to make informed and equitable lending decisions.",
+    "text": "Loan Default\nAs a credit officer, one of the most critical decisions you face is determining whether to approve a customer’s loan application and at what interest rate. This decision hinges on the customer’s likelihood of defaulting, or failing to repay the loan. Understanding the probability of default is crucial, not only to protect the bank’s financial interests but also to offer fair and balanced terms to customers.",
     "crumbs": [
-      "Problem Statement"
+      "Loan Default"
+    ]
+  },
+  {
+    "objectID": "index.html#problem-statement",
+    "href": "index.html#problem-statement",
+    "title": "Predicting Loan Defaults",
+    "section": "Problem Statement",
+    "text": "Problem Statement\nImagine a scenario where a customer approaches your bank for a loan. How do you decide if this loan should be granted? More importantly, how do you set the interest rate that accurately reflects the risk involved?\nThis decision-making process is where the concept of classification in data science comes into play, especially in the banking sector. By leveraging historical data, including information on past borrowers’ profiles and their loan repayment histories, you can build predictive models. These models assess the probability of default for new loan applicants, guiding banks to make informed and equitable lending decisions. Some helpful terminologies are as follow:\n\nDefault : failure to repay a loan\nProbability of default : the chances that a person fails to repay a loan",
+    "crumbs": [
+      "Loan Default"
     ]
   },
   {
@@ -16,7 +26,7 @@
     "section": "Discussion (1)",
     "text": "Discussion (1)\nWhy is it important to predict whether customers will default?\nPlease Wait for the Slido to load",
     "crumbs": [
-      "Problem Statement"
+      "Loan Default"
     ]
   },
   {
@@ -26,7 +36,7 @@
     "section": "Discussion (2)",
     "text": "Discussion (2)\nWhat can we use to predict predict whether customers will default?\n\n\\(\\,\\)",
     "crumbs": [
-      "Problem Statement"
+      "Loan Default"
     ]
   },
   {
@@ -357,6 +367,202 @@
     "text": "8.3 Discussion: What are the pros and cons of XGBoost?\n\\(\\,\\)",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>XGBoost</span>"
+    ]
+  },
+  {
+    "objectID": "testing/test1.html",
+    "href": "testing/test1.html",
+    "title": "9  Classifying Pancreatic Cancer",
+    "section": "",
+    "text": "9.1 A look at the Dataset\nThe dataset contains 590 rows and 10 columns. Each row represents a unique patient, and each column provides specific information about the patient’s diagnosis, treatment, and other relevant factors.\nHere’s the dataset:\nThere are 10 columns in the dataset, namely",
+    "crumbs": [
+      "Hands-On Activity",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Classifying Pancreatic Cancer</span>"
+    ]
+  },
+  {
+    "objectID": "testing/test1.html#a-look-at-the-dataset",
+    "href": "testing/test1.html#a-look-at-the-dataset",
+    "title": "9  Classifying Pancreatic Cancer",
+    "section": "",
+    "text": "Patient Cohort : Details which patients cohort a particular patient is from. In our case, there are 2 cohorts, Cohort 1 and Cohort 2\nAge : Details the age of the patient\nSex : Details the gender of the patient. F stands for Female, M stands for maLE\nDiagnosis : Details the diagnosis of the patient. 1 stands for diagnosed with Pancreatic ductal adenocarcinoma (PDAC) and 0 stands for not-diagnosed with cancer.\nplasma CA19_9 : Details the amount of a protein called CA 19-9 in the blood, which is often used in monitoring pancreatic cancer\nCreatinine : Details the level of creatinine of the patient, which is a protein that is often used as an indicator of kidney function.\nYVLE1 : Details the level of YVLE1, a urinaly biomarker, which may play a role in tumor metastasis\nREG1A : Details the level of REG1A, which may be associated with pancreas regeneration\nREG1B : Details the level of REG1B, a urinary biomarker, which may be associated with pancreas regeneration\nTFF1 : Details the level of trefoil factor 1, which may be related to regeneration and repair of the urinary tract",
+    "crumbs": [
+      "Hands-On Activity",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Classifying Pancreatic Cancer</span>"
+    ]
+  },
+  {
+    "objectID": "testing/test1.html#exploratory-data-analysis",
+    "href": "testing/test1.html#exploratory-data-analysis",
+    "title": "9  Classifying Pancreatic Cancer",
+    "section": "9.2 Exploratory Data Analysis",
+    "text": "9.2 Exploratory Data Analysis\n\n9.2.1 Bar Plot\n\n\n\n\n\n\nSelect a categorical column to visualize:\n\ndata = FileAttachment(\"cancer_dataset.csv\").csv({ typed: true })\ncat_columns = ['patient_cohort', 'diagnosis', 'sex']\nviewof selected_column_cat = Inputs.radio(cat_columns, {value: cat_columns[0]})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ngrouped_data = d3.groups(data, d =&gt; d[selected_column_cat]).map(([key, values]) =&gt; ({key, count: values.length}));\n\nPlot.plot({\n  marks: [\n    Plot.barY(grouped_data, {x: \"key\", y: \"count\", fill: \"steelblue\"}),\n    Plot.text(grouped_data, {x: \"key\", y: \"count\", text: d =&gt; d.count, dy: -10})\n  ],\n  x: {\n    label: selected_column_cat\n  },\n  y: {\n    label: \"Count\"\n  },\n  color: {\n    legend: false\n  }\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n9.2.2 Histogram\n\n\n\n\n\n\nSelect a continuous column to visualize:\n\ncont_columns = ['age', 'LYVE1', 'REG1B', 'TFF1', 'REG1A', 'creatinine', 'plasma_CA19_9']\nviewof selected_column = Inputs.radio(cont_columns, {value: 'LYVE1'})\nviewof bin_count = Inputs.range([1, 50], {step: 1, value: 15, label: \"Number of Bins\"})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlot.plot({\n  marks: [\n    Plot.rectY(data, Plot.binX({y: \"count\"}, {x: selected_column, fill: \"steelblue\", thresholds: bin_count}))\n  ],\n  x: {\n    label: selected_column\n  },\n  y: {\n    label: \"Count\"\n  },\n  color: {\n    legend: false\n  }\n})\n\n\n\n\n\n\n\n\n9.2.3 Relationship Aanalysis\n\n9.2.3.1 Between Categorical Variable\n\n\n\n\n\n\nSelect a column to compare against diagnosis:\n\nbivariate_cat_columns = ['sex', 'patient_cohort']\nviewof selected_bivariate_cat_column = Inputs.radio(bivariate_cat_columns, {value: bivariate_cat_columns[0]})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfunction calculateGroupedPercentages(data, groupColumn, stackColumn) {\n  const grouped = d3.rollup(data, v =&gt; v.length, d =&gt; d[groupColumn], d =&gt; d[stackColumn]);\n  const totals = d3.rollup(data, v =&gt; v.length, d =&gt; d[groupColumn]);\n\n  return Array.from(grouped, ([key, values]) =&gt; {\n    const total = totals.get(key);\n    return Array.from(values, ([stackKey, count]) =&gt; ({\n      group: key,\n      stack: stackKey,\n      count,\n      percentage: (count / total) * 100\n    }));\n  }).flat();\n}\n\ngrouped_bivariate_data = calculateGroupedPercentages(data, \"diagnosis\", selected_bivariate_cat_column);\n\nPlot.plot({\n  marks: [\n    Plot.barY(grouped_bivariate_data, {\n      x: d =&gt; d.group + \":\" + d.stack,\n      y: \"percentage\",\n      fill: \"stack\",\n      title: d =&gt; `${d.stack}: ${d.percentage.toFixed(1)}%`\n    }),\n    Plot.text(grouped_bivariate_data, {\n      x: d =&gt; d.group + \":\" + d.stack,\n      y: d =&gt; d.percentage,\n      text: d =&gt; `${d.percentage.toFixed(1)}%`,\n      dy: -4\n    })\n  ],\n  x: {\n    label: \"Diagnosis\",\n    domain: Array.from(new Set(grouped_bivariate_data.map(d =&gt; d.group + \":\" + d.stack))),\n    tickFormat: d =&gt; d.split(\":\")[0] // Format ticks to show only the group\n  },\n  y: {\n    label: \"Percentage\"\n  },\n  color: {\n    legend: true\n  }\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n9.2.3.2 Between Continuous Variables\n\n\n\n\n\n\nSelect Continuous Variables for Correlation Heatmap:\n\nbivariate_cont_columns = ['age', 'LYVE1', 'REG1B', 'TFF1', 'REG1A', 'creatinine', 'plasma_CA19_9']\nviewof selected_bivariate_cont_columns = Inputs.checkbox(bivariate_cont_columns, {value: bivariate_cont_columns})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfunction calculateCorrelationMatrix(data, selectedColumns) {\n  const n = selectedColumns.length;\n  const correlationMatrix = Array.from({ length: n }, () =&gt; Array(n).fill(0));\n\n  function pearsonCorrelation(x, y) {\n    const meanX = d3.mean(x);\n    const meanY = d3.mean(y);\n    const diffX = x.map(d =&gt; d - meanX);\n    const diffY = y.map(d =&gt; d - meanY);\n    const numerator = d3.sum(diffX.map((d, i) =&gt; d * diffY[i]));\n    const denominator = Math.sqrt(d3.sum(diffX.map(d =&gt; d * d)) * d3.sum(diffY.map(d =&gt; d * d)));\n    return numerator / denominator;\n  }\n\n  for (let i = 0; i &lt; n; i++) {\n    for (let j = 0; j &lt; n; j++) {\n      const col1 = selectedColumns[i];\n      const col2 = selectedColumns[j];\n      const values1 = data.map(d =&gt; d[col1]);\n      const values2 = data.map(d =&gt; d[col2]);\n      const correlation = pearsonCorrelation(values1, values2);\n      correlationMatrix[i][j] = correlation;\n    }\n  }\n\n  return correlationMatrix;\n}\n\ncorrelation_matrix = calculateCorrelationMatrix(data, selected_bivariate_cont_columns);\ncorrelation_data = selected_bivariate_cont_columns.flatMap((col1, i) =&gt;\n  selected_bivariate_cont_columns.map((col2, j) =&gt; ({\n    x: col1,\n    y: col2,\n    value: correlation_matrix[i][j]\n  }))\n);\n\nPlot.plot({\n  marks: [\n    Plot.cell(correlation_data, {x: \"x\", y: \"y\", fill: \"value\", title: d =&gt; d.value.toFixed(2)}),\n    Plot.text(correlation_data, {x: \"x\", y: \"y\", text: d =&gt; d.value.toFixed(2), dy: 0, textAnchor: \"middle\"})\n  ],\n  x: {\n    domain: selected_bivariate_cont_columns,\n    label: \"Variables\"\n  },\n  y: {\n    domain: selected_bivariate_cont_columns,\n    label: \"Variables\"\n  },\n  color: {\n    type: \"linear\",\n    scheme: \"blues\",\n    label: \"Correlation\"\n  },\n  width: 600,\n  height: 600\n})",
+    "crumbs": [
+      "Hands-On Activity",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Classifying Pancreatic Cancer</span>"
+    ]
+  },
+  {
+    "objectID": "testing/test1.html#logistic-regression",
+    "href": "testing/test1.html#logistic-regression",
+    "title": "9  Classifying Pancreatic Cancer",
+    "section": "9.3 Logistic Regression",
+    "text": "9.3 Logistic Regression\nIn this section, you are tasked to implement a logistic regression to the following data path following the comments in the code block and what we have learnt previously.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Hands-On Activity",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Classifying Pancreatic Cancer</span>"
+    ]
+  },
+  {
+    "objectID": "testing/test1.html#decision-tree",
+    "href": "testing/test1.html#decision-tree",
+    "title": "9  Classifying Pancreatic Cancer",
+    "section": "9.4 Decision Tree",
+    "text": "9.4 Decision Tree\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Hands-On Activity",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Classifying Pancreatic Cancer</span>"
+    ]
+  },
+  {
+    "objectID": "testing/test1.html#random-forest",
+    "href": "testing/test1.html#random-forest",
+    "title": "9  Classifying Pancreatic Cancer",
+    "section": "9.5 Random Forest",
+    "text": "9.5 Random Forest\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Hands-On Activity",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Classifying Pancreatic Cancer</span>"
+    ]
+  },
+  {
+    "objectID": "testing/test1.html#xgboost",
+    "href": "testing/test1.html#xgboost",
+    "title": "9  Classifying Pancreatic Cancer",
+    "section": "9.6 XGBoost",
+    "text": "9.6 XGBoost\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Hands-On Activity",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Classifying Pancreatic Cancer</span>"
+    ]
+  },
+  {
+    "objectID": "testing/test1.html#optional-challenge-discussion",
+    "href": "testing/test1.html#optional-challenge-discussion",
+    "title": "9  Classifying Pancreatic Cancer",
+    "section": "9.7 Optional Challenge & Discussion",
+    "text": "9.7 Optional Challenge & Discussion\nHere are some optional challenge and questions that you can implements and think about: - Implement a baseline model to be compared against - Reimplement all above algorithms and remove class weight. What did you observe - Think about the difference in the performance of the models. What are the difference and why?\n\\(\\,\\)",
+    "crumbs": [
+      "Hands-On Activity",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Classifying Pancreatic Cancer</span>"
+    ]
+  },
+  {
+    "objectID": "testing/test2.html",
+    "href": "testing/test2.html",
+    "title": "10  Credit Card Default",
+    "section": "",
+    "text": "10.1 A look at the Dataset\nThe dataset contains 16983 rows and 26 columns. Each row represents a unique customer, and each column provides specific information about the customer’s credit history and balance. Here are 100 example rows:\nHere’s the dataset:\nThere are 26 columns in the dataset, namely:",
+    "crumbs": [
+      "Hands-On Activity",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Card Default</span>"
+    ]
+  },
+  {
+    "objectID": "testing/test2.html#a-look-at-the-dataset",
+    "href": "testing/test2.html#a-look-at-the-dataset",
+    "title": "10  Credit Card Default",
+    "section": "",
+    "text": "ID: ID of each client.\nLIMIT_BAL: Amount of given credit in NT dollars (includes individual and family/supplementary credit).\nSEX: Gender (1 = male, 2 = female).\nEDUCATION: (1 = graduate school, 2 = university, 3 = high school, 0, 4, 5, 6 = others).\nMARRIAGE: Marital status (0 = others, 1 = married, 2 = single, 3 = others).\nAGE: Age in years.\nScale for PAY_SEPT to PAY_APR: (-2 = No consumption, -1 = paid in full, 0 = use of revolving credit (paid minimum only), 1 = payment delay for one month, 2 = payment delay for two months, … 8 = payment delay for eight months, 9 = payment delay for nine months and above).\nPAY_SEPT: Repayment status in September 2005 (scale same as above).\nPAY_AUG: Repayment status in August 2005 (scale same as above).\nPAY_JUL: Repayment status in July 2005 (scale same as above).\nPAY_JUN: Repayment status in June 2005 (scale same as above).\nPAY_MAY: Repayment status in May 2005 (scale same as above).\nPAY_APR: Repayment status in April 2005 (scale same as above).\nBILL_AMT_SEPT: Amount of bill statement in September 2005 (NT dollar).\nBILL_AMT_AUG: Amount of bill statement in August 2005 (NT dollar).\nBILL_AMT_JUL: Amount of bill statement in July 2005 (NT dollar).\nBILL_AMT_JUN: Amount of bill statement in June 2005 (NT dollar).\nBILL_AMT_MAY: Amount of bill statement in May 2005 (NT dollar).\nBILL_AMT_APR: Amount of bill statement in April 2005 (NT dollar).\nPAY_AMT_SEPT: Amount of previous payment in September 2005 (NT dollar).\nPAY_AMT_AUG: Amount of previous payment in August 2005 (NT dollar).\nPAY_AMT_JUL: Amount of previous payment in July 2005 (NT dollar).\nPAY_AMT_JUN: Amount of previous payment in June 2005 (NT dollar).\nPAY_AMT_MAY: Amount of previous payment in May 2005 (NT dollar).\nPAY_AMT_APR: Amount of previous payment in April 2005 (NT dollar).\nIsDefaulter: Default payment (1 = yes, 0 = no).",
+    "crumbs": [
+      "Hands-On Activity",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Card Default</span>"
+    ]
+  },
+  {
+    "objectID": "testing/test2.html#exploratory-data-analysis",
+    "href": "testing/test2.html#exploratory-data-analysis",
+    "title": "10  Credit Card Default",
+    "section": "10.2 Exploratory Data Analysis",
+    "text": "10.2 Exploratory Data Analysis\n\n10.2.1 Bar Plot\n\n\n\n\n\n\nSelect a categorical column to visualize:\n\ndata = FileAttachment(\"creditcard.csv\").csv({ typed: true })\ncat_columns = ['SEX', 'EDUCATION', 'MARRIAGE', 'PAY_SEPT',\n               'PAY_AUG', 'PAY_JUL', 'PAY_JUN', 'PAY_MAY', 'PAY_APR', 'IsDefaulter']\nviewof selected_column_cat = Inputs.radio(cat_columns, {value: cat_columns[0]})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ngrouped_data = d3.groups(data, d =&gt; d[selected_column_cat]).map(([key, values]) =&gt; ({key, count: values.length}));\n\nPlot.plot({\n  marks: [\n    Plot.barY(grouped_data, {x: \"key\", y: \"count\", fill: \"steelblue\"}),\n    Plot.text(grouped_data, {x: \"key\", y: \"count\", text: d =&gt; d.count, dy: -10})\n  ],\n  x: {\n    label: selected_column_cat\n  },\n  y: {\n    label: \"Count\"\n  },\n  color: {\n    legend: false\n  }\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n10.2.2 Histogram\n\n\n\n\n\n\nSelect a continuous column to visualize:\n\ncont_columns = ['LIMIT_BAL', 'AGE', 'BILL_AMT_SEPT', 'BILL_AMT_AUG', 'BILL_AMT_JUL', 'BILL_AMT_JUN', 'BILL_AMT_MAY',\n                'BILL_AMT_APR', 'PAY_AMT_SEPT', 'PAY_AMT_AUG', 'PAY_AMT_JUL', 'PAY_AMT_JUN', 'PAY_AMT_MAY', 'PAY_AMT_APR']\nviewof selected_column = Inputs.radio(cont_columns, {value: 'AGE'})\nviewof bin_count = Inputs.range([1, 50], {step: 1, value: 15, label: \"Number of Bins\"})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlot.plot({\n  marks: [\n    Plot.rectY(data, Plot.binX({y: \"count\"}, {x: selected_column, fill: \"steelblue\", thresholds: bin_count}))\n  ],\n  x: {\n    label: selected_column\n  },\n  y: {\n    label: \"Count\"\n  },\n  color: {\n    legend: false\n  }\n})\n\n\n\n\n\n\n\n\n10.2.3 Relationship Aanalysis\n\n10.2.3.1 Between Categorical Variable\n\n\n\n\n\n\nSelect a column to compare against IsDefaulter:\n\nbivariate_cat_columns = ['SEX', 'EDUCATION', 'MARRIAGE', 'PAY_SEPT',\n               'PAY_AUG', 'PAY_JUL', 'PAY_JUN', 'PAY_MAY', 'PAY_APR']\nviewof selected_bivariate_cat_column = Inputs.radio(bivariate_cat_columns, {value: bivariate_cat_columns[0]})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfunction calculateGroupedPercentages(data, groupColumn, stackColumn) {\n  const grouped = d3.rollup(data, v =&gt; v.length, d =&gt; d[groupColumn], d =&gt; d[stackColumn]);\n  const totals = d3.rollup(data, v =&gt; v.length, d =&gt; d[groupColumn]);\n\n  return Array.from(grouped, ([key, values]) =&gt; {\n    const total = totals.get(key);\n    return Array.from(values, ([stackKey, count]) =&gt; ({\n      group: key,\n      stack: stackKey,\n      count,\n      percentage: (count / total) * 100\n    }));\n  }).flat();\n}\n\ngrouped_bivariate_data = calculateGroupedPercentages(data, \"IsDefaulter\", selected_bivariate_cat_column);\n\nPlot.plot({\n  marks: [\n    Plot.barY(grouped_bivariate_data, {\n      x: d =&gt; d.group + \":\" + d.stack,\n      y: \"percentage\",\n      fill: \"stack\",\n      title: d =&gt; `${d.stack}: ${d.percentage.toFixed(1)}%`\n    }),\n    Plot.text(grouped_bivariate_data, {\n      x: d =&gt; d.group + \":\" + d.stack,\n      y: d =&gt; d.percentage,\n      text: d =&gt; `${d.percentage.toFixed(1)}%`,\n      dy: -4\n    })\n  ],\n  x: {\n    label: \"IsDefaulter\",\n    domain: Array.from(new Set(grouped_bivariate_data.map(d =&gt; d.group + \":\" + d.stack))),\n    tickFormat: d =&gt; d.split(\":\")[0] // Format ticks to show only the group\n  },\n  y: {\n    label: \"Percentage\"\n  },\n  color: {\n    legend: true\n  }\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n10.2.3.2 Between Continuous Variables\n\n\n\n\n\n\nSelect Continuous Variables for Correlation Heatmap:\n\nbivariate_cont_columns =  ['LIMIT_BAL', 'AGE', 'BILL_AMT_SEPT', 'BILL_AMT_AUG', 'BILL_AMT_JUL', 'BILL_AMT_JUN', 'BILL_AMT_MAY',\n                'BILL_AMT_APR', 'PAY_AMT_SEPT', 'PAY_AMT_AUG', 'PAY_AMT_JUL', 'PAY_AMT_JUN', 'PAY_AMT_MAY', 'PAY_AMT_APR']\nviewof selected_bivariate_cont_columns = Inputs.checkbox(bivariate_cont_columns, {value: bivariate_cont_columns})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfunction calculateCorrelationMatrix(data, selectedColumns) {\n  const n = selectedColumns.length;\n  const correlationMatrix = Array.from({ length: n }, () =&gt; Array(n).fill(0));\n\n  function pearsonCorrelation(x, y) {\n    const meanX = d3.mean(x);\n    const meanY = d3.mean(y);\n    const diffX = x.map(d =&gt; d - meanX);\n    const diffY = y.map(d =&gt; d - meanY);\n    const numerator = d3.sum(diffX.map((d, i) =&gt; d * diffY[i]));\n    const denominator = Math.sqrt(d3.sum(diffX.map(d =&gt; d * d)) * d3.sum(diffY.map(d =&gt; d * d)));\n    return numerator / denominator;\n  }\n\n  for (let i = 0; i &lt; n; i++) {\n    for (let j = 0; j &lt; n; j++) {\n      const col1 = selectedColumns[i];\n      const col2 = selectedColumns[j];\n      const values1 = data.map(d =&gt; d[col1]);\n      const values2 = data.map(d =&gt; d[col2]);\n      const correlation = pearsonCorrelation(values1, values2);\n      correlationMatrix[i][j] = correlation;\n    }\n  }\n\n  return correlationMatrix;\n}\n\ncorrelation_matrix = calculateCorrelationMatrix(data, selected_bivariate_cont_columns);\ncorrelation_data = selected_bivariate_cont_columns.flatMap((col1, i) =&gt;\n  selected_bivariate_cont_columns.map((col2, j) =&gt; ({\n    x: col1,\n    y: col2,\n    value: correlation_matrix[i][j]\n  }))\n);\n\nPlot.plot({\n  marks: [\n    Plot.cell(correlation_data, {x: \"x\", y: \"y\", fill: \"value\", title: d =&gt; d.value.toFixed(2)}),\n    Plot.text(correlation_data, {x: \"x\", y: \"y\", text: d =&gt; d.value.toFixed(2), dy: 0, textAnchor: \"middle\"})\n  ],\n  x: {\n    domain: selected_bivariate_cont_columns,\n    label: \"Variables\"\n  },\n  y: {\n    domain: selected_bivariate_cont_columns,\n    label: \"Variables\"\n  },\n  color: {\n    type: \"linear\",\n    scheme: \"blues\",\n    label: \"Correlation\"\n  },\n  width: 600,\n  height: 600\n})",
+    "crumbs": [
+      "Hands-On Activity",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Card Default</span>"
+    ]
+  },
+  {
+    "objectID": "testing/test2.html#checkpoint",
+    "href": "testing/test2.html#checkpoint",
+    "title": "10  Credit Card Default",
+    "section": "10.3 Checkpoint",
+    "text": "10.3 Checkpoint\n\n\n\n\n\n\nWhat’s our target variable?\n\n\n\n\n\nOur Target Variable is the IsDefaulter column. IsDefaulter = 0 indicates customer did not default his/her credit card payment and IsDefaulter = 1 indicates that customer indeed defaulted his/her credit card statement.",
+    "crumbs": [
+      "Hands-On Activity",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Card Default</span>"
+    ]
+  },
+  {
+    "objectID": "testing/test2.html#logistic-regression",
+    "href": "testing/test2.html#logistic-regression",
+    "title": "10  Credit Card Default",
+    "section": "10.4 Logistic Regression",
+    "text": "10.4 Logistic Regression\nIn this section, you are tasked to implement a logistic regression to the following data path following the comments in the code block and what we have learnt previously.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Hands-On Activity",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Card Default</span>"
+    ]
+  },
+  {
+    "objectID": "testing/test2.html#decision-tree",
+    "href": "testing/test2.html#decision-tree",
+    "title": "10  Credit Card Default",
+    "section": "10.5 Decision Tree",
+    "text": "10.5 Decision Tree\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Hands-On Activity",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Card Default</span>"
+    ]
+  },
+  {
+    "objectID": "testing/test2.html#random-forest",
+    "href": "testing/test2.html#random-forest",
+    "title": "10  Credit Card Default",
+    "section": "10.6 Random Forest",
+    "text": "10.6 Random Forest\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Hands-On Activity",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Card Default</span>"
+    ]
+  },
+  {
+    "objectID": "testing/test2.html#xgboost",
+    "href": "testing/test2.html#xgboost",
+    "title": "10  Credit Card Default",
+    "section": "10.7 XGBoost",
+    "text": "10.7 XGBoost\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\\(\\,\\)",
+    "crumbs": [
+      "Hands-On Activity",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Card Default</span>"
+    ]
+  },
+  {
+    "objectID": "08_Section_8.html",
+    "href": "08_Section_8.html",
+    "title": "Hands-On Activity",
+    "section": "",
+    "text": "Hands-On Activity\nWe provide two different tracks for our hands-on coding activity. Please choose one that fits your passion and vibezz!\nA brief description for the tracks are as follow:",
+    "crumbs": [
+      "Hands-On Activity"
+    ]
+  },
+  {
+    "objectID": "08_Section_8.html#hands-on-activity",
+    "href": "08_Section_8.html#hands-on-activity",
+    "title": "Hands-On Activity",
+    "section": "",
+    "text": "Classifying Pancreatic Cancer\nCredit Card Default\n\n\n\nClassifying Pancreatic Cancer\nPancreatic ductal adenocarcinoma (PDAC) is one of the deadliest forms of cancer, with only around 9% of patients surviving beyond five years. Early detection significantly improves survival rates, but unfortunately, many cases remain asymptomatic until the disease has advanced and spread throughout the body. Developing an AI-based diagnostic tool to identify pancreatic cancer early could be life-saving, offering a critical opportunity for timely intervention and treatment.\n\n\nPredicting Credit Card Default\nYour bank has issued thousands of credit card loans, but recently, there has been a noticeable increase in defaults. To manage this risk, your manager asks if you can develop a predictive model to identify customers likely to default. By identifying these customers early, the bank can implement strategies such as reducing credit limits or creating debt reduction plans, ultimately minimizing financial loss and better managing customer relationships.\n\\(\\,\\)",
+    "crumbs": [
+      "Hands-On Activity"
     ]
   }
 ]

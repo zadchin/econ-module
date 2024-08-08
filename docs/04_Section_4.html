@@ -233,7 +233,7 @@ globalThis.qpyodideCustomizedPyodideOptions = {
 }
 
 // Store cell data
-globalThis.qpyodideCellDetails = [{"options":{"message":"true","results":"markup","warning":"true","autorun":"","context":"interactive","fig-width":7,"out-height":"","read-only":"false","label":"","classes":"","output":"true","out-width":"700px","comment":"","fig-height":5,"dpi":72,"fig-cap":""},"id":1,"code":"# importing libraries\nimport pandas as pd\nimport numpy as np\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix\n\n# reading data and defining features\ndata_url = \"https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv\"\ndata = pd.read_csv(data_url)\n\n## target is the Risk_Flag column in our data\ntarget = data.Risk_Flag \n## features will exclude the target\nfeatures = data.drop(\"Risk_Flag\", axis = 1) \n\n# train-test split\nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\n\n# print to make sure train-test split is completed\nprint(\"X train shape: \", X_train.shape)\nprint(\"X test shape: \", X_test.shape)\n\n# Call on logistic regression function imported\nLR_model = LogisticRegression(max_iter=10000, C=1.0, class_weight=\"balanced\")\n\n# Train the model on X_train, y_train (training data)\nLR_model.fit(X_train, y_train)\n\n# Test the model on X_test (testing data)\ny_pred_LR = LR_model.predict(X_test)\n\n# Print result\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_LR), 2))\nprint(\"Precision: \",np.round(precision_score(y_test, y_pred_LR), 2))\nprint(\"Recall: \", np.round(recall_score(y_test, y_pred_LR), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_LR), 2))"},{"options":{"message":"true","results":"markup","warning":"true","autorun":"","context":"interactive","fig-width":7,"out-height":"","read-only":"false","label":"","classes":"","output":"true","out-width":"700px","comment":"","fig-height":5,"dpi":72,"fig-cap":""},"id":2,"code":"feature_importance = pd.DataFrame({\n    'Feature': X_train.columns,\n    'Importance': LR_model.coef_[0]\n})\n\nfeature_importance = feature_importance.sort_values(by='Importance', ascending=False)\nfeature_importance"}];
+globalThis.qpyodideCellDetails = [{"code":"# importing libraries\nimport pandas as pd\nimport numpy as np\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix\n\n# reading data and defining features\ndata_url = \"https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv\"\ndata = pd.read_csv(data_url)\n\n## target is the Risk_Flag column in our data\ntarget = data.Risk_Flag \n## features will exclude the target\nfeatures = data.drop(\"Risk_Flag\", axis = 1) \n\n# train-test split\nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\n\n# print to make sure train-test split is completed\nprint(\"X train shape: \", X_train.shape)\nprint(\"X test shape: \", X_test.shape)\n\n# Call on logistic regression function imported\nLR_model = LogisticRegression(max_iter=10000, C=1.0, class_weight=\"balanced\")\n\n# Train the model on X_train, y_train (training data)\nLR_model.fit(X_train, y_train)\n\n# Test the model on X_test (testing data)\ny_pred_LR = LR_model.predict(X_test)\n\n# Print result\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_LR), 2))\nprint(\"Precision: \",np.round(precision_score(y_test, y_pred_LR), 2))\nprint(\"Recall: \", np.round(recall_score(y_test, y_pred_LR), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_LR), 2))","options":{"fig-cap":"","out-width":"700px","context":"interactive","classes":"","message":"true","label":"","output":"true","out-height":"","read-only":"false","fig-height":5,"fig-width":7,"autorun":"","comment":"","dpi":72,"results":"markup","warning":"true"},"id":1},{"code":"feature_importance = pd.DataFrame({\n    'Feature': X_train.columns,\n    'Importance': LR_model.coef_[0]\n})\n\nfeature_importance = feature_importance.sort_values(by='Importance', ascending=False)\nfeature_importance","options":{"fig-cap":"","out-width":"700px","context":"interactive","classes":"","message":"true","label":"","output":"true","out-height":"","read-only":"false","fig-height":5,"fig-width":7,"autorun":"","comment":"","dpi":72,"results":"markup","warning":"true"},"id":2}];
 
 
 </script>
@@ -503,7 +503,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Problem Statement</span></a>
+ <span class="menu-text">Loan Default</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -554,6 +554,29 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">XGBoost</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./08_Section_8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hands-On Activity</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing/test1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Classifying Pancreatic Cancer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing/test2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Credit Card Default</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>

@@ -1,0 +1,339 @@
+---
+title: "Credit Card Default"
+execute:
+  echo: false
+format: html
+navbar: false
+filters:
+  - pyodide
+---
+
+## A look at the Dataset
+
+The dataset contains **16983** rows and **26** columns. Each row represents a unique customer, and each column provides specific information about the customer's credit history and balance. Here are 100 example rows:
+
+Here's the dataset:
+
+```{r}
+library(readr)
+library(DT)
+data_r <- read_csv("creditcard.csv",show_col_types = FALSE)
+datatable(head(data_r, 100))
+```
+
+There are 26 columns in the dataset, namely:
+
+- **ID**: ID of each client.
+- **LIMIT_BAL**: Amount of given credit in NT dollars (includes individual and family/supplementary credit).
+- **SEX**: Gender (1 = male, 2 = female).
+- **EDUCATION**: (1 = graduate school, 2 = university, 3 = high school, 0, 4, 5, 6 = others).
+- **MARRIAGE**: Marital status (0 = others, 1 = married, 2 = single, 3 = others).
+- **AGE**: Age in years.
+- **Scale for PAY_SEPT to PAY_APR**: (-2 = No consumption, -1 = paid in full, 0 = use of revolving credit (paid minimum only), 1 = payment delay for one month, 2 = payment delay for two months, ... 8 = payment delay for eight months, 9 = payment delay for nine months and above).
+- **PAY_SEPT**: Repayment status in September 2005 (scale same as above).
+- **PAY_AUG**: Repayment status in August 2005 (scale same as above).
+- **PAY_JUL**: Repayment status in July 2005 (scale same as above).
+- **PAY_JUN**: Repayment status in June 2005 (scale same as above).
+- **PAY_MAY**: Repayment status in May 2005 (scale same as above).
+- **PAY_APR**: Repayment status in April 2005 (scale same as above).
+- **BILL_AMT_SEPT**: Amount of bill statement in September 2005 (NT dollar).
+- **BILL_AMT_AUG**: Amount of bill statement in August 2005 (NT dollar).
+- **BILL_AMT_JUL**: Amount of bill statement in July 2005 (NT dollar).
+- **BILL_AMT_JUN**: Amount of bill statement in June 2005 (NT dollar).
+- **BILL_AMT_MAY**: Amount of bill statement in May 2005 (NT dollar).
+- **BILL_AMT_APR**: Amount of bill statement in April 2005 (NT dollar).
+- **PAY_AMT_SEPT**: Amount of previous payment in September 2005 (NT dollar).
+- **PAY_AMT_AUG**: Amount of previous payment in August 2005 (NT dollar).
+- **PAY_AMT_JUL**: Amount of previous payment in July 2005 (NT dollar).
+- **PAY_AMT_JUN**: Amount of previous payment in June 2005 (NT dollar).
+- **PAY_AMT_MAY**: Amount of previous payment in May 2005 (NT dollar).
+- **PAY_AMT_APR**: Amount of previous payment in April 2005 (NT dollar).
+- **IsDefaulter**: Default payment (1 = yes, 0 = no).
+
+## Exploratory Data Analysis
+
+### Bar Plot
+
+::: {.callout-tip appearance="simple"}
+Select a categorical column to visualize:
+```{ojs}
+data = FileAttachment("creditcard.csv").csv({ typed: true })
+cat_columns = ['SEX', 'EDUCATION', 'MARRIAGE', 'PAY_SEPT',
+               'PAY_AUG', 'PAY_JUL', 'PAY_JUN', 'PAY_MAY', 'PAY_APR', 'IsDefaulter']
+viewof selected_column_cat = Inputs.radio(cat_columns, {value: cat_columns[0]})
+```
+:::
+
+```{ojs}
+grouped_data = d3.groups(data, d => d[selected_column_cat]).map(([key, values]) => ({key, count: values.length}));
+
+Plot.plot({
+  marks: [
+    Plot.barY(grouped_data, {x: "key", y: "count", fill: "steelblue"}),
+    Plot.text(grouped_data, {x: "key", y: "count", text: d => d.count, dy: -10})
+  ],
+  x: {
+    label: selected_column_cat
+  },
+  y: {
+    label: "Count"
+  },
+  color: {
+    legend: false
+  }
+})
+```
+
+### Histogram
+
+::: {.callout-tip appearance="simple"}
+Select a continuous column to visualize:
+```{ojs}
+cont_columns = ['LIMIT_BAL', 'AGE', 'BILL_AMT_SEPT', 'BILL_AMT_AUG', 'BILL_AMT_JUL', 'BILL_AMT_JUN', 'BILL_AMT_MAY',
+                'BILL_AMT_APR', 'PAY_AMT_SEPT', 'PAY_AMT_AUG', 'PAY_AMT_JUL', 'PAY_AMT_JUN', 'PAY_AMT_MAY', 'PAY_AMT_APR']
+viewof selected_column = Inputs.radio(cont_columns, {value: 'AGE'})
+viewof bin_count = Inputs.range([1, 50], {step: 1, value: 15, label: "Number of Bins"})
+
+```
+:::
+
+
+```{ojs}
+Plot.plot({
+  marks: [
+    Plot.rectY(data, Plot.binX({y: "count"}, {x: selected_column, fill: "steelblue", thresholds: bin_count}))
+  ],
+  x: {
+    label: selected_column
+  },
+  y: {
+    label: "Count"
+  },
+  color: {
+    legend: false
+  }
+})
+```
+
+### Relationship Aanalysis
+
+#### Between Categorical Variable
+
+::: {.callout-tip appearance="simple"}
+Select a column to compare against IsDefaulter:
+```{ojs}
+bivariate_cat_columns = ['SEX', 'EDUCATION', 'MARRIAGE', 'PAY_SEPT',
+               'PAY_AUG', 'PAY_JUL', 'PAY_JUN', 'PAY_MAY', 'PAY_APR']
+viewof selected_bivariate_cat_column = Inputs.radio(bivariate_cat_columns, {value: bivariate_cat_columns[0]})
+```
+:::
+
+```{ojs}
+function calculateGroupedPercentages(data, groupColumn, stackColumn) {
+  const grouped = d3.rollup(data, v => v.length, d => d[groupColumn], d => d[stackColumn]);
+  const totals = d3.rollup(data, v => v.length, d => d[groupColumn]);
+
+  return Array.from(grouped, ([key, values]) => {
+    const total = totals.get(key);
+    return Array.from(values, ([stackKey, count]) => ({
+      group: key,
+      stack: stackKey,
+      count,
+      percentage: (count / total) * 100
+    }));
+  }).flat();
+}
+
+grouped_bivariate_data = calculateGroupedPercentages(data, "IsDefaulter", selected_bivariate_cat_column);
+
+Plot.plot({
+  marks: [
+    Plot.barY(grouped_bivariate_data, {
+      x: d => d.group + ":" + d.stack,
+      y: "percentage",
+      fill: "stack",
+      title: d => `${d.stack}: ${d.percentage.toFixed(1)}%`
+    }),
+    Plot.text(grouped_bivariate_data, {
+      x: d => d.group + ":" + d.stack,
+      y: d => d.percentage,
+      text: d => `${d.percentage.toFixed(1)}%`,
+      dy: -4
+    })
+  ],
+  x: {
+    label: "IsDefaulter",
+    domain: Array.from(new Set(grouped_bivariate_data.map(d => d.group + ":" + d.stack))),
+    tickFormat: d => d.split(":")[0] // Format ticks to show only the group
+  },
+  y: {
+    label: "Percentage"
+  },
+  color: {
+    legend: true
+  }
+})
+
+```
+
+#### Between Continuous Variables
+
+::: {.callout-tip appearance="simple"}
+Select Continuous Variables for Correlation Heatmap:
+```{ojs}
+bivariate_cont_columns =  ['LIMIT_BAL', 'AGE', 'BILL_AMT_SEPT', 'BILL_AMT_AUG', 'BILL_AMT_JUL', 'BILL_AMT_JUN', 'BILL_AMT_MAY',
+                'BILL_AMT_APR', 'PAY_AMT_SEPT', 'PAY_AMT_AUG', 'PAY_AMT_JUL', 'PAY_AMT_JUN', 'PAY_AMT_MAY', 'PAY_AMT_APR']
+viewof selected_bivariate_cont_columns = Inputs.checkbox(bivariate_cont_columns, {value: bivariate_cont_columns})
+```
+:::
+
+
+```{ojs}
+function calculateCorrelationMatrix(data, selectedColumns) {
+  const n = selectedColumns.length;
+  const correlationMatrix = Array.from({ length: n }, () => Array(n).fill(0));
+
+  function pearsonCorrelation(x, y) {
+    const meanX = d3.mean(x);
+    const meanY = d3.mean(y);
+    const diffX = x.map(d => d - meanX);
+    const diffY = y.map(d => d - meanY);
+    const numerator = d3.sum(diffX.map((d, i) => d * diffY[i]));
+    const denominator = Math.sqrt(d3.sum(diffX.map(d => d * d)) * d3.sum(diffY.map(d => d * d)));
+    return numerator / denominator;
+  }
+
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      const col1 = selectedColumns[i];
+      const col2 = selectedColumns[j];
+      const values1 = data.map(d => d[col1]);
+      const values2 = data.map(d => d[col2]);
+      const correlation = pearsonCorrelation(values1, values2);
+      correlationMatrix[i][j] = correlation;
+    }
+  }
+
+  return correlationMatrix;
+}
+
+correlation_matrix = calculateCorrelationMatrix(data, selected_bivariate_cont_columns);
+correlation_data = selected_bivariate_cont_columns.flatMap((col1, i) =>
+  selected_bivariate_cont_columns.map((col2, j) => ({
+    x: col1,
+    y: col2,
+    value: correlation_matrix[i][j]
+  }))
+);
+
+Plot.plot({
+  marks: [
+    Plot.cell(correlation_data, {x: "x", y: "y", fill: "value", title: d => d.value.toFixed(2)}),
+    Plot.text(correlation_data, {x: "x", y: "y", text: d => d.value.toFixed(2), dy: 0, textAnchor: "middle"})
+  ],
+  x: {
+    domain: selected_bivariate_cont_columns,
+    label: "Variables"
+  },
+  y: {
+    domain: selected_bivariate_cont_columns,
+    label: "Variables"
+  },
+  color: {
+    type: "linear",
+    scheme: "blues",
+    label: "Correlation"
+  },
+  width: 600,
+  height: 600
+})
+
+
+```
+
+
+## Checkpoint
+::: {.callout-tip collapse="true" appearance="simple"}
+
+## What's our target variable?
+
+Our Target Variable is the IsDefaulter column. IsDefaulter = 0 indicates customer did not default his/her credit card payment and IsDefaulter = 1 indicates that customer indeed defaulted his/her credit card statement.
+
+:::
+
+
+## Logistic Regression
+
+In this section, you are tasked to implement a logistic regression to the following data path following the comments in the code block and what we have learnt previously.
+
+```{pyodide-python}
+# importing libraries
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix
+
+
+data_url = "https://raw.githubusercontent.com/zadchin/RT-test/master/final_dataset.csv"
+
+# TODO: read data from data_url, define feature and target
+data =
+
+# TODO: train-test split
+X_train, X_test, y_train, y_test =
+
+# CHECKPOINT 1: Make sure train-test split print something
+print("X train shape: ", X_train.shape)
+print("X test shape: ", X_test.shape)
+
+# TODO: Define logistic regression model based on function
+
+# TODO: Train the model
+
+# TODO: Test the model
+
+# TODO: Print Result
+```
+
+## Decision Tree
+
+```{pyodide-python}
+
+# TODO: Define deciscion tree model based on function
+
+# TODO: Train the model
+
+# TODO: Test the model
+
+# TODO: Print Result
+```
+
+## Random Forest
+
+```{pyodide-python}
+
+# TODO: Define random forest model based on function
+
+# TODO: Train the model
+
+# TODO: Test the model
+
+# TODO: Print Result
+```
+
+
+## XGBoost
+
+```{pyodide-python}
+
+# TODO: Define XGBoost model based on function
+
+# TODO: Train the model
+
+# TODO: Test the model
+
+# TODO: Print Result
+```
+
+$\,$
