@@ -275,7 +275,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix
 
 
-data_url = "https://raw.githubusercontent.com/zadchin/RT-test/master/final_dataset.csv"
+data_url = "https://raw.githubusercontent.com/zadchin/econ-module/master/testing/final_creditcard.csv"
 
 # TODO: read data from data_url, define feature and target
 data =
