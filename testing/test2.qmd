@@ -1,11 +1,10 @@
 ---
-title: "Credit Card Default"
-execute:
-  echo: false
+title: Credit Card Default
 format: html
-navbar: false
 filters:
   - pyodide
+execute:
+  echo: false
 ---
 
 ## A look at the Dataset

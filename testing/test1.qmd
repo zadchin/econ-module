@@ -1,5 +1,5 @@
 ---
-title: "Classifying Pancreatic Cancer"
+title: Classifying Pancreatic Cancer
 format: html
 filters:
   - pyodide
@@ -247,6 +247,7 @@ Our Target Variable is the diagnosis column. Diagnosis = 0 indicates patient tha
 In this section, you are tasked to implement a logistic regression to the following data path following the comments in the code block and what we have learnt previously.
 
 ```{pyodide-python}
+# importing libraries
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
