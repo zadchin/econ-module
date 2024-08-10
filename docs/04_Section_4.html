@@ -233,7 +233,7 @@ globalThis.qpyodideCustomizedPyodideOptions = {
 }
 
 // Store cell data
-globalThis.qpyodideCellDetails = [{"id":1,"code":"# importing libraries\nimport pandas as pd\nimport numpy as np\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix\n\n# reading data and defining features\ndata_url = \"https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv\"\ndata = pd.read_csv(data_url)\n\n## target is the Risk_Flag column in our data\ntarget = data.Risk_Flag \n## features will exclude the target\nfeatures = data.drop(\"Risk_Flag\", axis = 1) \n\n# train-test split\nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\n\n# print to make sure train-test split is completed\nprint(\"X train shape: \", X_train.shape)\nprint(\"X test shape: \", X_test.shape)\n\n# Call on logistic regression function imported\nLR_model = LogisticRegression(max_iter=10000, C=1.0, class_weight=\"balanced\")\n\n# Train the model on X_train, y_train (training data)\nLR_model.fit(X_train, y_train)\n\n# Test the model on X_test (testing data)\ny_pred_LR = LR_model.predict(X_test)\n\n# Print result\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_LR), 2))\nprint(\"Precision: \",np.round(precision_score(y_test, y_pred_LR), 2))\nprint(\"Recall: \", np.round(recall_score(y_test, y_pred_LR), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_LR), 2))","options":{"out-width":"700px","autorun":"","fig-cap":"","fig-height":5,"fig-width":7,"message":"true","dpi":72,"warning":"true","context":"interactive","label":"","classes":"","out-height":"","read-only":"false","output":"true","comment":"","results":"markup"}},{"id":2,"code":"feature_importance = pd.DataFrame({\n    'Feature': X_train.columns,\n    'Importance': LR_model.coef_[0]\n})\n\nfeature_importance = feature_importance.sort_values(by='Importance', ascending=False)\nfeature_importance","options":{"out-width":"700px","autorun":"","fig-cap":"","fig-height":5,"fig-width":7,"message":"true","dpi":72,"warning":"true","context":"interactive","label":"","classes":"","out-height":"","read-only":"false","output":"true","comment":"","results":"markup"}}];
+globalThis.qpyodideCellDetails = [{"options":{"dpi":72,"results":"markup","fig-height":5,"output":"true","fig-cap":"","message":"true","comment":"","out-height":"","autorun":"","label":"","classes":"","warning":"true","out-width":"700px","fig-width":7,"context":"interactive","read-only":"false"},"code":"# importing libraries\nimport pandas as pd\nimport numpy as np\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, confusion_matrix\n\n# reading data and defining features\ndata_url = \"https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv\"\ndata = pd.read_csv(data_url)\n\n## target is the Risk_Flag column in our data\ntarget = data.Risk_Flag \n## features will exclude the target\nfeatures = data.drop(\"Risk_Flag\", axis = 1) \n\n# train-test split\nX_train, X_test, y_train, y_test = train_test_split(features, target, test_size = 0.3, random_state=42)\n\n# print to make sure train-test split is completed\nprint(\"X train shape: \", X_train.shape)\nprint(\"X test shape: \", X_test.shape)\n\n# Call on logistic regression function imported\nLR_model = LogisticRegression(max_iter=10000, C=1.0, class_weight=\"balanced\")\n\n# Train the model on X_train, y_train (training data)\nLR_model.fit(X_train, y_train)\n\n# Test the model on X_test (testing data)\ny_pred_LR = LR_model.predict(X_test)\n\n# Print result\nprint(\"Accuracy: \", np.round(accuracy_score(y_test, y_pred_LR), 2))\nprint(\"Precision: \",np.round(precision_score(y_test, y_pred_LR), 2))\nprint(\"Recall: \", np.round(recall_score(y_test, y_pred_LR), 2))\nprint(\"F1 Score: \", np.round(f1_score(y_test, y_pred_LR), 2))","id":1},{"options":{"dpi":72,"results":"markup","fig-height":5,"output":"true","fig-cap":"","message":"true","comment":"","out-height":"","autorun":"","label":"","classes":"","warning":"true","out-width":"700px","fig-width":7,"context":"interactive","read-only":"false"},"code":"feature_importance = pd.DataFrame({\n    'Feature': X_train.columns,\n    'Importance': LR_model.coef_[0]\n})\n\nfeature_importance = feature_importance.sort_values(by='Importance', ascending=False)\nfeature_importance","id":2}];
 
 
 </script>
@@ -571,8 +571,20 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./testing/test1_5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Challenge 1: Code Playground</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./testing/test2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Credit Card Default</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Credit Card Default</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing/test2_5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Challenge 2: Code Playground</span></span></a>
   </div>
 </li>
       </ul>

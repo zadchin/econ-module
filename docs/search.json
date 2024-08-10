@@ -407,153 +407,175 @@
     "href": "testing/test1.html#checkpoint",
     "title": "9  Classifying Pancreatic Cancer",
     "section": "9.3 Checkpoint",
-    "text": "9.3 Checkpoint\n\n\n\n\n\n\nWhat’s our target variable?\n\n\n\n\n\nOur Target Variable is the diagnosis column. Diagnosis = 0 indicates patient that does not have cancer and diagnosis = 1 indicates that patient is diagnosed with Pancreatic ductal adenocarcinoma (PDAC).",
+    "text": "9.3 Checkpoint\n\n\n\n\n\n\nWhat’s our target variable?\n\n\n\n\n\nOur Target Variable is the diagnosis column. Diagnosis = 0 indicates patient that does not have cancer and diagnosis = 1 indicates that patient is diagnosed with Pancreatic ductal adenocarcinoma (PDAC).\n\n\n\n\\(\\,\\)",
     "crumbs": [
       "Hands-On Activity",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Classifying Pancreatic Cancer</span>"
     ]
   },
   {
-    "objectID": "testing/test1.html#logistic-regression",
-    "href": "testing/test1.html#logistic-regression",
-    "title": "9  Classifying Pancreatic Cancer",
-    "section": "9.4 Logistic Regression",
-    "text": "9.4 Logistic Regression\nIn this section, you are tasked to implement a logistic regression to the following data path following the comments in the code block and what we have learnt previously.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "objectID": "testing/test1_5.html",
+    "href": "testing/test1_5.html",
+    "title": "10  Challenge 1: Code Playground",
+    "section": "",
+    "text": "10.1 Logistic Regression\nIn this section, you are tasked to implement a logistic regression to the following data path following the comments in the code block and what we have learnt previously.",
     "crumbs": [
       "Hands-On Activity",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Classifying Pancreatic Cancer</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Challenge 1: Code Playground</span>"
     ]
   },
   {
-    "objectID": "testing/test1.html#decision-tree",
-    "href": "testing/test1.html#decision-tree",
-    "title": "9  Classifying Pancreatic Cancer",
-    "section": "9.5 Decision Tree",
-    "text": "9.5 Decision Tree\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "objectID": "testing/test1_5.html#logistic-regression",
+    "href": "testing/test1_5.html#logistic-regression",
+    "title": "10  Challenge 1: Code Playground",
+    "section": "",
+    "text": "Please enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Hands-On Activity",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Classifying Pancreatic Cancer</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Challenge 1: Code Playground</span>"
     ]
   },
   {
-    "objectID": "testing/test1.html#random-forest",
-    "href": "testing/test1.html#random-forest",
-    "title": "9  Classifying Pancreatic Cancer",
-    "section": "9.6 Random Forest",
-    "text": "9.6 Random Forest\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "objectID": "testing/test1_5.html#decision-tree",
+    "href": "testing/test1_5.html#decision-tree",
+    "title": "10  Challenge 1: Code Playground",
+    "section": "10.2 Decision Tree",
+    "text": "10.2 Decision Tree\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Hands-On Activity",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Classifying Pancreatic Cancer</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Challenge 1: Code Playground</span>"
     ]
   },
   {
-    "objectID": "testing/test1.html#xgboost",
-    "href": "testing/test1.html#xgboost",
-    "title": "9  Classifying Pancreatic Cancer",
-    "section": "9.7 XGBoost",
-    "text": "9.7 XGBoost\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "objectID": "testing/test1_5.html#random-forest",
+    "href": "testing/test1_5.html#random-forest",
+    "title": "10  Challenge 1: Code Playground",
+    "section": "10.3 Random Forest",
+    "text": "10.3 Random Forest\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Hands-On Activity",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Classifying Pancreatic Cancer</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Challenge 1: Code Playground</span>"
     ]
   },
   {
-    "objectID": "testing/test1.html#optional-challenge-discussion",
-    "href": "testing/test1.html#optional-challenge-discussion",
-    "title": "9  Classifying Pancreatic Cancer",
-    "section": "9.8 Optional Challenge & Discussion",
-    "text": "9.8 Optional Challenge & Discussion\nHere are some optional challenge and questions that you can implements and think about: - Implement a baseline model to be compared against - Reimplement all above algorithms and remove class weight. What did you observe - Think about the difference in the performance of the models. What are the difference and why?\n\\(\\,\\)",
+    "objectID": "testing/test1_5.html#xgboost",
+    "href": "testing/test1_5.html#xgboost",
+    "title": "10  Challenge 1: Code Playground",
+    "section": "10.4 XGBoost",
+    "text": "10.4 XGBoost\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Hands-On Activity",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Classifying Pancreatic Cancer</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Challenge 1: Code Playground</span>"
+    ]
+  },
+  {
+    "objectID": "testing/test1_5.html#optional-challenge-discussion",
+    "href": "testing/test1_5.html#optional-challenge-discussion",
+    "title": "10  Challenge 1: Code Playground",
+    "section": "10.5 Optional Challenge & Discussion",
+    "text": "10.5 Optional Challenge & Discussion\nHere are some optional challenge and questions that you can implements and think about: - Implement a baseline model to be compared against - Reimplement all above algorithms and remove class weight. What did you observe - Think about the difference in the performance of the models. What are the difference and why?\n\\(\\,\\)",
+    "crumbs": [
+      "Hands-On Activity",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Challenge 1: Code Playground</span>"
     ]
   },
   {
     "objectID": "testing/test2.html",
     "href": "testing/test2.html",
-    "title": "10  Credit Card Default",
+    "title": "11  Credit Card Default",
     "section": "",
-    "text": "10.1 A look at the Dataset\nThe dataset contains 16983 rows and 26 columns. Each row represents a unique customer, and each column provides specific information about the customer’s credit history and balance. Here are 100 example rows:\nHere’s the dataset:\nThere are 26 columns in the dataset, namely:",
+    "text": "11.1 A look at the Dataset\nThe dataset contains 16983 rows and 26 columns. Each row represents a unique customer, and each column provides specific information about the customer’s credit history and balance. Here are 100 example rows:\nHere’s the dataset:\nThere are 26 columns in the dataset, namely:",
     "crumbs": [
       "Hands-On Activity",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Card Default</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Credit Card Default</span>"
     ]
   },
   {
     "objectID": "testing/test2.html#a-look-at-the-dataset",
     "href": "testing/test2.html#a-look-at-the-dataset",
-    "title": "10  Credit Card Default",
+    "title": "11  Credit Card Default",
     "section": "",
     "text": "ID: ID of each client.\nLIMIT_BAL: Amount of given credit in NT dollars (includes individual and family/supplementary credit).\nSEX: Gender (1 = male, 2 = female).\nEDUCATION: (1 = graduate school, 2 = university, 3 = high school, 0, 4, 5, 6 = others).\nMARRIAGE: Marital status (0 = others, 1 = married, 2 = single, 3 = others).\nAGE: Age in years.\nScale for PAY_SEPT to PAY_APR: (-2 = No consumption, -1 = paid in full, 0 = use of revolving credit (paid minimum only), 1 = payment delay for one month, 2 = payment delay for two months, … 8 = payment delay for eight months, 9 = payment delay for nine months and above).\nPAY_SEPT: Repayment status in September 2005 (scale same as above).\nPAY_AUG: Repayment status in August 2005 (scale same as above).\nPAY_JUL: Repayment status in July 2005 (scale same as above).\nPAY_JUN: Repayment status in June 2005 (scale same as above).\nPAY_MAY: Repayment status in May 2005 (scale same as above).\nPAY_APR: Repayment status in April 2005 (scale same as above).\nBILL_AMT_SEPT: Amount of bill statement in September 2005 (NT dollar).\nBILL_AMT_AUG: Amount of bill statement in August 2005 (NT dollar).\nBILL_AMT_JUL: Amount of bill statement in July 2005 (NT dollar).\nBILL_AMT_JUN: Amount of bill statement in June 2005 (NT dollar).\nBILL_AMT_MAY: Amount of bill statement in May 2005 (NT dollar).\nBILL_AMT_APR: Amount of bill statement in April 2005 (NT dollar).\nPAY_AMT_SEPT: Amount of previous payment in September 2005 (NT dollar).\nPAY_AMT_AUG: Amount of previous payment in August 2005 (NT dollar).\nPAY_AMT_JUL: Amount of previous payment in July 2005 (NT dollar).\nPAY_AMT_JUN: Amount of previous payment in June 2005 (NT dollar).\nPAY_AMT_MAY: Amount of previous payment in May 2005 (NT dollar).\nPAY_AMT_APR: Amount of previous payment in April 2005 (NT dollar).\nIsDefaulter: Default payment (1 = yes, 0 = no).",
     "crumbs": [
       "Hands-On Activity",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Card Default</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Credit Card Default</span>"
     ]
   },
   {
     "objectID": "testing/test2.html#exploratory-data-analysis",
     "href": "testing/test2.html#exploratory-data-analysis",
-    "title": "10  Credit Card Default",
-    "section": "10.2 Exploratory Data Analysis",
-    "text": "10.2 Exploratory Data Analysis\n\n10.2.1 Bar Plot\n\n\n\n\n\n\nSelect a categorical column to visualize:\n\ndata = FileAttachment(\"creditcard.csv\").csv({ typed: true })\ncat_columns = ['SEX', 'EDUCATION', 'MARRIAGE', 'PAY_SEPT',\n               'PAY_AUG', 'PAY_JUL', 'PAY_JUN', 'PAY_MAY', 'PAY_APR', 'IsDefaulter']\nviewof selected_column_cat = Inputs.radio(cat_columns, {value: cat_columns[0]})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ngrouped_data = d3.groups(data, d =&gt; d[selected_column_cat]).map(([key, values]) =&gt; ({key, count: values.length}));\n\nPlot.plot({\n  marks: [\n    Plot.barY(grouped_data, {x: \"key\", y: \"count\", fill: \"steelblue\"}),\n    Plot.text(grouped_data, {x: \"key\", y: \"count\", text: d =&gt; d.count, dy: -10})\n  ],\n  x: {\n    label: selected_column_cat\n  },\n  y: {\n    label: \"Count\"\n  },\n  color: {\n    legend: false\n  }\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n10.2.2 Histogram\n\n\n\n\n\n\nSelect a continuous column to visualize:\n\ncont_columns = ['LIMIT_BAL', 'AGE', 'BILL_AMT_SEPT', 'BILL_AMT_AUG', 'BILL_AMT_JUL', 'BILL_AMT_JUN', 'BILL_AMT_MAY',\n                'BILL_AMT_APR', 'PAY_AMT_SEPT', 'PAY_AMT_AUG', 'PAY_AMT_JUL', 'PAY_AMT_JUN', 'PAY_AMT_MAY', 'PAY_AMT_APR']\nviewof selected_column = Inputs.radio(cont_columns, {value: 'AGE'})\nviewof bin_count = Inputs.range([1, 50], {step: 1, value: 15, label: \"Number of Bins\"})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlot.plot({\n  marks: [\n    Plot.rectY(data, Plot.binX({y: \"count\"}, {x: selected_column, fill: \"steelblue\", thresholds: bin_count}))\n  ],\n  x: {\n    label: selected_column\n  },\n  y: {\n    label: \"Count\"\n  },\n  color: {\n    legend: false\n  }\n})\n\n\n\n\n\n\n\n\n10.2.3 Relationship Aanalysis\n\n10.2.3.1 Between Categorical Variable\n\n\n\n\n\n\nSelect a column to compare against IsDefaulter:\n\nbivariate_cat_columns = ['SEX', 'EDUCATION', 'MARRIAGE', 'PAY_SEPT',\n               'PAY_AUG', 'PAY_JUL', 'PAY_JUN', 'PAY_MAY', 'PAY_APR']\nviewof selected_bivariate_cat_column = Inputs.radio(bivariate_cat_columns, {value: bivariate_cat_columns[0]})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfunction calculateGroupedPercentages(data, groupColumn, stackColumn) {\n  const grouped = d3.rollup(data, v =&gt; v.length, d =&gt; d[groupColumn], d =&gt; d[stackColumn]);\n  const totals = d3.rollup(data, v =&gt; v.length, d =&gt; d[groupColumn]);\n\n  return Array.from(grouped, ([key, values]) =&gt; {\n    const total = totals.get(key);\n    return Array.from(values, ([stackKey, count]) =&gt; ({\n      group: key,\n      stack: stackKey,\n      count,\n      percentage: (count / total) * 100\n    }));\n  }).flat();\n}\n\ngrouped_bivariate_data = calculateGroupedPercentages(data, \"IsDefaulter\", selected_bivariate_cat_column);\n\nPlot.plot({\n  marks: [\n    Plot.barY(grouped_bivariate_data, {\n      x: d =&gt; d.group + \":\" + d.stack,\n      y: \"percentage\",\n      fill: \"stack\",\n      title: d =&gt; `${d.stack}: ${d.percentage.toFixed(1)}%`\n    }),\n    Plot.text(grouped_bivariate_data, {\n      x: d =&gt; d.group + \":\" + d.stack,\n      y: d =&gt; d.percentage,\n      text: d =&gt; `${d.percentage.toFixed(1)}%`,\n      dy: -4\n    })\n  ],\n  x: {\n    label: \"IsDefaulter\",\n    domain: Array.from(new Set(grouped_bivariate_data.map(d =&gt; d.group + \":\" + d.stack))),\n    tickFormat: d =&gt; d.split(\":\")[0] // Format ticks to show only the group\n  },\n  y: {\n    label: \"Percentage\"\n  },\n  color: {\n    legend: true\n  }\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n10.2.3.2 Between Continuous Variables\n\n\n\n\n\n\nSelect Continuous Variables for Correlation Heatmap:\n\nbivariate_cont_columns =  ['LIMIT_BAL', 'AGE', 'BILL_AMT_SEPT', 'BILL_AMT_AUG', 'BILL_AMT_JUL', 'BILL_AMT_JUN', 'BILL_AMT_MAY',\n                'BILL_AMT_APR', 'PAY_AMT_SEPT', 'PAY_AMT_AUG', 'PAY_AMT_JUL', 'PAY_AMT_JUN', 'PAY_AMT_MAY', 'PAY_AMT_APR']\nviewof selected_bivariate_cont_columns = Inputs.checkbox(bivariate_cont_columns, {value: bivariate_cont_columns})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfunction calculateCorrelationMatrix(data, selectedColumns) {\n  const n = selectedColumns.length;\n  const correlationMatrix = Array.from({ length: n }, () =&gt; Array(n).fill(0));\n\n  function pearsonCorrelation(x, y) {\n    const meanX = d3.mean(x);\n    const meanY = d3.mean(y);\n    const diffX = x.map(d =&gt; d - meanX);\n    const diffY = y.map(d =&gt; d - meanY);\n    const numerator = d3.sum(diffX.map((d, i) =&gt; d * diffY[i]));\n    const denominator = Math.sqrt(d3.sum(diffX.map(d =&gt; d * d)) * d3.sum(diffY.map(d =&gt; d * d)));\n    return numerator / denominator;\n  }\n\n  for (let i = 0; i &lt; n; i++) {\n    for (let j = 0; j &lt; n; j++) {\n      const col1 = selectedColumns[i];\n      const col2 = selectedColumns[j];\n      const values1 = data.map(d =&gt; d[col1]);\n      const values2 = data.map(d =&gt; d[col2]);\n      const correlation = pearsonCorrelation(values1, values2);\n      correlationMatrix[i][j] = correlation;\n    }\n  }\n\n  return correlationMatrix;\n}\n\ncorrelation_matrix = calculateCorrelationMatrix(data, selected_bivariate_cont_columns);\ncorrelation_data = selected_bivariate_cont_columns.flatMap((col1, i) =&gt;\n  selected_bivariate_cont_columns.map((col2, j) =&gt; ({\n    x: col1,\n    y: col2,\n    value: correlation_matrix[i][j]\n  }))\n);\n\nPlot.plot({\n  marks: [\n    Plot.cell(correlation_data, {x: \"x\", y: \"y\", fill: \"value\", title: d =&gt; d.value.toFixed(2)}),\n    Plot.text(correlation_data, {x: \"x\", y: \"y\", text: d =&gt; d.value.toFixed(2), dy: 0, textAnchor: \"middle\"})\n  ],\n  x: {\n    domain: selected_bivariate_cont_columns,\n    label: \"Variables\"\n  },\n  y: {\n    domain: selected_bivariate_cont_columns,\n    label: \"Variables\"\n  },\n  color: {\n    type: \"linear\",\n    scheme: \"blues\",\n    label: \"Correlation\"\n  },\n  width: 600,\n  height: 600\n})",
+    "title": "11  Credit Card Default",
+    "section": "11.2 Exploratory Data Analysis",
+    "text": "11.2 Exploratory Data Analysis\n\n11.2.1 Bar Plot\n\n\n\n\n\n\nSelect a categorical column to visualize:\n\ndata = FileAttachment(\"creditcard.csv\").csv({ typed: true })\ncat_columns = ['SEX', 'EDUCATION', 'MARRIAGE', 'PAY_SEPT',\n               'PAY_AUG', 'PAY_JUL', 'PAY_JUN', 'PAY_MAY', 'PAY_APR', 'IsDefaulter']\nviewof selected_column_cat = Inputs.radio(cat_columns, {value: cat_columns[0]})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ngrouped_data = d3.groups(data, d =&gt; d[selected_column_cat]).map(([key, values]) =&gt; ({key, count: values.length}));\n\nPlot.plot({\n  marks: [\n    Plot.barY(grouped_data, {x: \"key\", y: \"count\", fill: \"steelblue\"}),\n    Plot.text(grouped_data, {x: \"key\", y: \"count\", text: d =&gt; d.count, dy: -10})\n  ],\n  x: {\n    label: selected_column_cat\n  },\n  y: {\n    label: \"Count\"\n  },\n  color: {\n    legend: false\n  }\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n11.2.2 Histogram\n\n\n\n\n\n\nSelect a continuous column to visualize:\n\ncont_columns = ['LIMIT_BAL', 'AGE', 'BILL_AMT_SEPT', 'BILL_AMT_AUG', 'BILL_AMT_JUL', 'BILL_AMT_JUN', 'BILL_AMT_MAY',\n                'BILL_AMT_APR', 'PAY_AMT_SEPT', 'PAY_AMT_AUG', 'PAY_AMT_JUL', 'PAY_AMT_JUN', 'PAY_AMT_MAY', 'PAY_AMT_APR']\nviewof selected_column = Inputs.radio(cont_columns, {value: 'AGE'})\nviewof bin_count = Inputs.range([1, 50], {step: 1, value: 15, label: \"Number of Bins\"})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlot.plot({\n  marks: [\n    Plot.rectY(data, Plot.binX({y: \"count\"}, {x: selected_column, fill: \"steelblue\", thresholds: bin_count}))\n  ],\n  x: {\n    label: selected_column\n  },\n  y: {\n    label: \"Count\"\n  },\n  color: {\n    legend: false\n  }\n})\n\n\n\n\n\n\n\n\n11.2.3 Relationship Aanalysis\n\n11.2.3.1 Between Categorical Variable\n\n\n\n\n\n\nSelect a column to compare against IsDefaulter:\n\nbivariate_cat_columns = ['SEX', 'EDUCATION', 'MARRIAGE', 'PAY_SEPT',\n               'PAY_AUG', 'PAY_JUL', 'PAY_JUN', 'PAY_MAY', 'PAY_APR']\nviewof selected_bivariate_cat_column = Inputs.radio(bivariate_cat_columns, {value: bivariate_cat_columns[0]})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfunction calculateGroupedPercentages(data, groupColumn, stackColumn) {\n  const grouped = d3.rollup(data, v =&gt; v.length, d =&gt; d[groupColumn], d =&gt; d[stackColumn]);\n  const totals = d3.rollup(data, v =&gt; v.length, d =&gt; d[groupColumn]);\n\n  return Array.from(grouped, ([key, values]) =&gt; {\n    const total = totals.get(key);\n    return Array.from(values, ([stackKey, count]) =&gt; ({\n      group: key,\n      stack: stackKey,\n      count,\n      percentage: (count / total) * 100\n    }));\n  }).flat();\n}\n\ngrouped_bivariate_data = calculateGroupedPercentages(data, \"IsDefaulter\", selected_bivariate_cat_column);\n\nPlot.plot({\n  marks: [\n    Plot.barY(grouped_bivariate_data, {\n      x: d =&gt; d.group + \":\" + d.stack,\n      y: \"percentage\",\n      fill: \"stack\",\n      title: d =&gt; `${d.stack}: ${d.percentage.toFixed(1)}%`\n    }),\n    Plot.text(grouped_bivariate_data, {\n      x: d =&gt; d.group + \":\" + d.stack,\n      y: d =&gt; d.percentage,\n      text: d =&gt; `${d.percentage.toFixed(1)}%`,\n      dy: -4\n    })\n  ],\n  x: {\n    label: \"IsDefaulter\",\n    domain: Array.from(new Set(grouped_bivariate_data.map(d =&gt; d.group + \":\" + d.stack))),\n    tickFormat: d =&gt; d.split(\":\")[0] // Format ticks to show only the group\n  },\n  y: {\n    label: \"Percentage\"\n  },\n  color: {\n    legend: true\n  }\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n11.2.3.2 Between Continuous Variables\n\n\n\n\n\n\nSelect Continuous Variables for Correlation Heatmap:\n\nbivariate_cont_columns =  ['LIMIT_BAL', 'AGE', 'BILL_AMT_SEPT', 'BILL_AMT_AUG', 'BILL_AMT_JUL', 'BILL_AMT_JUN', 'BILL_AMT_MAY',\n                'BILL_AMT_APR', 'PAY_AMT_SEPT', 'PAY_AMT_AUG', 'PAY_AMT_JUL', 'PAY_AMT_JUN', 'PAY_AMT_MAY', 'PAY_AMT_APR']\nviewof selected_bivariate_cont_columns = Inputs.checkbox(bivariate_cont_columns, {value: bivariate_cont_columns})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfunction calculateCorrelationMatrix(data, selectedColumns) {\n  const n = selectedColumns.length;\n  const correlationMatrix = Array.from({ length: n }, () =&gt; Array(n).fill(0));\n\n  function pearsonCorrelation(x, y) {\n    const meanX = d3.mean(x);\n    const meanY = d3.mean(y);\n    const diffX = x.map(d =&gt; d - meanX);\n    const diffY = y.map(d =&gt; d - meanY);\n    const numerator = d3.sum(diffX.map((d, i) =&gt; d * diffY[i]));\n    const denominator = Math.sqrt(d3.sum(diffX.map(d =&gt; d * d)) * d3.sum(diffY.map(d =&gt; d * d)));\n    return numerator / denominator;\n  }\n\n  for (let i = 0; i &lt; n; i++) {\n    for (let j = 0; j &lt; n; j++) {\n      const col1 = selectedColumns[i];\n      const col2 = selectedColumns[j];\n      const values1 = data.map(d =&gt; d[col1]);\n      const values2 = data.map(d =&gt; d[col2]);\n      const correlation = pearsonCorrelation(values1, values2);\n      correlationMatrix[i][j] = correlation;\n    }\n  }\n\n  return correlationMatrix;\n}\n\ncorrelation_matrix = calculateCorrelationMatrix(data, selected_bivariate_cont_columns);\ncorrelation_data = selected_bivariate_cont_columns.flatMap((col1, i) =&gt;\n  selected_bivariate_cont_columns.map((col2, j) =&gt; ({\n    x: col1,\n    y: col2,\n    value: correlation_matrix[i][j]\n  }))\n);\n\nPlot.plot({\n  marks: [\n    Plot.cell(correlation_data, {x: \"x\", y: \"y\", fill: \"value\", title: d =&gt; d.value.toFixed(2)}),\n    Plot.text(correlation_data, {x: \"x\", y: \"y\", text: d =&gt; d.value.toFixed(2), dy: 0, textAnchor: \"middle\"})\n  ],\n  x: {\n    domain: selected_bivariate_cont_columns,\n    label: \"Variables\"\n  },\n  y: {\n    domain: selected_bivariate_cont_columns,\n    label: \"Variables\"\n  },\n  color: {\n    type: \"linear\",\n    scheme: \"blues\",\n    label: \"Correlation\"\n  },\n  width: 600,\n  height: 600\n})",
     "crumbs": [
       "Hands-On Activity",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Card Default</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Credit Card Default</span>"
     ]
   },
   {
     "objectID": "testing/test2.html#checkpoint",
     "href": "testing/test2.html#checkpoint",
-    "title": "10  Credit Card Default",
-    "section": "10.3 Checkpoint",
-    "text": "10.3 Checkpoint\n\n\n\n\n\n\nWhat’s our target variable?\n\n\n\n\n\nOur Target Variable is the IsDefaulter column. IsDefaulter = 0 indicates customer did not default his/her credit card payment and IsDefaulter = 1 indicates that customer indeed defaulted his/her credit card statement.",
+    "title": "11  Credit Card Default",
+    "section": "11.3 Checkpoint",
+    "text": "11.3 Checkpoint\n\n\n\n\n\n\nWhat’s our target variable?\n\n\n\n\n\nOur Target Variable is the IsDefaulter column. IsDefaulter = 0 indicates customer did not default his/her credit card payment and IsDefaulter = 1 indicates that customer indeed defaulted his/her credit card statement.\n\n\n\n\\(\\,\\)",
     "crumbs": [
       "Hands-On Activity",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Card Default</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Credit Card Default</span>"
     ]
   },
   {
-    "objectID": "testing/test2.html#logistic-regression",
-    "href": "testing/test2.html#logistic-regression",
-    "title": "10  Credit Card Default",
-    "section": "10.4 Logistic Regression",
-    "text": "10.4 Logistic Regression\nIn this section, you are tasked to implement a logistic regression to the following data path following the comments in the code block and what we have learnt previously.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "objectID": "testing/test2_5.html",
+    "href": "testing/test2_5.html",
+    "title": "12  Challenge 2: Code Playground",
+    "section": "",
+    "text": "12.1 Logistic Regression\nIn this section, you are tasked to implement a logistic regression to the following data path following the comments in the code block and what we have learnt previously.",
     "crumbs": [
       "Hands-On Activity",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Card Default</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Challenge 2: Code Playground</span>"
     ]
   },
   {
-    "objectID": "testing/test2.html#decision-tree",
-    "href": "testing/test2.html#decision-tree",
-    "title": "10  Credit Card Default",
-    "section": "10.5 Decision Tree",
-    "text": "10.5 Decision Tree\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "objectID": "testing/test2_5.html#logistic-regression",
+    "href": "testing/test2_5.html#logistic-regression",
+    "title": "12  Challenge 2: Code Playground",
+    "section": "",
+    "text": "Please enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Hands-On Activity",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Card Default</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Challenge 2: Code Playground</span>"
     ]
   },
   {
-    "objectID": "testing/test2.html#random-forest",
-    "href": "testing/test2.html#random-forest",
-    "title": "10  Credit Card Default",
-    "section": "10.6 Random Forest",
-    "text": "10.6 Random Forest\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "objectID": "testing/test2_5.html#decision-tree",
+    "href": "testing/test2_5.html#decision-tree",
+    "title": "12  Challenge 2: Code Playground",
+    "section": "12.2 Decision Tree",
+    "text": "12.2 Decision Tree\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Hands-On Activity",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Card Default</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Challenge 2: Code Playground</span>"
     ]
   },
   {
-    "objectID": "testing/test2.html#xgboost",
-    "href": "testing/test2.html#xgboost",
-    "title": "10  Credit Card Default",
-    "section": "10.7 XGBoost",
-    "text": "10.7 XGBoost\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\\(\\,\\)",
+    "objectID": "testing/test2_5.html#random-forest",
+    "href": "testing/test2_5.html#random-forest",
+    "title": "12  Challenge 2: Code Playground",
+    "section": "12.3 Random Forest",
+    "text": "12.3 Random Forest\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Hands-On Activity",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Card Default</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Challenge 2: Code Playground</span>"
+    ]
+  },
+  {
+    "objectID": "testing/test2_5.html#xgboost",
+    "href": "testing/test2_5.html#xgboost",
+    "title": "12  Challenge 2: Code Playground",
+    "section": "12.4 XGBoost",
+    "text": "12.4 XGBoost\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\\(\\,\\)",
+    "crumbs": [
+      "Hands-On Activity",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Challenge 2: Code Playground</span>"
     ]
   },
   {

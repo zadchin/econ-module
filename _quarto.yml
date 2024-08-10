@@ -23,7 +23,9 @@ book:
     - part: 08_Section_8.qmd
       chapters:
         - testing/test1.qmd
+        - testing/test1_5.qmd
         - testing/test2.qmd
+        - testing/test2_5.qmd
 
 include-after-body:
   text: <script type="text/javascript" src="page-nav-foot.js"></script>
