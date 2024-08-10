@@ -403,11 +403,22 @@
     ]
   },
   {
+    "objectID": "testing/test1.html#checkpoint",
+    "href": "testing/test1.html#checkpoint",
+    "title": "9  Classifying Pancreatic Cancer",
+    "section": "9.3 Checkpoint",
+    "text": "9.3 Checkpoint\n\n\n\n\n\n\nWhat’s our target variable?\n\n\n\n\n\nOur Target Variable is the diagnosis column. Diagnosis = 0 indicates patient that does not have cancer and diagnosis = 1 indicates that patient is diagnosed with Pancreatic ductal adenocarcinoma (PDAC).",
+    "crumbs": [
+      "Hands-On Activity",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Classifying Pancreatic Cancer</span>"
+    ]
+  },
+  {
     "objectID": "testing/test1.html#logistic-regression",
     "href": "testing/test1.html#logistic-regression",
     "title": "9  Classifying Pancreatic Cancer",
-    "section": "9.3 Logistic Regression",
-    "text": "9.3 Logistic Regression\nIn this section, you are tasked to implement a logistic regression to the following data path following the comments in the code block and what we have learnt previously.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "section": "9.4 Logistic Regression",
+    "text": "9.4 Logistic Regression\nIn this section, you are tasked to implement a logistic regression to the following data path following the comments in the code block and what we have learnt previously.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Hands-On Activity",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Classifying Pancreatic Cancer</span>"
@@ -417,8 +428,8 @@
     "objectID": "testing/test1.html#decision-tree",
     "href": "testing/test1.html#decision-tree",
     "title": "9  Classifying Pancreatic Cancer",
-    "section": "9.4 Decision Tree",
-    "text": "9.4 Decision Tree\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "section": "9.5 Decision Tree",
+    "text": "9.5 Decision Tree\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Hands-On Activity",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Classifying Pancreatic Cancer</span>"
@@ -428,8 +439,8 @@
     "objectID": "testing/test1.html#random-forest",
     "href": "testing/test1.html#random-forest",
     "title": "9  Classifying Pancreatic Cancer",
-    "section": "9.5 Random Forest",
-    "text": "9.5 Random Forest\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "section": "9.6 Random Forest",
+    "text": "9.6 Random Forest\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Hands-On Activity",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Classifying Pancreatic Cancer</span>"
@@ -439,8 +450,8 @@
     "objectID": "testing/test1.html#xgboost",
     "href": "testing/test1.html#xgboost",
     "title": "9  Classifying Pancreatic Cancer",
-    "section": "9.6 XGBoost",
-    "text": "9.6 XGBoost\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "section": "9.7 XGBoost",
+    "text": "9.7 XGBoost\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Hands-On Activity",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Classifying Pancreatic Cancer</span>"
@@ -450,8 +461,8 @@
     "objectID": "testing/test1.html#optional-challenge-discussion",
     "href": "testing/test1.html#optional-challenge-discussion",
     "title": "9  Classifying Pancreatic Cancer",
-    "section": "9.7 Optional Challenge & Discussion",
-    "text": "9.7 Optional Challenge & Discussion\nHere are some optional challenge and questions that you can implements and think about: - Implement a baseline model to be compared against - Reimplement all above algorithms and remove class weight. What did you observe - Think about the difference in the performance of the models. What are the difference and why?\n\\(\\,\\)",
+    "section": "9.8 Optional Challenge & Discussion",
+    "text": "9.8 Optional Challenge & Discussion\nHere are some optional challenge and questions that you can implements and think about: - Implement a baseline model to be compared against - Reimplement all above algorithms and remove class weight. What did you observe - Think about the difference in the performance of the models. What are the difference and why?\n\\(\\,\\)",
     "crumbs": [
       "Hands-On Activity",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Classifying Pancreatic Cancer</span>"
