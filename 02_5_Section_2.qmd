@@ -52,7 +52,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 ## calling function from library to read data
-data_url = "hhttps://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv"
+data_url = "https://raw.githubusercontent.com/zadchin/econ-module/master/cleaned_loandata.csv"
 data = pd.read_csv(data_url)
 
 ## constant assigning to determine features & target

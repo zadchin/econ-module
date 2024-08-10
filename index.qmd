@@ -24,7 +24,7 @@ Why is it important to predict whether customers will default?
 
 ## Discussion (2) {.unnumbered}
 
-What can we use to predict predict whether customers will default?
+What can we use to predict whether customers will default?
 
 ```{=html}
 <iframe src="https://app.sli.do/event/s2T3QonWGYrspayVrstKAm" width="800" height="700"></iframe>

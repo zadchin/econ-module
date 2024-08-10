@@ -67,7 +67,7 @@ Plot.plot({
 ```
 
 
-### What did you observe?
+
 
 
 
@@ -266,5 +266,6 @@ Plot.plot({
 ```
 
 
+### What did you observe?
 
 $\,$

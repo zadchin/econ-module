@@ -7,7 +7,7 @@ execute:
 
 ## Overview
 
-This dataset is provided as part of a hackathon. It includes a variety of variables collected at the time of the loan application, intended to facilitate the development and testing of predictive models focusing on loan defaults.
+This is a dataset containing several customer data related to their personal and professional background (i.e., income, age, city, state) captured at the point of loan application, and a risk flag of whether they have previously defaulted
 
 
 ## A look at the Dataset
